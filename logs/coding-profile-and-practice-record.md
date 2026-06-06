@@ -114,6 +114,7 @@ What I completed:
 ## Tools and Workflow
 
 - `VS Code`
+- `Codex`
 - `Xcode`
 - `GitHub`
 - AI tools including `ChatGPT`, `Claude`, `Gemini`, and `Perplexity`

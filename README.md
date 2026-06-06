@@ -1,5 +1,7 @@
 # Coding Learning Hub
 
+I am working with `Codex` in an AI-assisted workflow to track progress, test ideas, review changes, and improve this project over time.
+
 This project is a one-stop learning system for coding practice, quizzes, concept review, and project tracking.
 
 ## Main Goals

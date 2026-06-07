@@ -26,3 +26,5 @@
 - Start time: 8:08 PM EDT
 - Focus: `interactive exams`, `Coding Learning Hub`
 - Goal: improve the HTML exam experience and review flow
+- Additional work: redesigned `MusicMoodApp` with a cleaner media-library layout and added `Podcast`, `Movies`, and `Books` coming-soon sections
+- Topics practiced: `CSS Grid`, responsive layout, hero sections, cards and panels, visual hierarchy, gradients, and refactoring page structure

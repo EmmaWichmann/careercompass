@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML Basics Exam</title>
+    <title>CSS Layout Basics Exam</title>
     <style>
       :root {
         --bg: #f6f1ea;
@@ -19,9 +19,7 @@
         --shadow: 0 18px 40px rgba(73, 49, 33, 0.08);
       }
 
-      * {
-        box-sizing: border-box;
-      }
+      * { box-sizing: border-box; }
 
       body {
         margin: 0;
@@ -52,12 +50,7 @@
         margin-bottom: 18px;
       }
 
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
+      h1, h2, h3, p { margin-top: 0; }
 
       h1 {
         margin-bottom: 8px;
@@ -80,9 +73,7 @@
         background: #fffdf9;
       }
 
-      .status-box p {
-        margin-bottom: 8px;
-      }
+      .status-box p { margin-bottom: 8px; }
 
       .badge {
         display: inline-block;
@@ -93,28 +84,14 @@
         font-size: 0.92rem;
       }
 
-      .timer {
-        font-weight: 700;
-        color: var(--danger);
-      }
+      .timer { font-weight: 700; color: var(--danger); }
 
-      .instructions {
-        margin-bottom: 20px;
-      }
+      .instructions { margin-bottom: 20px; }
+      .instructions ul { margin-bottom: 0; padding-left: 20px; }
 
-      .instructions ul {
-        margin-bottom: 0;
-        padding-left: 20px;
-      }
-
-      .exam-shell {
-        display: none;
-      }
-
+      .exam-shell { display: none; }
       .exam-shell.active,
-      .results-shell.active {
-        display: block;
-      }
+      .results-shell.active { display: block; }
 
       .question-label {
         margin-bottom: 8px;
@@ -128,10 +105,7 @@
         line-height: 1.35;
       }
 
-      .answers {
-        display: grid;
-        gap: 12px;
-      }
+      .answers { display: grid; gap: 12px; }
 
       .answer-button {
         width: 100%;
@@ -150,10 +124,7 @@
         background: var(--accent-soft);
       }
 
-      .answer-button:disabled {
-        cursor: default;
-        opacity: 0.9;
-      }
+      .answer-button:disabled { cursor: default; opacity: 0.9; }
 
       .feedback {
         min-height: 30px;
@@ -161,17 +132,9 @@
         font-weight: 700;
       }
 
-      .feedback.correct {
-        color: var(--success);
-      }
-
-      .feedback.incorrect {
-        color: var(--danger);
-      }
-
-      .feedback.warning {
-        color: #8a5f22;
-      }
+      .feedback.correct { color: var(--success); }
+      .feedback.incorrect { color: var(--danger); }
+      .feedback.warning { color: #8a5f22; }
 
       .actions {
         display: flex;
@@ -180,34 +143,19 @@
       }
 
       .actions button,
-      .start-button,
-      .results-shell a {
+      .start-button {
         border: 0;
         border-radius: 999px;
         padding: 12px 18px;
         font: inherit;
         cursor: pointer;
-        text-decoration: none;
       }
 
-      .primary {
-        background: var(--accent);
-        color: white;
-      }
+      .primary { background: var(--accent); color: white; }
+      .secondary { background: #eee0d2; color: var(--text); }
 
-      .secondary {
-        background: #eee0d2;
-        color: var(--text);
-      }
-
-      .results-shell {
-        display: none;
-      }
-
-      .score {
-        font-size: 1.7rem;
-        color: var(--accent);
-      }
+      .results-shell { display: none; }
+      .score { font-size: 1.7rem; color: var(--accent); }
 
       .review-list {
         display: grid;
@@ -228,9 +176,7 @@
         color: var(--accent);
       }
 
-      .review-item strong {
-        color: var(--text);
-      }
+      .review-item strong { color: var(--text); }
 
       .review-item p {
         margin-bottom: 8px;
@@ -239,9 +185,7 @@
         font-family: inherit;
       }
 
-      .review-item p:last-child {
-        margin-bottom: 0;
-      }
+      .review-item p:last-child { margin-bottom: 0; }
 
       .review-grid {
         display: grid;
@@ -250,9 +194,7 @@
         margin-bottom: 10px;
       }
 
-      .review-grid p {
-        margin: 0;
-      }
+      .review-grid p { margin: 0; }
 
       .review-explanation {
         padding-top: 10px;
@@ -275,82 +217,52 @@
         }
       }
 
-      @media (max-width: 760px) {
-        .topbar {
-          flex-direction: column;
-        }
-
-        .status-box {
-          min-width: 0;
-          width: 100%;
-        }
-
-        .actions {
-          flex-direction: column;
-        }
-
-        .review-grid {
-          grid-template-columns: 1fr;
-        }
-      }
     </style>
   </head>
   <body>
     <main class="page">
-      <section class="card">
+      <section class="card instructions" id="instructions">
         <div class="topbar">
           <div>
-            <h1>HTML Basics Exam</h1>
-            <p class="subtitle">
-              A timed beginner exam focused on HTML structure and core page
-              elements.
-            </p>
+            <h1>CSS Layout Basics Exam</h1>
+            <p class="subtitle">A focused review on layout, spacing, hierarchy, and responsive structure.</p>
           </div>
-
           <div class="status-box">
             <p><strong>Mode:</strong> Timed exam</p>
-            <p><strong>Questions:</strong> <span id="question-total">5</span></p>
-            <p><strong>Time Remaining:</strong> <span class="timer" id="timer">08:00</span></p>
+            <p><strong>Questions:</strong> <span id="question-total"></span></p>
+            <p><strong>Time Remaining:</strong> <span id="timer" class="timer">06:00</span></p>
           </div>
         </div>
-
-        <div class="instructions" id="instructions">
-          <h2>Instructions</h2>
-          <ul>
-            <li>Click one answer choice for each question.</li>
-            <li>Use <strong>Submit Answer</strong> before moving on.</li>
-            <li>You will see your score and a short review at the end.</li>
-          </ul>
-          <button class="start-button primary" id="start-exam">Start Exam</button>
+        <span class="badge">Study what you just practiced</span>
+        <ul>
+          <li>Choose one answer for each question.</li>
+          <li>Submit your answer before moving forward.</li>
+          <li>You will review explanations at the end.</li>
+        </ul>
+        <div class="actions">
+          <button class="primary start-button" id="start-exam" type="button">Start Exam</button>
         </div>
+      </section>
 
-        <section class="exam-shell" id="exam-shell">
-          <p class="question-label" id="question-label">Question 1 of 5</p>
-          <h2 class="question-text" id="question-text"></h2>
+      <section class="card exam-shell" id="exam-shell">
+        <p class="question-label" id="question-label"></p>
+        <h2 class="question-text" id="question-text"></h2>
+        <div class="answers" id="answers"></div>
+        <p class="feedback" id="feedback"></p>
+        <div class="actions">
+          <button class="primary" id="submit-answer" type="button">Submit Answer</button>
+          <button class="secondary" id="next-question" type="button" disabled>Next Question</button>
+        </div>
+      </section>
 
-          <div class="answers" id="answers"></div>
-          <p class="feedback" id="feedback"></p>
-
-          <div class="actions">
-            <button class="primary" id="submit-answer">Submit Answer</button>
-            <button class="secondary" id="next-question" disabled>Next Question</button>
-          </div>
-        </section>
-
-        <section class="results-shell" id="results-shell">
-          <h2>Results</h2>
-          <p class="score" id="score-line"></p>
-          <p class="meta" id="results-summary"></p>
-
-          <div class="review-list" id="review-list"></div>
-
-          <div class="actions">
-            <a class="secondary" href="../index.html">Back to Hub</a>
-          </div>
-        </section>
+      <section class="card results-shell" id="results-shell">
+        <h2>Results</h2>
+        <p class="score" id="score-line"></p>
+        <p class="meta" id="results-summary"></p>
+        <div class="review-list" id="review-list"></div>
       </section>
     </main>
 
-    <script src="exam_01_html_basics.js"></script>
+    <script src="exam_02_css_layout_basics.js"></script>
   </body>
 </html>

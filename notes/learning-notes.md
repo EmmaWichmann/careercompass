@@ -13,3 +13,11 @@
 ## Goal for Later
 
 - Move these notes into `Notion` once the project and study system feel more polished.
+
+## New Topics from MusicMoodApp
+
+- `CSS Grid` is helpful when you want items to line up in columns, like putting `Song` and `Artist` side by side.
+- A `hero section` is the big opening section at the top of a page that sets the mood and explains what the app is.
+- `Cards` or `panels` help separate content visually so the layout feels cleaner and easier to scan.
+- `Responsive layout` means the page rearranges itself to fit smaller screens instead of staying stuck in one desktop shape.
+- `Visual hierarchy` means making the most important things stand out first through size, spacing, color, and placement.

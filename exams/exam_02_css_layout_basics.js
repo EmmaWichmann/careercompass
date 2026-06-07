@@ -1,113 +1,91 @@
 const questions = [
   {
-    prompt: "What does the <button> element create?",
+    prompt: "Why would you use display: grid on a container?",
     choices: {
-      A: "A heading",
-      B: "A clickable button",
-      C: "A folder",
-      D: "A browser tab",
+      A: "To automatically make all text bold",
+      B: "To place child elements into rows and columns more deliberately",
+      C: "To connect HTML to JavaScript",
+      D: "To delete extra spacing between headings",
     },
     correct: "B",
-    explanation: "The <button> element creates an interactive button users can click.",
+    explanation: "display: grid gives you more control over rows, columns, and how items line up inside a container.",
   },
   {
-    prompt: "What is the main job of the <p> element?",
+    prompt: "What is the difference between margin and padding?",
     choices: {
-      A: "Connect a JavaScript file",
-      B: "Create a page heading",
-      C: "Create a paragraph",
-      D: "Store a CSS color",
-    },
-    correct: "C",
-    explanation: "The <p> element is used for a paragraph of text.",
-  },
-  {
-    prompt: "Why is an <h2> useful after an <h1> on a page?",
-    choices: {
-      A: "It can label a new section under the main page heading",
-      B: "It automatically creates bullet points",
-      C: "It turns the page into a form",
-      D: "It replaces the need for CSS",
+      A: "Margin is outside space, padding is inside space",
+      B: "Margin is only for text and padding is only for buttons",
+      C: "Padding is outside space, margin is inside space",
+      D: "They mean the same thing in CSS",
     },
     correct: "A",
-    explanation: "An <h2> is commonly used as a section heading under the main <h1>.",
+    explanation: "Margin adds space outside an element. Padding adds space inside an element.",
   },
   {
-    prompt: "What does a <ul> element do?",
+    prompt: "Why is a hero section useful near the top of a page?",
     choices: {
-      A: "It creates a text input",
-      B: "It groups bullet list items together",
-      C: "It creates a clickable link",
-      D: "It changes page spacing",
-    },
-    correct: "B",
-    explanation: "A <ul> is an unordered list container for list items.",
-  },
-  {
-    prompt: "What is the purpose of id=\"feedback\" on an element?",
-    choices: {
-      A: "It makes the text bold by default",
-      B: "It gives the browser a new built-in component",
-      C: "It lets JavaScript find that specific element later",
-      D: "It automatically listens for clicks",
+      A: "It stores hidden JavaScript variables",
+      B: "It replaces the need for headings and paragraphs",
+      C: "It gives the page a strong first section that introduces the purpose and mood",
+      D: "It forces all links to open in a new tab",
     },
     correct: "C",
-    explanation: "An id acts like a unique name tag so JavaScript can target that element.",
+    explanation: "A hero section helps set the tone, explain the page quickly, and create a stronger first impression.",
   },
   {
-    prompt: "What does the <input> element usually give a user?",
+    prompt: "Why did we use a field grid for Song and Artist in MusicMoodApp?",
     choices: {
-      A: "A paragraph",
-      B: "A browser tab",
-      C: "A place to type",
-      D: "A page heading",
-    },
-    correct: "C",
-    explanation: "An <input> usually gives the user a place to enter information.",
-  },
-  {
-    prompt: "Why would you use a <div> in a layout?",
-    choices: {
-      A: "To group related elements together",
-      B: "To create a built-in exam score",
-      C: "To automatically style the page",
-      D: "To replace every heading",
+      A: "To make them easier to place side by side in a cleaner layout",
+      B: "To automatically save the form to localStorage",
+      C: "To turn the inputs into mood buttons",
+      D: "To hide them on mobile devices",
     },
     correct: "A",
-    explanation: "A <div> is a general-purpose container that helps group related elements.",
+    explanation: "A field grid helps related inputs line up neatly, which makes the form easier to scan and use.",
   },
   {
-    prompt: "What does <!DOCTYPE html> tell the browser?",
+    prompt: "What does responsive layout mean?",
     choices: {
-      A: "This is a CSS file",
-      B: "This page should load without text",
-      C: "This is an HTML document",
-      D: "Open GitHub Pages mode",
-    },
-    correct: "C",
-    explanation: "The doctype tells the browser to interpret the file as an HTML document.",
-  },
-  {
-    prompt: "Why is indentation helpful in HTML?",
-    choices: {
-      A: "It changes how the browser renders spacing",
-      B: "It makes the code easier for humans to read",
-      C: "It adds JavaScript automatically",
-      D: "It converts list items into buttons",
+      A: "The browser answers user questions automatically",
+      B: "The page changes shape to fit different screen sizes more gracefully",
+      C: "The app saves every input immediately",
+      D: "The stylesheet loads faster after refresh",
     },
     correct: "B",
-    explanation: "Indentation improves readability by making structure easier to see.",
+    explanation: "Responsive layout means the design adjusts to different screen sizes instead of staying locked in one desktop arrangement.",
   },
   {
-    prompt: "What is the difference between a <ul> and an <li>?",
+    prompt: "Why are cards or panels useful in interface design?",
     choices: {
-      A: "<ul> styles text and <li> runs JavaScript",
-      B: "<ul> is one bullet and <li> is the whole list",
-      C: "<ul> creates headings and <li> creates paragraphs",
-      D: "<ul> holds the list and <li> is one item inside it",
+      A: "They make JavaScript optional",
+      B: "They only exist for mobile apps",
+      C: "They help separate content visually so sections feel clearer and easier to scan",
+      D: "They are required any time a page uses buttons",
     },
-    correct: "D",
-    explanation: "A <ul> is the list container, and each <li> is one item inside that list.",
+    correct: "C",
+    explanation: "Cards and panels create visual boundaries that make information feel more organized and less overwhelming.",
+  },
+  {
+    prompt: "What is visual hierarchy in a design?",
+    choices: {
+      A: "A GitHub folder order for CSS files",
+      B: "A way of showing what matters most first using size, spacing, color, and placement",
+      C: "A rule that every heading must be centered",
+      D: "A JavaScript technique for sorting arrays",
+    },
+    correct: "B",
+    explanation: "Visual hierarchy helps the eye notice the most important content first through contrast, spacing, scale, and placement.",
+  },
+  {
+    prompt: "Why might you add 'coming soon' panels for Podcasts, Movies, and Books?",
+    choices: {
+      A: "To suggest the app can expand later without pretending those features already exist",
+      B: "To disable CSS until the features are built",
+      C: "To stop users from saving songs",
+      D: "To convert the page into a multi-step form",
+    },
+    correct: "A",
+    explanation: "'Coming soon' panels hint at future growth while staying honest about what the app can do right now.",
   },
 ];
 
@@ -131,7 +109,7 @@ let currentQuestionIndex = 0;
 let selectedAnswer = "";
 let submitted = false;
 let score = 0;
-let timeRemaining = 8 * 60;
+let timeRemaining = 6 * 60;
 let timerId = null;
 const responses = [];
 
@@ -145,9 +123,7 @@ startExamButton.addEventListener("click", function () {
 });
 
 submitAnswerButton.addEventListener("click", function () {
-  if (submitted) {
-    return;
-  }
+  if (submitted) return;
 
   if (selectedAnswer === "") {
     feedback.textContent = "Please choose an answer first.";
@@ -183,7 +159,6 @@ submitAnswerButton.addEventListener("click", function () {
 
 nextQuestionButton.addEventListener("click", function () {
   currentQuestionIndex += 1;
-
   if (currentQuestionIndex >= questions.length) {
     finishExam();
     return;
@@ -196,9 +171,7 @@ nextQuestionButton.addEventListener("click", function () {
 
 function renderQuestion() {
   const currentQuestion = questions[currentQuestionIndex];
-
-  questionLabel.textContent =
-    "Question " + (currentQuestionIndex + 1) + " of " + questions.length;
+  questionLabel.textContent = "Question " + (currentQuestionIndex + 1) + " of " + questions.length;
   questionText.textContent = currentQuestion.prompt;
   feedback.textContent = "";
   feedback.className = "feedback";
@@ -214,16 +187,11 @@ function renderQuestion() {
     button.textContent = letter + ". " + text;
 
     button.addEventListener("click", function () {
-      if (submitted) {
-        return;
-      }
-
+      if (submitted) return;
       selectedAnswer = letter;
-
       document.querySelectorAll(".answer-button").forEach(function (answerButton) {
         answerButton.classList.remove("selected");
       });
-
       button.classList.add("selected");
     });
 
@@ -239,11 +207,9 @@ function disableAnswerButtons() {
 
 function startTimer() {
   updateTimer();
-
   timerId = setInterval(function () {
     timeRemaining -= 1;
     updateTimer();
-
     if (timeRemaining <= 0) {
       clearInterval(timerId);
       finishExam();
@@ -258,19 +224,13 @@ function updateTimer() {
 }
 
 function finishExam() {
-  if (timerId) {
-    clearInterval(timerId);
-  }
-
+  if (timerId) clearInterval(timerId);
   timer.textContent = "Completed";
-
   examShell.classList.remove("active");
   resultsShell.classList.add("active");
 
   scoreLine.textContent = "Score: " + score + " / " + questions.length;
-  resultsSummary.textContent =
-    "You answered " + score + " out of " + questions.length + " questions correctly.";
-
+  resultsSummary.textContent = "You answered " + score + " out of " + questions.length + " questions correctly.";
   reviewList.innerHTML = "";
 
   responses.forEach(function (response, index) {

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding Question Log | Coding Learning Hub</title>
+    <style>
+      :root {
+        --bg: #f7f2eb;
+        --panel: #fffaf4;
+        --text: #37261c;
+        --muted: #6f5b4d;
+        --accent: #b75e3c;
+        --line: #dbc8b8;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      main {
+        width: min(860px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 24px;
+        margin-bottom: 18px;
+      }
+
+      h1, h2 {
+        margin-top: 0;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
+      }
+
+      th, td {
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      th {
+        color: var(--accent);
+      }
+
+      .steps {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .step {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: #f2e2d4;
+        color: var(--accent);
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      @media (max-width: 720px) {
+        table, thead, tbody, th, td, tr {
+          display: block;
+        }
+
+        thead {
+          display: none;
+        }
+
+        td {
+          padding: 8px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <h1>Coding Question Log</h1>
+        <p>A spaced-repetition review page for coding questions, missed concepts, and bug-finding practice.</p>
+        <p><a href="index.html">Back to Practice</a></p>
+      </section>
+
+      <section class="card">
+        <h2>Review Steps</h2>
+        <div class="steps">
+          <span class="step">1d</span>
+          <span class="step">3d</span>
+          <span class="step">7d</span>
+          <span class="step">14d</span>
+          <span class="step">30d</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Current Questions</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Question / Concept</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Next Review</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What does &lt;button&gt; create?</td>
+              <td>MCQ</td>
+              <td>Correct</td>
+              <td>1d</td>
+              <td>Interactive element</td>
+            </tr>
+            <tr>
+              <td>What does &lt;p&gt; do?</td>
+              <td>MCQ</td>
+              <td>Correct</td>
+              <td>1d</td>
+              <td>Paragraph text</td>
+            </tr>
+            <tr>
+              <td>What does &lt;input&gt; give the user?</td>
+              <td>MCQ</td>
+              <td>Correct</td>
+              <td>1d</td>
+              <td>Place to type</td>
+            </tr>
+            <tr>
+              <td>Why use id in HTML?</td>
+              <td>Concept</td>
+              <td>Reviewing</td>
+              <td>1d</td>
+              <td>Unique label for JavaScript targeting</td>
+            </tr>
+            <tr>
+              <td>Difference between &lt;ul&gt; and &lt;li&gt;</td>
+              <td>Concept</td>
+              <td>Reviewing</td>
+              <td>1d</td>
+              <td>List container vs item</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>Future Practice Modes</h2>
+        <ul>
+          <li>Explain what a tag does</li>
+          <li>Find what is wrong in a code snippet</li>
+          <li>Predict what code will do</li>
+          <li>Pick the best fix from multiple choices</li>
+          <li>Rewrite a broken line correctly</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
+

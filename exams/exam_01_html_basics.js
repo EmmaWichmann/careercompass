@@ -54,6 +54,61 @@ const questions = [
     correct: "C",
     explanation: "An id acts like a unique name tag so JavaScript can target that element.",
   },
+  {
+    prompt: "What does the <input> element usually give a user?",
+    choices: {
+      A: "A paragraph",
+      B: "A browser tab",
+      C: "A place to type",
+      D: "A page heading",
+    },
+    correct: "C",
+    explanation: "An <input> usually gives the user a place to enter information.",
+  },
+  {
+    prompt: "Why would you use a <div> in a layout?",
+    choices: {
+      A: "To group related elements together",
+      B: "To create a built-in exam score",
+      C: "To automatically style the page",
+      D: "To replace every heading",
+    },
+    correct: "A",
+    explanation: "A <div> is a general-purpose container that helps group related elements.",
+  },
+  {
+    prompt: "What does <!DOCTYPE html> tell the browser?",
+    choices: {
+      A: "This is a CSS file",
+      B: "This page should load without text",
+      C: "This is an HTML document",
+      D: "Open GitHub Pages mode",
+    },
+    correct: "C",
+    explanation: "The doctype tells the browser to interpret the file as an HTML document.",
+  },
+  {
+    prompt: "Why is indentation helpful in HTML?",
+    choices: {
+      A: "It changes how the browser renders spacing",
+      B: "It makes the code easier for humans to read",
+      C: "It adds JavaScript automatically",
+      D: "It converts list items into buttons",
+    },
+    correct: "B",
+    explanation: "Indentation improves readability by making structure easier to see.",
+  },
+  {
+    prompt: "What is the difference between a <ul> and an <li>?",
+    choices: {
+      A: "<ul> styles text and <li> runs JavaScript",
+      B: "<ul> is one bullet and <li> is the whole list",
+      C: "<ul> creates headings and <li> creates paragraphs",
+      D: "<ul> holds the list and <li> is one item inside it",
+    },
+    correct: "D",
+    explanation: "A <ul> is the list container, and each <li> is one item inside that list.",
+  },
 ];
 
 const instructions = document.getElementById("instructions");
@@ -226,13 +281,15 @@ function finishExam() {
       "<h3>Question " +
       (index + 1) +
       "</h3>" +
+      '<div class="review-grid">' +
       "<p><strong>Your answer:</strong> " +
       response.selectedAnswer +
       "</p>" +
       "<p><strong>Correct:</strong> " +
       response.correctAnswer +
       "</p>" +
-      "<p><strong>Why:</strong> " +
+      "</div>" +
+      '<p class="review-explanation"><strong>Why:</strong> ' +
       response.explanation +
       "</p>";
 

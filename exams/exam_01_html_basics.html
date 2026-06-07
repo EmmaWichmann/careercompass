@@ -222,16 +222,41 @@
         background: #fffdf9;
       }
 
+      .review-item h3 {
+        margin-bottom: 10px;
+        font-size: 1.15rem;
+        color: var(--accent);
+      }
+
       .review-item strong {
         color: var(--text);
       }
 
       .review-item p {
         margin-bottom: 8px;
+        font-size: 1rem;
+        line-height: 1.55;
+        font-family: inherit;
       }
 
       .review-item p:last-child {
         margin-bottom: 0;
+      }
+
+      .review-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 16px;
+        margin-bottom: 10px;
+      }
+
+      .review-grid p {
+        margin: 0;
+      }
+
+      .review-explanation {
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
       }
 
       @media (max-width: 760px) {
@@ -246,6 +271,10 @@
 
         .actions {
           flex-direction: column;
+        }
+
+        .review-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>

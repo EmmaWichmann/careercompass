@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice | Coding Learning Hub</title>
+    <style>
+      :root {
+        --bg: #f7f2eb;
+        --panel: #fffaf4;
+        --text: #37261c;
+        --muted: #6f5b4d;
+        --accent: #b75e3c;
+        --accent-soft: #f2e2d4;
+        --line: #dbc8b8;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      main {
+        width: min(760px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 24px;
+        margin-bottom: 18px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      a {
+        color: var(--accent);
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .stat {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px;
+        background: #fffdf9;
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .pill {
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 700px) {
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <h1>Practice</h1>
+        <p>This section is for active coding review, spaced repetition, and question practice.</p>
+        <p><a href="../index.html">Back to Home</a></p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Current Style</strong>
+            <span>Short daily review</span>
+          </div>
+
+          <div class="stat">
+            <strong>Review Rhythm</strong>
+            <span>1d, 3d, 7d, 14d, 30d</span>
+          </div>
+
+          <div class="stat">
+            <strong>Goal</strong>
+            <span>Learn coding through repetition and real projects</span>
+          </div>
+        </div>
+
+        <div class="pill-list">
+          <span class="pill">Study mode</span>
+          <span class="pill">Missed questions</span>
+          <span class="pill">Bug finding</span>
+          <span class="pill">Code review</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Current Items</h2>
+        <ul>
+          <li><a href="coding-question-log.md">Coding Question Log</a></li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

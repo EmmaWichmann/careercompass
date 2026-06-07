@@ -78,10 +78,16 @@ A future beginner `Python` project to expand beyond front-end development once m
 - `HTML`
 - `CSS`
 - `JavaScript`
+- `SwiftUI`
+- `UX / product thinking`
 - `Xcode`
 - accessibility-minded product ideas
 - project-based learning
 - quiz and review systems for retention
+
+## Additional Exposure
+
+- early exposure to `C++`
 
 ## Selected Practice Record
 

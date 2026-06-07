@@ -207,6 +207,8 @@ function finishExam() {
     clearInterval(timerId);
   }
 
+  timer.textContent = "Completed";
+
   examShell.classList.remove("active");
   resultsShell.classList.add("active");
 
@@ -224,16 +226,13 @@ function finishExam() {
       "<h3>Question " +
       (index + 1) +
       "</h3>" +
-      "<p><strong>Prompt:</strong> " +
-      response.question +
-      "</p>" +
       "<p><strong>Your answer:</strong> " +
       response.selectedAnswer +
       "</p>" +
-      "<p><strong>Correct answer:</strong> " +
+      "<p><strong>Correct:</strong> " +
       response.correctAnswer +
       "</p>" +
-      "<p><strong>Explanation:</strong> " +
+      "<p><strong>Why:</strong> " +
       response.explanation +
       "</p>";
 

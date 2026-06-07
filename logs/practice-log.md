@@ -16,5 +16,13 @@
 ## June 6, 2026 Session 2
 
 - Start time: 5:28 PM EDT
+- Pause time: 6:43 PM EDT
+- Duration so far: 1 hour 15 minutes
 - Focus: `GitHub`, `project organization`, `Coding Learning Hub`
 - Goal: make the hub clearer, cleaner, and more portfolio-ready
+
+## June 6, 2026 Session 3
+
+- Start time: 8:08 PM EDT
+- Focus: `interactive exams`, `Coding Learning Hub`
+- Goal: improve the HTML exam experience and review flow

@@ -1,11 +1,13 @@
 # Coding Question Log
 
-Use this as a spaced-repetition review system for coding questions.
+Use this as a spaced-repetition review system for coding concepts, missed questions, and small debugging exercises.
 
 ## How To Use
 
-- After each quiz or exam, add the concepts or questions you missed.
-- Review them on the next scheduled day.
+- Practice concepts in `study-mode.html`.
+- If a card feels confusing, choose `Again`.
+- If a multiple-choice answer is wrong, it is automatically added to the missed-concepts log.
+- Review missed concepts on the next scheduled day.
 - If you get one wrong again, move it back to `1d`.
 - If you get it right, move it forward to the next review step.
 
@@ -17,27 +19,47 @@ Use this as a spaced-repetition review system for coding questions.
 - `14d`
 - `30d`
 
-## Question Bank To Revisit
+## Current Practice Types
 
-| Question / Concept | Type | Status | Next Review | Notes |
-| --- | --- | --- | --- | --- |
-| What does `<button>` create? | MCQ | Correct | 1d | Interactive element |
-| What does `<p>` do? | MCQ | Correct | 1d | Paragraph text |
-| What does `<input>` give the user? | MCQ | Correct | 1d | Place to type |
-| Why use `id` in HTML? | Concept | Reviewing | 1d | Unique label for JavaScript targeting |
-| Difference between `<ul>` and `<li>` | Concept | Reviewing | 1d | List container vs item |
+| Type | What It Does | Example |
+| --- | --- | --- |
+| Cloze | Hides one key concept | `<p>` creates a _____ |
+| Multiple choice | Gives a small set of answers | What does `<input>` give the user? |
+| Find the mistake | Shows broken code to debug | `getElementByID` should be `getElementById` |
+| Predict | Ask what code will do | What does `event.preventDefault()` stop? |
 
-## Future Question Types
+## Concepts Currently Covered
 
-- explain what a tag does
-- find what is wrong in a code snippet
-- predict what code will do
-- pick the best fix from multiple choices
-- rewrite a broken line correctly
+- `h1`
+- `h2`
+- `p`
+- `button`
+- `input`
+- `div`
+- `ul`
+- `li`
+- `id`
+- `margin`
+- `padding`
+- `CSS Grid`
+- responsive layout
+- hero sections
+- visual hierarchy
+- `document`
+- `document.getElementById()`
+- `const`
+- `.value`
+- `textContent`
+- `addEventListener()`
+- `event.preventDefault()`
+- `localStorage`
 
-## Future Modes
+## Missed-Concept Log
 
-- `Study mode`
-- `Timed exam mode`
-- `Missed questions only`
-- `Explain the bug`
+The interactive page stores missed concepts in the browser with `localStorage`, so it can track:
+
+- concept prompt
+- topic
+- number of times missed
+- next review date
+- whether the concept has been reviewed again

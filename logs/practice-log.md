@@ -24,7 +24,17 @@
 ## June 6, 2026 Session 3
 
 - Start time: 8:08 PM EDT
+- End time: 10:02 PM EDT
+- Duration: 1 hour 54 minutes
 - Focus: `interactive exams`, `Coding Learning Hub`
 - Goal: improve the HTML exam experience and review flow
-- Additional work: redesigned `MusicMoodApp` with a cleaner media-library layout and added `Podcast`, `Movies`, and `Books` coming-soon sections
+- Completed:
+  - improved the interactive HTML exam and review experience
+  - added a CSS Layout Basics exam with responsive design features
+  - redesigned `MusicMoodApp` with a cleaner media-library layout
+  - added `Podcast`, `Movies`, and `Books` coming-soon sections
 - Topics practiced: `CSS Grid`, responsive layout, hero sections, cards and panels, visual hierarchy, gradients, and refactoring page structure
+- Session status: ended
+
+- Overall coding time today: 5 hours 1 minute across 3 sessions
+- Overall coding time since practice logging began: 5 hours 1 minute

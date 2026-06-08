@@ -5,10 +5,34 @@
 - `id` is like a unique name tag or location pin for an element.
 - One way of thinking about it: the `id` helps JavaScript find the right thing, kind of like using `Life360` to find a specific person or place.
 - `JavaScript` is the part that uses those labels to make things happen on the page.
+- Life360 analogy for `const songTitleInput = document.getElementById("song-title");`:
+  - `document` is the whole Life360 map, meaning the whole webpage.
+  - `.getElementById()` is the feature that searches for one specific person or place.
+  - `"song-title"` is the HTML element's unique name or ID.
+  - `songTitleInput` is the nickname JavaScript saves for that element after finding it.
+  - `const` creates that named reference and means JavaScript should not point the nickname at a different element later.
+  - `songTitleInput.value` means: read what the user typed inside the song-title input.
 - `console.log()` is like leaving yourself a note in the browser's hidden developer notebook.
 - `margin` is space outside an element.
 - `padding` is space inside an element.
 - `ul` is a little like a `div` for lists: it groups list items together, but specifically for bullet-style list content.
+
+## Cloze Card Examples
+
+- `<p>` creates a _____ on the page. Answer: `paragraph`.
+- HTML controls structure; CSS controls _____. Answer: `appearance`.
+- JavaScript adds _____ to a page. Answer: `behavior`.
+- `document.getElementById()` finds one HTML element using its unique _____. Answer: `id`.
+- `songTitleInput.value` reads what the user _____ into the input. Answer: `typed`.
+- `textContent` changes an element's visible _____. Answer: `text`.
+- `addEventListener()` listens for an _____ such as a click or submit. Answer: `event`.
+
+## Practice System Ideas
+
+- Use cloze cards for concepts, not just exam questions.
+- Use a missed-concepts log for anything that felt confusing or was answered incorrectly.
+- Use "find the mistake" cards to practice debugging small broken code snippets.
+- Review steps: `1d`, `3d`, `7d`, `14d`, `30d`.
 
 ## Goal for Later
 

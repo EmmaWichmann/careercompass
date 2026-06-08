@@ -5,52 +5,377 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Study Mode | Coding Learning Hub</title>
     <style>
+      :root {
+        --bg: #f7f2eb;
+        --panel: #fffaf4;
+        --panel-strong: #fffdf9;
+        --text: #37261c;
+        --muted: #756154;
+        --accent: #b75e3c;
+        --accent-dark: #8d4028;
+        --accent-soft: #f2e2d4;
+        --line: #dbc8b8;
+        --correct: #2f7550;
+        --correct-soft: #e1f2e8;
+        --wrong: #a64040;
+        --wrong-soft: #f8dfdf;
+        --shadow: 0 18px 45px rgba(72, 43, 27, 0.09);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         font-family: Georgia, "Times New Roman", serif;
-        background: #f7f2eb;
-        color: #37261c;
+        background:
+          radial-gradient(circle at top left, #f3dfd1 0, transparent 28rem),
+          var(--bg);
+        color: var(--text);
+      }
+
+      button {
+        font: inherit;
       }
 
       main {
-        width: min(760px, calc(100% - 32px));
+        width: min(920px, calc(100% - 32px));
         margin: 0 auto;
-        padding: 32px 0 48px;
+        padding: 32px 0 56px;
       }
 
       .card {
-        background: #fffaf4;
-        border: 1px solid #dbc8b8;
-        border-radius: 18px;
-        padding: 24px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 26px;
         margin-bottom: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .top-row,
+      .card-labels,
+      .rating-buttons,
+      .mode-list,
+      .stats {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .top-row {
+        justify-content: space-between;
+      }
+
+      h1,
+      h2,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 8px;
       }
 
       a {
-        color: #b75e3c;
+        color: var(--accent-dark);
       }
 
-      ul {
-        padding-left: 20px;
+      .muted {
+        color: var(--muted);
+      }
+
+      .stats {
+        margin-top: 20px;
+      }
+
+      .stat {
+        flex: 1 1 150px;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--panel-strong);
+      }
+
+      .stat strong {
+        display: block;
+        color: var(--accent-dark);
+        font-size: 1.35rem;
+      }
+
+      .mode-button,
+      .primary-button,
+      .rating-button,
+      .option-button,
+      .quiet-button {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 10px 15px;
+        background: var(--panel-strong);
+        color: var(--text);
+        cursor: pointer;
+      }
+
+      .mode-button:hover,
+      .mode-button.active {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+      }
+
+      .practice-card {
+        min-height: 440px;
+      }
+
+      .card-labels {
+        margin-bottom: 26px;
+      }
+
+      .label {
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+        font-size: 0.88rem;
+      }
+
+      #card-type {
+        background: #eee8f7;
+        color: #5e4779;
+      }
+
+      #card-prompt {
+        font-size: clamp(1.55rem, 4vw, 2.25rem);
+        line-height: 1.35;
+        margin: 22px 0;
+      }
+
+      pre {
+        overflow-x: auto;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #2f2926;
+        color: #fff7ef;
+        font-family: "SFMono-Regular", Consolas, monospace;
+        line-height: 1.5;
+        white-space: pre-wrap;
+      }
+
+      .answer-options {
+        display: grid;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .option-button {
+        border-radius: 14px;
+        text-align: left;
+        padding: 14px 16px;
+      }
+
+      .option-button:hover:not(:disabled) {
+        border-color: var(--accent);
+      }
+
+      .option-button.correct {
+        border-color: var(--correct);
+        background: var(--correct-soft);
+      }
+
+      .option-button.incorrect {
+        border-color: var(--wrong);
+        background: var(--wrong-soft);
+      }
+
+      .primary-button {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: white;
+        font-weight: 700;
+      }
+
+      .answer-panel {
+        border-top: 1px solid var(--line);
+        margin-top: 24px;
+        padding-top: 22px;
+      }
+
+      .answer-panel h3 {
+        margin: 0 0 8px;
+        color: var(--accent-dark);
+      }
+
+      .rating-buttons {
+        border-top: 1px solid var(--line);
+        margin-top: 24px;
+        padding-top: 20px;
+      }
+
+      .rating-button {
+        flex: 1 1 120px;
+        border-radius: 14px;
+      }
+
+      .rating-button span {
+        display: block;
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+
+      .rating-button[data-rating="again"] {
+        border-color: #d89c9c;
+      }
+
+      .progress-track {
+        height: 10px;
+        overflow: hidden;
+        border-radius: 999px;
+        background: #eadfd6;
+      }
+
+      #progress-bar {
+        width: 0;
+        height: 100%;
+        border-radius: inherit;
+        background: var(--accent);
+        transition: width 180ms ease;
+      }
+
+      .progress-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: center;
+        margin-top: 12px;
+      }
+
+      .quiet-button {
+        padding: 7px 11px;
+        background: transparent;
+        color: var(--muted);
+      }
+
+      [hidden] {
+        display: none !important;
+      }
+
+      @media (max-width: 640px) {
+        main {
+          width: min(100% - 20px, 920px);
+          padding-top: 16px;
+        }
+
+        .card {
+          padding: 20px;
+          border-radius: 18px;
+        }
+
+        .top-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
       }
     </style>
+    <script src="study-data.js" defer></script>
+    <script src="study-mode.js" defer></script>
   </head>
   <body>
     <main>
       <section class="card">
-        <h1>Study Mode</h1>
-        <p>This will be your lower-pressure practice mode for coding review, missed questions, and concept refreshers.</p>
-        <p><a href="index.html">Back to Practice</a></p>
+        <div class="top-row">
+          <div>
+            <h1>Study Mode</h1>
+            <p class="muted">Small coding concepts, practiced a little at a time.</p>
+          </div>
+          <a href="index.html">Back to Practice</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong id="due-count">0</strong>
+            <span>due concepts</span>
+          </div>
+          <div class="stat">
+            <strong id="reviewed-count">0</strong>
+            <span>reviewed now</span>
+          </div>
+          <div class="stat">
+            <strong id="streak-count">0</strong>
+            <span>study days</span>
+          </div>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Planned Features</h2>
-        <ul>
-          <li>short daily question sets</li>
-          <li>missed-questions-only mode</li>
-          <li>bug-finding practice</li>
-          <li>explanations after each answer</li>
-        </ul>
+        <h2>Choose an activity</h2>
+        <div class="mode-list">
+          <button class="mode-button active" data-mode="due" type="button">
+            Due today
+          </button>
+          <button class="mode-button" data-mode="all" type="button">
+            All concepts
+          </button>
+          <button class="mode-button" data-mode="mistakes" type="button">
+            Find the mistake
+          </button>
+          <a class="mode-button" href="coding-question-log.html">Missed concepts</a>
+        </div>
+      </section>
+
+      <section class="card practice-card">
+        <div class="card-labels">
+          <span class="label" id="card-topic">Topic</span>
+          <span class="label" id="card-type">Activity</span>
+        </div>
+
+        <h2 id="card-prompt">Loading your cards...</h2>
+        <pre id="card-code" hidden></pre>
+        <div class="answer-options" id="answer-options"></div>
+
+        <button class="primary-button" id="reveal-answer" type="button">
+          Flip card
+        </button>
+
+        <div class="answer-panel" id="answer-panel" hidden>
+          <h3>Answer</h3>
+          <p id="card-answer"></p>
+          <p class="muted" id="card-explanation"></p>
+        </div>
+
+        <div class="rating-buttons" id="rating-buttons" hidden>
+          <button class="rating-button" data-rating="again" type="button">
+            Again
+            <span>review in 1d</span>
+          </button>
+          <button class="rating-button" data-rating="hard" type="button">
+            Hard
+            <span>keep current step</span>
+          </button>
+          <button class="rating-button" data-rating="good" type="button">
+            Good
+            <span>move forward</span>
+          </button>
+          <button class="rating-button" data-rating="easy" type="button">
+            Easy
+            <span>jump ahead</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="progress-track" aria-label="Set progress">
+          <div id="progress-bar"></div>
+        </div>
+        <div class="progress-footer">
+          <span class="muted" id="progress-text">0 concepts reviewed</span>
+          <button class="quiet-button" id="reset-progress" type="button">
+            Reset schedules
+          </button>
+        </div>
       </section>
     </main>
   </body>

@@ -319,4 +319,13 @@ const codingConcepts = [
     answer: "closing",
     explanation: "For example: <button>All</button>. The text between the tags is visible to the user.",
   },
+  {
+    id: "find-css-semicolon",
+    topic: "Find the mistake",
+    type: "find-mistake",
+    prompt: "What is missing from this CSS variable declaration?",
+    code: "--sage: #7c8f7a",
+    answer: "A semicolon is missing: --sage: #7c8f7a;",
+    explanation: "A semicolon marks the end of a CSS declaration so the next declaration can begin clearly.",
+  },
 ];

@@ -89,3 +89,72 @@
 - Session status: paused "You’re out of Codex messages"
 - Overall coding time today: 44 minutes
 - Overall coding time since practice logging began: 5 hours 45 minutes
+
+## June 8, 2026 Session 2
+
+- Start time: 12:15 PM EDT
+- End time: 1:21 PM EDT
+- Duration: 1 hour 6 minutes
+- What I worked on:
+  - built and reviewed the first Outfit Archive web app structure
+  - added the requested project folders and frontend files
+  - learned what the `DOM` means in plain English
+  - filled in CSS variables for sage, parchment, mauve, dusty rose, and ivory
+  - caught a missing CSS semicolon and added it as a future bug-checker card
+  - user-tested the live interface and found missing button words in the Suggestions area
+- AI Assisted or Independent:
+  - AI-assisted app scaffolding, styling, JavaScript architecture, and browser testing
+  - independent color-palette choices
+  - independent QA observation: noticed missing button text and correctly suspected the styling or label code
+  - independent visual direction: chose a warmer pink direction for button text instead of settling for plain ivory
+- Job skills practiced:
+  - frontend structure
+  - CSS design systems
+  - CSS syntax debugging
+  - UX and QA testing
+  - DOM understanding
+  - localStorage-based app design
+- Session status: ended
+
+## Running Overall
+
+- Total together-tracked hours: 8 hours 33 minutes
+- Total together-tracked sessions: 6
+- AI-assisted work:
+  - app scaffolding and architecture
+  - JavaScript implementation support
+  - debugging explanations
+  - browser testing and verification
+  - learning-system setup
+- Independent work:
+  - design and palette decisions
+  - hands-on HTML, CSS, and JavaScript edits
+  - pattern recognition and debugging attempts
+  - strong QA testing and identification of missing UI text
+  - project direction, accessibility questions, and UX decisions
+- Skills practiced so far:
+  - `HTML`
+  - `CSS`
+  - `JavaScript`
+  - `Swift` and `SwiftUI`
+  - `Git` and `GitHub`
+  - DOM manipulation
+  - `localStorage`
+  - responsive design
+  - debugging and QA testing
+  - UX and product thinking
+- Projects touched:
+  - `Sage&Speak`
+  - `EmmaGetsHired`
+  - `Coding Learning Hub`
+  - `Music Mood App`
+  - `Outfit Archive`
+- Progress toward intermediate:
+  - HTML: 30%
+  - CSS: 32%
+  - JavaScript: 22%
+  - SwiftUI: 18%
+  - UX and product thinking: 42%
+  - Git and GitHub: 28%
+  - QA and testing: 35%
+- Context note: this log only tracks sessions worked together, so the hours are incomplete. Coding began minimally in 2022 and became serious in 2025; actual experience is broader than this tracked total.

@@ -34,7 +34,7 @@ This project is a one-stop learning system for coding practice, quizzes, concept
 ## What This Hub Supports
 
 - a practice log
-- a first HTML basics exam
+- interactive exams for HTML, CSS, and JavaScript
 - learning notes with your own analogies
 - a concept tracker
 - a project history

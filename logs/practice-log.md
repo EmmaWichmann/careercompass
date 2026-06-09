@@ -116,10 +116,40 @@
   - localStorage-based app design
 - Session status: ended
 
+## June 8, 2026 Session 3
+
+- Start time: approximately 7:00 PM EDT
+- End time: approximately 10:00 PM EDT
+- Duration: approximately 3 hours
+- What I worked on:
+  - user-tested and refined the Outfit Archive
+  - added closet categories, clothing cutouts, outfit-picker arrows, Trash, Restore, Undo, and Redo
+  - improved the transparent PNG workflow
+  - tested the app on the live GitHub Pages version
+- Learning note: session times are estimated from memory.
+- AI Assisted or Independent:
+  - AI-assisted implementation and image cleanup
+  - independent product direction, visual decisions, and repeated UX/QA testing
+
+## June 9, 2026 Session 1
+
+- Start time: 12:33 PM EDT
+- End time: 1:46 PM EDT
+- Duration: 1 hour 13 minutes
+- What I worked on:
+  - corrected the Hollister puppy sweater reference
+  - added optional layered tops to the closet picker
+  - improved the full-outfit builder with tap-to-add and touch dragging
+  - improved saved outfit cards so they display as composed outfit collages
+  - identified mobile usability problems and tested fixes
+- AI Assisted or Independent:
+  - AI-assisted coding, asset preparation, and browser testing
+  - independent clothing-reference research, feature direction, and UX feedback
+
 ## Running Overall
 
-- Total together-tracked hours: 8 hours 33 minutes
-- Total together-tracked sessions: 6
+- Total together-tracked hours: 12 hours 46 minutes
+- Total together-tracked sessions: 8
 - AI-assisted work:
   - app scaffolding and architecture
   - JavaScript implementation support

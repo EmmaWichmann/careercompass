@@ -111,6 +111,61 @@
         "<body><p>Hello</p></body>",
         "Visible content belongs in body. Head stores page information."
       ),
+      item(
+        "Section",
+        "<_____><h2>Outfits</h2></section>",
+        "section",
+        "Which element groups a themed section of a page?",
+        ["<section>", "<aside>", "<main>", "<div>"],
+        "<section>",
+        "<section><h2>Outfits</section></h2>",
+        "<section><h2>Outfits</h2></section>",
+        "Nested tags close in reverse order, like boxes inside boxes."
+      ),
+      item(
+        "Navigation",
+        '<_____><a href="home.html">Home</a></nav>',
+        "nav",
+        "Which element groups the main navigation links?",
+        ["<nav>", "<ul>", "<menu>", "<links>"],
+        "<nav>",
+        '<nav><a href="home.html">Home<a></nav>',
+        '<nav><a href="home.html">Home</a></nav>',
+        "Links need both an opening and a closing tag."
+      ),
+      item(
+        "Footer",
+        "<_____>Made by Emma</footer>",
+        "footer",
+        "Which element holds footer information at the bottom of the page?",
+        ["<footer>", "<aside>", "<caption>", "<bottom>"],
+        "<footer>",
+        "<footer>Made by Emma<footer>",
+        "<footer>Made by Emma</footer>",
+        "A closing tag uses a forward slash before the element name."
+      ),
+      item(
+        "Header",
+        "<_____><h1>My Hub</h1></header>",
+        "header",
+        "Which landmark element wraps the top of the page?",
+        ["<header>", "<top>", "<titlebar>", "<banner>"],
+        "<header>",
+        "<header><h1>My Hub</h1><header>",
+        "<header><h1>My Hub</h1></header>",
+        "The closing header tag needs a forward slash."
+      ),
+      item(
+        "Ordered list",
+        "<_____><li>Step one</li></ol>",
+        "ol",
+        "Which element creates a numbered list?",
+        ["<ol>", "<ul>", "<dl>", "<list>"],
+        "<ol>",
+        "<ol><li>Step one<ol>",
+        "<ol><li>Step one</li></ol>",
+        "Each list item needs both opening and closing tags inside the list."
+      ),
     ],
     css: [
       item(
@@ -223,6 +278,61 @@
         ".card { color: brown; }",
         "A colon assigns the value and a semicolon ends the declaration."
       ),
+      item(
+        "Font size",
+        "p { font-_____: 1.1rem; }",
+        "size",
+        "Which property controls how large the text appears?",
+        ["font-size", "text-height", "font-weight", "letter-spacing"],
+        "font-size",
+        "p { size: 1.1rem; }",
+        "p { font-size: 1.1rem; }",
+        "The full property name is font-size."
+      ),
+      item(
+        "Font weight",
+        "h1 { font-_____: 700; }",
+        "weight",
+        "Which property makes text bold?",
+        ["font-weight", "font-bold", "text-weight", "font-size"],
+        "font-weight",
+        "h1 { font-bold: 700; }",
+        "h1 { font-weight: 700; }",
+        "Font weight 700 is bold. The property is font-weight."
+      ),
+      item(
+        "Border",
+        ".card { _____: 1px solid tan; }",
+        "border",
+        "Which property draws a visible outline around an element?",
+        ["border", "outline-color", "ring", "frame"],
+        "border",
+        ".card { border = 1px solid tan; }",
+        ".card { border: 1px solid tan; }",
+        "CSS uses a colon to separate a property from its value."
+      ),
+      item(
+        "Width",
+        ".sidebar { _____: 200px; }",
+        "width",
+        "Which property sets how wide an element is?",
+        ["width", "size", "column-width", "max-width"],
+        "width",
+        ".sidebar { wide: 200px; }",
+        ".sidebar { width: 200px; }",
+        "The CSS property is simply width."
+      ),
+      item(
+        "Gap",
+        ".row { display: flex; _____: 12px; }",
+        "gap",
+        "Which property adds space between flex or grid items?",
+        ["gap", "margin-between", "spacing", "gutter"],
+        "gap",
+        ".row { display: flex; spacing: 12px; }",
+        ".row { display: flex; gap: 12px; }",
+        "Gap adds space between items, not outside the container."
+      ),
     ],
     javascript: [
       item(
@@ -334,6 +444,61 @@
         "event.preventdefault();",
         "event.preventDefault();",
         "The D in preventDefault is uppercase."
+      ),
+      item(
+        "For loop",
+        "_____ (let i = 0; i < 5; i++) { }",
+        "for",
+        "Which keyword starts a loop that counts through a set number of steps?",
+        ["for", "loop", "repeat", "while"],
+        "for",
+        "for i < 5 { }",
+        "for (let i = 0; i < 5; i++) { }",
+        "A for loop needs three parts in its parentheses: setup, condition, and update."
+      ),
+      item(
+        "Query selector",
+        'const card = document._____(".card");',
+        "querySelector",
+        "Which method finds the first element matching a CSS selector?",
+        ["querySelector", "getElement", "findFirst", "selectByClass"],
+        "querySelector",
+        'const card = document.queryselector(".card");',
+        'const card = document.querySelector(".card");',
+        "querySelector is case sensitive. The S must be uppercase."
+      ),
+      item(
+        "Return value",
+        "function double(n) { _____ n * 2; }",
+        "return",
+        "Which keyword sends a value back out of a function?",
+        ["return", "output", "give", "result"],
+        "return",
+        "function double(n) { result n * 2; }",
+        "function double(n) { return n * 2; }",
+        "The return keyword ends the function and passes the value back to the caller."
+      ),
+      item(
+        "Objects",
+        'const shirt = _____ color: "blue", size: "M" _____;',
+        "{}",
+        "Which brackets create an object?",
+        ["{ }", "[ ]", "( )", "< >"],
+        "{ }",
+        'const shirt = [color: "blue", size: "M"];',
+        'const shirt = { color: "blue", size: "M" };',
+        "Objects use curly braces. Arrays use square brackets."
+      ),
+      item(
+        "Push to array",
+        "items._____(newItem);",
+        "push",
+        "Which method adds one item to the end of an array?",
+        [".push()", ".add()", ".append()", ".insert()"],
+        ".push()",
+        "items.Push(newItem);",
+        "items.push(newItem);",
+        "Array methods are lowercase. Push adds to the end."
       ),
     ],
   };

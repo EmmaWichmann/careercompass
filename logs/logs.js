@@ -66,7 +66,7 @@ function renderLogs() {
 
     const title = document.createElement("h3");
     title.textContent =
-      entry.language + " Exam " + entry.examNumber + ": " + entry.examTitle;
+      (entry.languageName || entry.language) + " Exam " + entry.examNumber + ": " + entry.examTitle;
 
     const pill = document.createElement("span");
     pill.className = "pill";

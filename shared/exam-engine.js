@@ -194,7 +194,8 @@
     window.CodingHubStorage.saveExamAttempt({
       type: "exam",
       date: new Date().toISOString(),
-      language: exam.languageName,
+      language: exam.language,
+      languageName: exam.languageName,
       examNumber: exam.examNumber,
       examTitle: exam.title,
       score: correctCount,

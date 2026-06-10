@@ -164,10 +164,33 @@
   - AI-assisted image cleanup, JavaScript data updates, and browser testing
   - independent clothing choices, reference gathering, naming feedback, and repeated visual QA
 
+## June 9, 2026 Session 3
+
+- Start time: 6:35 PM EDT
+- End time: 7:15 PM EDT
+- Duration: 40 minutes
+- What I worked on:
+  - Coding Learning Hub and Outfit Archive
+  - took HTML Exam 1 and scored 95%
+- AI Assisted or Independent:
+  - AI-assisted debugging and feature work
+  - independent exam attempt and QA testing
+
+## June 9, 2026 Session 4
+
+- Start time: 9:00 PM EDT
+- End time: 10:00 PM EDT
+- Duration: 1 hour
+- What I worked on:
+  - Coding Learning Hub and Outfit Archive
+- AI Assisted or Independent:
+  - AI-assisted implementation and testing
+  - independent feature direction and UX decisions
+
 ## Running Overall
 
-- Total together-tracked hours: 13 hours 53 minutes
-- Total together-tracked sessions: 9
+- Total together-tracked hours: 15 hours 33 minutes
+- Total together-tracked sessions: 11
 - AI-assisted work:
   - app scaffolding and architecture
   - JavaScript implementation support

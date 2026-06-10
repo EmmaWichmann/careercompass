@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam | Coding Learning Hub</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
+    <script src="../shared/storage.js" defer></script>
+    <script src="../data/exam-data.js" defer></script>
+    <script src="../shared/exam-engine.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <section class="card" id="exam-intro">
+        <div class="top-row">
+          <div>
+            <span class="pill">Beginner exam</span>
+            <h1 id="exam-title"></h1>
+            <p class="muted" id="exam-description"></p>
+          </div>
+          <a href="index.html">Back to Exams</a>
+        </div>
+        <div class="stats-row">
+          <div class="stat">
+            <strong id="question-count">20</strong>
+            <span>questions</span>
+          </div>
+          <div class="stat">
+            <strong>80%</strong>
+            <span>needed to pass</span>
+          </div>
+          <div class="stat">
+            <strong>One</strong>
+            <span>question at a time</span>
+          </div>
+        </div>
+        <p class="muted">
+          You will see feedback after every answer. Missed concepts are added to
+          Practice automatically.
+        </p>
+        <button class="button primary" id="start-exam" type="button">Start Exam</button>
+      </section>
+
+      <section class="card question-shell" id="exam-shell" hidden>
+        <div class="top-row">
+          <div>
+            <span class="pill" id="question-topic"></span>
+            <p class="muted" id="question-label"></p>
+          </div>
+          <strong id="exam-timer">00:00</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="question-progress"></div>
+        </div>
+        <h2 class="question-text" id="question-text"></h2>
+        <div class="answer-list" id="answers"></div>
+        <div class="feedback" id="feedback"></div>
+        <div class="button-row">
+          <button class="button primary" id="submit-answer" type="button">
+            Check Answer
+          </button>
+          <button class="button secondary" id="next-question" type="button" disabled>
+            Next Question
+          </button>
+        </div>
+      </section>
+
+      <section class="card" id="exam-results" hidden>
+        <span class="pill">Exam complete</span>
+        <h1 class="result-score" id="result-score"></h1>
+        <h2 id="result-message"></h2>
+        <p><strong>Topics to review:</strong> <span id="missed-list"></span></p>
+        <div class="button-row">
+          <button class="button primary" id="retake-exam" type="button">Retake Exam</button>
+          <a class="button secondary" href="index.html">Return to Exams</a>
+          <a class="button" href="../practice/study-mode.html">Review Cards</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

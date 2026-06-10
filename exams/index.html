@@ -4,59 +4,48 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exams | Coding Learning Hub</title>
-    <style>
-      body {
-        margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        background: #f7f2eb;
-        color: #37261c;
-      }
-
-      main {
-        width: min(760px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 48px;
-      }
-
-      .card {
-        background: #fffaf4;
-        border: 1px solid #dbc8b8;
-        border-radius: 18px;
-        padding: 24px;
-        margin-bottom: 18px;
-      }
-
-      h1,
-      h2 {
-        margin-top: 0;
-      }
-
-      a {
-        color: #b75e3c;
-      }
-
-      ul {
-        padding-left: 20px;
-      }
-    </style>
+    <link rel="stylesheet" href="../shared/styles.css" />
+    <script src="../shared/storage.js" defer></script>
+    <script src="../data/exam-data.js" defer></script>
+    <script src="track.js" defer></script>
   </head>
   <body>
-    <main>
+    <main class="page">
       <section class="card">
-        <h1>Exams</h1>
-        <p>This section holds quiz and exam materials from my coding study process.</p>
-        <p><a href="../index.html">Back to Home</a></p>
+        <div class="top-row">
+          <div>
+            <span class="pill">Beginner tracks</span>
+            <h1>Exams</h1>
+            <p class="muted">
+              Complete ten small exams for each language. Every exam has twenty
+              questions and saves your best result in this browser.
+            </p>
+          </div>
+          <a href="../index.html">Back to Home</a>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Current Items</h2>
-        <ul>
-          <li><a href="exam_01_html_basics.html">Take HTML Basics Exam</a></li>
-          <li><a href="exam_02_css_layout_basics.html">Take CSS Layout Basics Exam</a></li>
-          <li><a href="exam_03_javascript_interactivity.html">Take JavaScript Interactivity Exam</a></li>
-          <li><a href="quiz-bank.md">Quiz Bank</a></li>
-        </ul>
+        <div class="pill-row" role="tablist" aria-label="Choose a language">
+          <button class="button primary" data-language="html" type="button">HTML</button>
+          <button class="button" data-language="javascript" type="button">JavaScript</button>
+        </div>
       </section>
+
+      <section class="card">
+        <div class="top-row">
+          <div>
+            <h2 id="track-title">HTML Beginner Track</h2>
+            <p class="muted" id="track-summary"></p>
+          </div>
+          <strong id="passed-label">Exams passed: 0 of 10</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="track-progress"></div>
+        </div>
+      </section>
+
+      <section class="exam-grid" id="exam-grid"></section>
     </main>
   </body>
 </html>

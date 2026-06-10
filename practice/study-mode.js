@@ -24,6 +24,7 @@ const resetButton = document.getElementById("reset-progress");
 
 let progress = readStorage(progressKey, {});
 let missedConcepts = readStorage(missedKey, []);
+let studyDeck = mergeStudyDeck();
 let currentMode = "due";
 let activeLanguage = "all";
 let currentCards = [];
@@ -96,14 +97,17 @@ function getCardsForMode(mode) {
   let cards;
 
   if (mode === "all") {
-    cards = [...codingConcepts];
+    cards = [...studyDeck];
   } else if (mode === "mistakes") {
-    cards = codingConcepts.filter((card) => card.type === "find-mistake");
+    cards = studyDeck.filter(
+      (card) => card.type === "find-mistake" || card.source
+    );
   } else {
     const today = startOfToday();
-    cards = codingConcepts.filter((card) => {
+    cards = studyDeck.filter((card) => {
       const cardProgress = progress[card.id];
-      return !cardProgress || new Date(cardProgress.nextReview) <= today;
+      const nextReview = cardProgress?.nextReview || card.nextReview;
+      return !nextReview || new Date(nextReview) <= today;
     });
   }
 
@@ -257,9 +261,11 @@ function showFinishedState(title, message) {
 
 function updateStats() {
   const today = startOfToday();
-  const dueCount = codingConcepts.filter((card) => {
+  studyDeck = mergeStudyDeck();
+  const dueCount = studyDeck.filter((card) => {
     const cardProgress = progress[card.id];
-    return !cardProgress || new Date(cardProgress.nextReview) <= today;
+    const nextReview = cardProgress?.nextReview || card.nextReview;
+    return !nextReview || new Date(nextReview) <= today;
   }).length;
 
   dueCountNode.textContent = dueCount;
@@ -314,7 +320,7 @@ function formatType(type) {
 }
 
 function getCardLanguage(card) {
-  if (card.topic === "HTML") {
+  if (card.topic === "HTML" || card.topic === "HTML + JavaScript") {
     return "html";
   }
 
@@ -323,6 +329,21 @@ function getCardLanguage(card) {
   }
 
   return "javascript";
+}
+
+function mergeStudyDeck() {
+  missedConcepts = readStorage(missedKey, []);
+  const convertedMissedCards = missedConcepts.map((card) => ({
+    ...card,
+    type: "cloze",
+    topic: card.topic || "Exam review",
+  }));
+  const knownIds = new Set(convertedMissedCards.map((card) => card.id));
+
+  return [
+    ...convertedMissedCards,
+    ...codingConcepts.filter((card) => !knownIds.has(card.id)),
+  ];
 }
 
 function readStorage(key, fallback) {

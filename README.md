@@ -34,11 +34,16 @@ This project is a one-stop learning system for coding practice, quizzes, concept
 ## What This Hub Supports
 
 - a practice log
-- interactive exams for HTML, CSS, and JavaScript
+- a shared exam engine
+- ten beginner HTML exams
+- ten beginner JavaScript exams
+- automatic exam logs and missed concept cards
+- local progress export and import
+- the original CSS exam
 - learning notes with your own analogies
 - a concept tracker
 - a project history
-- later: an interactive web app version of the hub
+- later: practice paths, easier two button review, and more languages
 
 ## Daily Workflow
 

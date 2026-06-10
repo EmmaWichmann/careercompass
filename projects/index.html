@@ -31,12 +31,118 @@
         margin-top: 0;
       }
 
+      h2 {
+        margin-bottom: 14px;
+      }
+
+      p {
+        margin-top: 0;
+      }
+
       a {
         color: #b75e3c;
       }
 
-      ul {
-        padding-left: 20px;
+      .muted {
+        color: #756154;
+        font-size: 0.93rem;
+      }
+
+      .profile-links {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+
+      .progress-track {
+        height: 10px;
+        border-radius: 999px;
+        background: #ead7c8;
+        overflow: hidden;
+        margin: 6px 0 4px;
+      }
+
+      .progress-fill {
+        height: 100%;
+        border-radius: inherit;
+        background: #b75e3c;
+      }
+
+      .course {
+        margin-bottom: 18px;
+      }
+
+      .course:last-child {
+        margin-bottom: 0;
+      }
+
+      .course-header,
+      .module-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 4px;
+      }
+
+      .module {
+        margin: 12px 0 0 16px;
+        padding-left: 12px;
+        border-left: 2px solid #dbc8b8;
+      }
+
+      .module .progress-track {
+        height: 7px;
+      }
+
+      .project-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .project-list li {
+        padding: 14px 0;
+        border-bottom: 1px solid #dbc8b8;
+      }
+
+      .project-list li:first-child {
+        padding-top: 0;
+      }
+
+      .project-list li:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .project-name {
+        font-weight: bold;
+        margin-bottom: 3px;
+      }
+
+      .project-desc {
+        color: #756154;
+        margin: 4px 0 6px;
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+
+      .project-links {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .project-links a {
+        font-size: 0.92rem;
+      }
+
+      .coming-soon {
+        color: #9e8b7e;
+        font-weight: normal;
+        font-size: 0.93rem;
       }
     </style>
   </head>
@@ -44,15 +150,92 @@
     <main>
       <section class="card">
         <h1>Projects</h1>
-        <p>This section holds project-related trackers and learning artifacts.</p>
+        <p>My active projects, learning progress, and links to live apps and source code.</p>
         <p><a href="../index.html">Back to Home</a></p>
+        <div class="profile-links">
+          <a href="https://github.com/EmmaWichmann">GitHub profile</a>
+          <a href="https://emmawichmann.github.io">Portfolio</a>
+        </div>
       </section>
 
       <section class="card">
-        <h2>Current Items</h2>
-        <ul>
-          <li><a href="concept-tracker.md">Concept Tracker</a></li>
-          <li><a href="https://emmawichmann.github.io/emmagetshired/">Emma Gets Hired</a></li>
+        <h2>Courses &amp; Certifications</h2>
+        <p class="muted">Numbers entered by hand. Last updated: June 10, 2026.</p>
+
+        <div class="course">
+          <div class="course-header">
+            <strong>Responsive Web Design — freeCodeCamp</strong>
+            <span class="muted">60 of 302 steps complete</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" style="width: 20%"></div>
+          </div>
+
+          <div class="module">
+            <div class="module-header">
+              <span>Basic HTML module</span>
+              <span class="muted">60 of 137 steps</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 44%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Active Projects</h2>
+        <ul class="project-list">
+          <li>
+            <div class="project-name">Coding Learning Hub</div>
+            <p class="project-desc">Interactive coding practice system with flashcards, spaced repetition, daily tasks, and exams.</p>
+            <div class="project-links">
+              <a href="https://github.com/EmmaWichmann/codinglearninghub">GitHub</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-name">Outfit Archive</div>
+            <p class="project-desc">Browser-based digital wardrobe app. Add clothing with photos, browse by category, color, and style tags, mix and match, outfit suggestions, and favorites. All localStorage, no server.</p>
+            <div class="project-links">
+              <a href="https://github.com/EmmaWichmann/outfit-archive">GitHub</a>
+              <a href="https://emmawichmann.github.io/outfit-archive">Live</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-name">EmmaGetsHired</div>
+            <p class="project-desc">Gamified job application tracker.</p>
+            <div class="project-links">
+              <a href="https://github.com/EmmaWichmann/emmagetshired">GitHub</a>
+              <a href="https://emmawichmann.github.io/emmagetshired/">Live</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-name">Sage &amp; Speak</div>
+            <p class="project-desc">iOS affirmation app built in Swift and SwiftUI.</p>
+            <div class="project-links">
+              <a href="https://github.com/EmmaWichmann/sagespeak">GitHub</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-name">Music Mood App</div>
+            <p class="project-desc">Mood-based music logger.</p>
+            <div class="project-links">
+              <a href="https://github.com/EmmaWichmann/musicmoodapp">GitHub</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-name">Concept Tracker</div>
+            <p class="project-desc">Personal concept and topic tracking log.</p>
+            <div class="project-links">
+              <a href="concept-tracker.md">View file</a>
+            </div>
+          </li>
+          <li>
+            <div class="project-name">Python Starter Project <span class="coming-soon">— coming soon</span></div>
+          </li>
+          <li>
+            <div class="project-name">Animation Project <span class="coming-soon">— coming soon</span></div>
+          </li>
         </ul>
       </section>
     </main>

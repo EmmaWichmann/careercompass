@@ -187,10 +187,105 @@
   - AI-assisted implementation and testing
   - independent feature direction and UX decisions
 
+## June 10, 2026
+
+- Approximate times: 4:14 PM to 10:44 PM EDT (with breaks)
+- Estimated active coding time: approximately 3 hours 30 minutes
+- Time source: estimated from git commit timestamps
+- What I worked on:
+  - Outfit Archive: added 30+ new closet items including bikinis, pants, tanks, tops, and accessories
+  - prepared background-removed images for cleaner card display
+  - fixed broken image paths and localStorage references
+  - version bumps to bust browser cache
+  - Coding Learning Hub (12:20–12:33 AM): expanded activity content and updated Projects page
+- AI Assisted or Independent:
+  - AI-assisted implementation, image cleanup, and path fixes
+  - independent clothing selection, product direction, and visual QA
+
+## June 11, 2026 Session 1
+
+- Approximate times: 2:10 PM to 4:59 PM EDT
+- Estimated active coding time: approximately 2 hours 30 minutes
+- Time source: estimated from git commit timestamps
+- What I worked on:
+  - Outfit Archive: built the Style Me tab with laundry system and item detail modal
+  - added PJs and Swimsuit categories with vibe tabs
+  - added 18 new clothing items and strawberry bikini image
+  - added grouped vibe presets to tag picker
+  - updated navigation to switch between Style Me and Closet views
+  - fixed white items in carousel and card image backgrounds
+- AI Assisted or Independent:
+  - AI-assisted feature implementation and debugging
+  - independent feature direction, item choices, and UX testing
+
+## June 11, 2026 Session 2
+
+- Approximate times: 10:39 PM EDT to 12:39 AM EDT (continued into June 12)
+- Estimated active coding time: approximately 1 hour 30 minutes
+- Time source: estimated from git commit timestamps
+- What I worked on:
+  - Outfit Archive: set Style Me as default view with version increment
+  - auto-purge localStorage items with broken image paths on startup
+  - hid ghost cards from deleted items
+  - fixed collage builder: pink canvas, layer buttons, category tray filter
+  - improved collage card preview to mirror exact canvas positions and z-order
+- AI Assisted or Independent:
+  - AI-assisted debugging, cleanup, and collage rendering
+  - independent QA testing and visual verification
+
+## June 12, 2026
+
+- Approximate times: 7:08 PM to 9:06 PM EDT
+- Estimated active coding time: approximately 2 hours
+- Time source: estimated from git commit timestamps
+- What I worked on:
+  - Outfit Archive: added 26 new clothing items and accessories
+  - built Style Me accessories multi-pick, optional layer top, and optional shoe toggle
+  - added white open knit crop sweater image
+- AI Assisted or Independent:
+  - AI-assisted implementation and closet data updates
+  - independent item selection and accessory curation
+
+## June 18, 2026
+
+- Approximate times: 9:07 AM to 9:14 AM EDT (commit times; session likely longer)
+- Estimated active coding time: approximately 1 hour
+- Time source: estimated from git commit timestamps
+- What I worked on:
+  - Outfit Archive: refactored code structure for readability and maintainability
+  - added 7 new closet items: bracelets, hoop earrings, black patent slingbacks
+  - fixed Style Me layout so layer top shows beside tops and accessories beside bottoms
+  - layer top carousel now displays side by side with tops
+- AI Assisted or Independent:
+  - AI-assisted code refactoring and layout fixes
+  - independent item choices and visual direction
+
+## June 21, 2026
+
+- Approximate time: 2:45 PM PDT
+- Estimated active coding time: approximately 1 hour 30 minutes
+- Time source: estimated from git commit timestamps
+- What I worked on:
+  - Outfit Archive Style Me improvements: added placeholders, weather tip display, Surprise Me / Save / Clear buttons, and door favicon
+- AI Assisted or Independent:
+  - AI-assisted feature implementation
+  - independent design direction and UX decisions
+
+## June 22, 2026
+
+- Approximate time: 3:07 PM PDT
+- Estimated active coding time: approximately 1 hour
+- Time source: estimated from git commit timestamps
+- What I worked on:
+  - Outfit Archive: moved weather tip into outfit window titlebar for cleaner layout
+- AI Assisted or Independent:
+  - AI-assisted UI adjustment
+  - independent design decisions
+
 ## Running Overall
 
-- Total together-tracked hours: 15 hours 33 minutes
-- Total together-tracked sessions: 11
+- Total together-tracked hours: 28 hours 33 minutes
+- Total together-tracked sessions: 18
 - AI-assisted work:
   - app scaffolding and architecture
   - JavaScript implementation support

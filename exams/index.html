@@ -17,8 +17,8 @@
             <span class="pill">Beginner tracks</span>
             <h1>Exams</h1>
             <p class="muted">
-              Complete ten small exams for each language. Every exam has twenty
-              questions and saves your best result in this browser.
+              Choose a language below to open its ten-exam beginner track.
+              Every exam has twenty questions and saves your best result in this browser.
             </p>
           </div>
           <a href="../index.html">Back to Home</a>
@@ -26,9 +26,38 @@
       </section>
 
       <section class="card">
-        <div class="pill-row" role="tablist" aria-label="Choose a language">
-          <button class="button primary" data-language="html" type="button">HTML</button>
-          <button class="button" data-language="javascript" type="button">JavaScript</button>
+        <div class="category-group">
+          <p class="category-label">Web Basics</p>
+          <div class="pill-row" role="group" aria-label="Web basics languages">
+            <button class="button primary" data-language="html" type="button">HTML</button>
+            <button class="button" data-language="css" type="button">CSS</button>
+            <button class="button" data-language="javascript" type="button">JavaScript</button>
+          </div>
+        </div>
+
+        <div class="category-group">
+          <p class="category-label">Programming Languages</p>
+          <div class="pill-row" role="group" aria-label="General programming languages">
+            <button class="button" data-language="python" type="button">Python</button>
+            <button class="button" data-language="typescript" type="button">TypeScript</button>
+            <button class="button" data-language="java" type="button">Java</button>
+            <button class="button" data-language="csharp" type="button">C#</button>
+          </div>
+        </div>
+
+        <div class="category-group">
+          <p class="category-label">Backend &amp; Data</p>
+          <div class="pill-row" role="group" aria-label="Backend and data languages">
+            <button class="button" data-language="sql" type="button">SQL</button>
+            <button class="button" data-language="go" type="button">Go</button>
+          </div>
+        </div>
+
+        <div class="category-group">
+          <p class="category-label">App Development</p>
+          <div class="pill-row" role="group" aria-label="App development languages">
+            <button class="button" data-language="swift" type="button">Swift</button>
+          </div>
         </div>
       </section>
 

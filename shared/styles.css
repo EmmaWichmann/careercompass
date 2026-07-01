@@ -163,6 +163,23 @@ button.button {
   font-size: 1.35rem;
 }
 
+.category-group {
+  margin-top: 20px;
+}
+
+.category-group:first-child {
+  margin-top: 0;
+}
+
+.category-label {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
 .language-grid,
 .exam-grid {
   display: grid;

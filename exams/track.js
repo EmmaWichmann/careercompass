@@ -19,9 +19,10 @@ languageButtons.forEach(function (button) {
 });
 
 function renderTrack() {
-  const languageName = activeLanguage === "html" ? "HTML" : "JavaScript";
   const topics = window.CodingHubExamData.languages[activeLanguage];
+  const totalExams = topics.length;
   const progress = window.CodingHubStorage.getExamProgress();
+  const languageName = window.CodingHubExamData.getLanguageName(activeLanguage);
   const passedCount = topics.filter(function (_, index) {
     const item = progress[activeLanguage + "-" + (index + 1)];
     return item && item.passed;
@@ -29,11 +30,11 @@ function renderTrack() {
 
   trackTitle.textContent = languageName + " Beginner Track";
   trackSummary.textContent =
-    passedCount === 10
-      ? "Beginner complete. Your Intermediate badge is unlocked."
+    passedCount === totalExams
+      ? "Beginner track complete. Your Intermediate badge is unlocked."
       : "Pass each exam with a score of eighty percent or higher.";
-  passedLabel.textContent = "Exams passed: " + passedCount + " of 10";
-  trackProgress.style.width = passedCount * 10 + "%";
+  passedLabel.textContent = "Exams passed: " + passedCount + " of " + totalExams;
+  trackProgress.style.width = (passedCount / totalExams) * 100 + "%";
   grid.innerHTML = "";
 
   topics.forEach(function (topic, index) {

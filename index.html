@@ -192,6 +192,20 @@
         font-weight: bold;
       }
 
+      .next-step-banner {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-left: 4px solid var(--accent);
+        border-radius: 14px;
+        background: #fffdf9;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .next-step-banner strong {
+        color: var(--accent);
+      }
+
       .recommendation .action-row {
         display: flex;
         flex-wrap: wrap;
@@ -614,9 +628,9 @@
         });
         nextAssessmentStep.textContent = recommendation.step;
         nextAssessmentLink.innerHTML =
-          "→ next step: " +
+          '<div class="next-step-banner"><strong>→ next step:</strong> ' +
           recommendation.step +
-          '<div class="action-row">' +
+          '</div><div class="action-row">' +
           '<a class="primary-link" href="' +
           recommendation.href +
           '">' +

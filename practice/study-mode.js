@@ -328,6 +328,50 @@ function getCardLanguage(card) {
     return "css";
   }
 
+  if (card.topic === "Python") {
+    return "python";
+  }
+
+  if (card.topic === "SQL") {
+    return "sql";
+  }
+
+  if (card.topic === "Product Thinking") {
+    return "product";
+  }
+
+  if (card.topic === "Systems Thinking") {
+    return "systems";
+  }
+
+  if (card.topic === "Technical Communication") {
+    return "communication";
+  }
+
+  if (card.topic === "Workflow Thinking") {
+    return "workflow";
+  }
+
+  if (card.topic === "TypeScript") {
+    return "typescript";
+  }
+
+  if (card.topic === "Java") {
+    return "java";
+  }
+
+  if (card.topic === "C#") {
+    return "csharp";
+  }
+
+  if (card.topic === "Go") {
+    return "go";
+  }
+
+  if (card.topic === "Swift") {
+    return "swift";
+  }
+
   return "javascript";
 }
 

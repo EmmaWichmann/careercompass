@@ -3,59 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Logs | Coding Learning Hub</title>
-    <link rel="stylesheet" href="../shared/styles.css" />
-    <script src="../shared/storage.js" defer></script>
-    <script src="logs.js" defer></script>
+    <title>Logs | Career Systems Lab</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: #f7f2eb;
+        color: #37261c;
+      }
+
+      main {
+        width: min(760px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .card {
+        background: #fffaf4;
+        border: 1px solid #dbc8b8;
+        border-radius: 18px;
+        padding: 24px;
+        margin-bottom: 18px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      a {
+        color: #b75e3c;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+    </style>
   </head>
   <body>
-    <main class="page">
+    <main>
       <section class="card">
-        <div class="top-row">
-          <div>
-            <span class="pill">Saved in this browser</span>
-            <h1>Logs</h1>
-            <p class="muted">
-              Exam attempts appear here automatically. You can also back up or
-              restore all Coding Learning Hub progress.
-            </p>
-          </div>
-          <a href="../index.html">Back to Home</a>
-        </div>
-        <div class="button-row">
-          <button class="button primary" id="export-data" type="button">Export Progress</button>
-          <label class="button secondary" for="import-data">Import Progress</label>
-          <input id="import-data" type="file" accept="application/json" hidden />
-        </div>
-        <p class="muted" id="import-status"></p>
+        <h1>Logs</h1>
+        <p>This section tracks practice time, coding sessions, and progress records that help reveal my strengths over time.</p>
+        <p><a href="../index.html">Back to Home</a></p>
       </section>
 
       <section class="card">
-        <div class="stats-row">
-          <div class="stat">
-            <strong id="attempt-count">0</strong>
-            <span>exam attempts</span>
-          </div>
-          <div class="stat">
-            <strong id="passed-count">0</strong>
-            <span>exams passed</span>
-          </div>
-          <div class="stat">
-            <strong id="card-count">0</strong>
-            <span>missed cards</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Automatic Activity</h2>
-        <div class="log-feed" id="log-feed"></div>
-      </section>
-
-      <section class="card">
-        <h2>Written Records</h2>
-        <p><a href="practice-log.md">Practice Log</a></p>
-        <p><a href="coding-profile-and-practice-record.md">Coding Profile and Practice Record</a></p>
+        <h2>Current Items</h2>
+        <ul>
+          <li><a href="practice-log.md">Practice Log</a></li>
+          <li><a href="coding-profile-and-practice-record.md">Career Profile and Practice Record</a></li>
+        </ul>
       </section>
     </main>
   </body>

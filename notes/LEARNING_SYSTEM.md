@@ -1,97 +1,123 @@
 # Learning System
 
-This is the simple version of how we are going to learn coding.
+This is the shared-foundation version of how I want to learn.
 
 ## The Core Idea
 
-Do not try to learn everything at once.
+Do not build five separate curricula.
+Build one shared foundation that grows my capability across several strong technology roles.
 
-Use:
+The six core capability areas are:
 
-- tiny lessons
-- immediate practice
-- short quizzes
-- spaced review
-- real projects
+- SQL and Data
+- Python and Automation
+- Product Thinking
+- Technical Communication
+- Systems and Workflow Thinking
+- Light Technical Building
 
-## Best Ways To Learn Coding
+## Learning Order
+
+My current sequence is:
+
+1. SQL
+2. Python
+3. Product and data reasoning
+4. Communication and analysis writeups
+5. Small technical builds and workflow projects
+6. Deeper engineering if it keeps feeling exciting
+
+This does not mean the other capabilities are delayed.
+Product thinking, communication, and systems thinking should appear inside SQL and Python exercises from the start.
+
+## Best Ways To Learn
 
 ### 1. Retrieval practice
 
 Do not only reread.
-Try to answer questions from memory.
-
-Why:
-
-- Harvard Medical School highlights repeated, spaced retrieval as a way to improve memory and learning.
+Try to answer from memory.
 
 ### 2. Spacing
 
 Come back to concepts over time instead of cramming once.
 
-Why:
-
-- reviews of spacing research show stronger long-term retention when learning is spread out rather than massed into one session.
-
 ### 3. Worked examples
 
 Study a small example, then change it yourself.
 
-Why:
-
-- research on novice programmers shows worked examples can reduce cognitive load.
-- worked examples help more when you also explain the steps to yourself.
-
 ### 4. Subgoals
 
-Break coding into named mini-steps.
-
-Examples:
-
-- find the button
-- listen for the click
-- read the input
-- update the text
-
-Why:
-
-- research in introductory programming found subgoal-labeled worked examples improved problem solving and retention.
+Break tasks into named mini-steps.
 
 ### 5. Build while learning
 
-Do not wait until you "know enough."
-Learn concepts inside real projects.
+Use concepts inside real projects and realistic workflows.
 
-Why:
+### 6. Integrated exercises
 
-- coding has a high cognitive load for beginners, so tying one idea to one visible result helps.
+Whenever possible, one exercise should teach multiple shared capabilities at once.
+
+Example:
+
+1. query the data
+2. interpret the pattern
+3. identify the workflow problem
+4. write a short recommendation
 
 ## The Tutor Rule
 
-Our rule:
+1. short explanation
+2. try it myself
+3. immediate feedback
+4. practice
+5. realistic application
 
-1. learn one tiny concept
-2. use it right away
-3. answer a short quiz
-4. revisit it later
+## Hint Ladder
 
-## Coding Hub Practice Modes
+- `Hint 1`: conceptual nudge
+- `Hint 2`: stronger directional clue
+- `Hint 3`: partial structure or example
+- `Solution`: complete answer with a concise explanation
 
-- `Cloze cards`: retrieve one missing concept from memory.
-- `Multiple choice`: distinguish the right meaning from similar choices.
-- `Find the mistake`: identify and repair one small coding error.
-- `Predict`: explain what code will do before revealing the answer.
-- `Missed concepts`: keep a separate log of ideas that need another review.
+Do not reveal the full solution immediately unless I ask for it.
 
-The review schedule is:
+## Concept States
 
-- `1d`
-- `3d`
-- `7d`
-- `14d`
-- `30d`
+- `NEW`
+- `REVIEWING`
+- `SOLID`
 
-Choosing `Again` moves a concept back to `1d`. Stronger answers move it forward through the schedule.
+Lesson completion means exposure only.
+Mastery should come from performance, repeated correct answers, applied exercises, and explanation quality.
+
+## External Resource Rule
+
+Primary structured resource for SQL:
+
+- `SQLBolt`
+
+Optional later practice:
+
+- `Kaggle Intro to SQL`
+
+The hub should guide me to the next lesson, link to it, let me mark it complete, record the concepts exposed, give a short check, and then move into targeted practice.
+
+## Career Evidence
+
+Use actual behavior to infer strengths over time.
+
+Evidence can include:
+
+- exercise performance
+- applied project work
+- debugging ability
+- explanations
+- repeated task preferences
+- amount of help required
+- transfer into new scenarios
+
+Do not assign permanent personality labels.
+Career recommendations should stay hypotheses.
 
 ## What To Avoid
 
@@ -99,18 +125,19 @@ Choosing `Again` moves a concept back to `1d`. Stronger answers move it forward 
 - learning five new ideas in one sitting
 - only watching tutorials without building
 - mistaking recognition for understanding
+- turning the system into five separate degree plans
 
-## Your Best Learning Style For Now
+## My Best Learning Style
 
-Based on today, your best setup looks like:
+My preferred style is:
 
-- short explanations
-- one small task at a time
-- MCQ first
-- short answer later
-- frequent check-ins
-- personal analogies
-- beautiful, motivating projects
+- short explanation
+- try it myself
+- immediate feedback
+- practice
+- realistic application
+
+I want passive reading and note-taking to stay light.
 
 ## Sources
 

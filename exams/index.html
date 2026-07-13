@@ -3,78 +3,67 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exams | Coding Learning Hub</title>
-    <link rel="stylesheet" href="../shared/styles.css" />
-    <script src="../shared/storage.js" defer></script>
-    <script src="../data/exam-data.js" defer></script>
-    <script src="track.js" defer></script>
+    <title>Exams | Career Systems Lab</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: #f7f2eb;
+        color: #37261c;
+      }
+
+      main {
+        width: min(760px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 32px 0 48px;
+      }
+
+      .card {
+        background: #fffaf4;
+        border: 1px solid #dbc8b8;
+        border-radius: 18px;
+        padding: 24px;
+        margin-bottom: 18px;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      a {
+        color: #b75e3c;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+    </style>
   </head>
   <body>
-    <main class="page">
+    <main>
       <section class="card">
-        <div class="top-row">
-          <div>
-            <span class="pill">Beginner tracks</span>
-            <h1>Exams</h1>
-            <p class="muted">
-              Choose a language below to open its ten-exam beginner track.
-              Every exam has twenty questions and saves your best result in this browser.
-            </p>
-          </div>
-          <a href="../index.html">Back to Home</a>
-        </div>
+        <h1>Exams</h1>
+        <p>This section holds quiz and exam materials that support the shared foundation and active learning phase.</p>
+        <p><a href="../index.html">Back to Home</a></p>
       </section>
 
       <section class="card">
-        <div class="category-group">
-          <p class="category-label">Web Basics</p>
-          <div class="pill-row" role="group" aria-label="Web basics languages">
-            <button class="button primary" data-language="html" type="button">HTML</button>
-            <button class="button" data-language="css" type="button">CSS</button>
-            <button class="button" data-language="javascript" type="button">JavaScript</button>
-          </div>
-        </div>
-
-        <div class="category-group">
-          <p class="category-label">Programming Languages</p>
-          <div class="pill-row" role="group" aria-label="General programming languages">
-            <button class="button" data-language="python" type="button">Python</button>
-            <button class="button" data-language="typescript" type="button">TypeScript</button>
-            <button class="button" data-language="java" type="button">Java</button>
-            <button class="button" data-language="csharp" type="button">C#</button>
-          </div>
-        </div>
-
-        <div class="category-group">
-          <p class="category-label">Backend &amp; Data</p>
-          <div class="pill-row" role="group" aria-label="Backend and data languages">
-            <button class="button" data-language="sql" type="button">SQL</button>
-            <button class="button" data-language="go" type="button">Go</button>
-          </div>
-        </div>
-
-        <div class="category-group">
-          <p class="category-label">App Development</p>
-          <div class="pill-row" role="group" aria-label="App development languages">
-            <button class="button" data-language="swift" type="button">Swift</button>
-          </div>
-        </div>
+        <h2>Current Items</h2>
+        <ul>
+          <li><a href="exam_01_html_basics.html">Take HTML Basics Exam</a></li>
+          <li><a href="exam_02_css_layout_basics.html">Take CSS Layout Basics Exam</a></li>
+          <li><a href="exam_03_javascript_interactivity.html">Take JavaScript Interactivity Exam</a></li>
+          <li><a href="exam_04_python_basics.html">Take Python Basics Exam</a></li>
+          <li><a href="exam_05_sql_basics.html">Take SQL Basics Exam</a></li>
+          <li><a href="exam_06_typescript_basics.html">Take TypeScript Basics Exam</a></li>
+          <li><a href="exam_07_java_basics.html">Take Java Basics Exam</a></li>
+          <li><a href="exam_08_csharp_basics.html">Take C# Basics Exam</a></li>
+          <li><a href="exam_09_go_basics.html">Take Go Basics Exam</a></li>
+          <li><a href="exam_10_swift_basics.html">Take Swift Basics Exam</a></li>
+          <li><a href="quiz-bank.md">Quiz Bank</a></li>
+        </ul>
       </section>
-
-      <section class="card">
-        <div class="top-row">
-          <div>
-            <h2 id="track-title">HTML Beginner Track</h2>
-            <p class="muted" id="track-summary"></p>
-          </div>
-          <strong id="passed-label">Exams passed: 0 of 10</strong>
-        </div>
-        <div class="progress-track">
-          <div class="progress-fill" id="track-progress"></div>
-        </div>
-      </section>
-
-      <section class="exam-grid" id="exam-grid"></section>
     </main>
   </body>
 </html>

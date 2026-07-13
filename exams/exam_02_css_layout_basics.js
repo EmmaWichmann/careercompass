@@ -33,11 +33,11 @@ const questions = [
     explanation: "A hero section helps set the tone, explain the page quickly, and create a stronger first impression.",
   },
   {
-    prompt: "Why did we use a field grid for Song and Artist in MusicMoodApp?",
+    prompt: "Why would you use a field grid for two related inputs in a project form?",
     choices: {
       A: "To make them easier to place side by side in a cleaner layout",
       B: "To automatically save the form to localStorage",
-      C: "To turn the inputs into mood buttons",
+      C: "To turn the inputs into buttons",
       D: "To hide them on mobile devices",
     },
     correct: "A",
@@ -77,11 +77,11 @@ const questions = [
     explanation: "Visual hierarchy helps the eye notice the most important content first through contrast, spacing, scale, and placement.",
   },
   {
-    prompt: "Why might you add 'coming soon' panels for Podcasts, Movies, and Books?",
+    prompt: "Why might you add 'coming soon' panels for future project features?",
     choices: {
       A: "To suggest the app can expand later without pretending those features already exist",
       B: "To disable CSS until the features are built",
-      C: "To stop users from saving songs",
+      C: "To stop users from saving data",
       D: "To convert the page into a multi-step form",
     },
     correct: "A",

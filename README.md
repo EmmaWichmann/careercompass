@@ -57,6 +57,11 @@ This project is a shared-foundation learning system for SQL, Python, product thi
 4. Build or fix one small feature.
 5. Write one sentence about what confused you or clicked.
 
+## Integrity Check
+
+- Run `node scripts/check-links.js` to scan the repository for broken internal links.
+- The script is meant to catch stale navigation targets such as removed exam pages before they reach the dashboard.
+
 ## First Version Of This Hub
 
 - `practice-log.md`

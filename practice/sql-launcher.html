@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQL Flow | Career Compass</title>
+    <style>
+      :root{--bg:#f7f2eb;--panel:#fffaf4;--text:#37261c;--muted:#6d584c;--accent:#b75e3c;--accent-soft:#ead7c8;--line:#dbc8b8;--shadow:0 18px 45px rgba(76,47,28,.08);--radius:20px}
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(180deg,#fbf7f1 0%,var(--bg) 100%);color:var(--text)}
+      main{width:min(980px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
+      .hero,.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px}
+      h1,h2,p{margin-top:0}
+      h1{color:var(--accent);font-size:clamp(2.2rem,6vw,4rem);margin-bottom:10px}
+      .eyebrow,.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.9rem}
+      .muted{color:var(--muted);line-height:1.7}
+      .flow{display:grid;gap:12px}
+      .stage{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fffdf9;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+      .stage strong{display:block;margin-bottom:4px}
+      .buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+      .button{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
+      .button.primary{background:#8f4528;border-color:#8f4528;color:white}
+      .button.secondary{background:transparent;color:var(--accent)}
+      .note-box{padding:14px 16px;border-left:4px solid var(--accent);background:#fff7ef;border-radius:12px;margin-top:12px}
+      @media (max-width:760px){.stage{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <span class="eyebrow">SQL lesson → quiz → applied challenge</span>
+        <h1>SQL Flow</h1>
+        <p class="muted">A compact launcher for the current SQL phase. Start with SQLBolt, then take the matching concept check, then move into a realistic applied challenge if the concept feels steady.</p>
+      </section>
+
+      <section class="card">
+        <h2>Recommended Flow</h2>
+        <div class="flow" id="flow-list"></div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const steps = [
+          { title: "Step 1: SQLBolt lesson", note: "Short explanation first, then hands-on practice.", href: "https://sqlbolt.com/lesson/select_queries_introduction", label: "Open SQLBolt" },
+          { title: "Step 2: Concept check", note: "A focused quiz to check understanding before moving on.", href: "../exams/exam.html?language=sql&exam=1", label: "Start Quiz" },
+          { title: "Step 3: Applied challenge", note: "Try a realistic filtering or reporting scenario after the quiz.", href: "../exams/", label: "Open Applied Challenge" }
+        ];
+
+        const list = document.getElementById("flow-list");
+        steps.forEach(function (step, index) {
+          const row = document.createElement("div");
+          row.className = "stage";
+          row.innerHTML =
+            '<div><strong>' + step.title + '</strong><p class="muted">' + step.note + '</p></div>' +
+            '<a class="button ' + (index === 0 ? "primary" : "secondary") + '" href="' + step.href + '">' + step.label + '</a>';
+          list.append(row);
+        });
+      })();
+    </script>
+  </body>
+</html>

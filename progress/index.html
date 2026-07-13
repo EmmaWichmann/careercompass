@@ -88,6 +88,20 @@
       .timeline {
         display: grid; gap: 10px;
       }
+
+      .wins-highlight {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .wins-highlight .item {
+        border-left: 4px solid var(--accent);
+      }
+
+      .wins-highlight .item:first-child {
+        background: linear-gradient(180deg, #fffdf9, #fff7ef);
+      }
       @media (max-width: 800px) {
         .grid { grid-template-columns: 1fr; }
         .item .top { display: grid; }
@@ -121,7 +135,7 @@
 
       <section class="card">
         <h2>Recent Wins</h2>
-        <div class="timeline" id="wins-list"></div>
+        <div class="wins-highlight" id="wins-list"></div>
       </section>
 
       <section class="card">
@@ -226,6 +240,14 @@
               '</span></div>';
             container.append(row);
           });
+
+          if (wins.length > 0) {
+            const summary = document.createElement("div");
+            summary.className = "item";
+            summary.innerHTML =
+              "<strong>What this means</strong><span>You are building evidence through repeated correct work, passing assessments, and fewer unresolved misses.</span>";
+            container.prepend(summary);
+          }
         }
 
         function renderEvidence() {

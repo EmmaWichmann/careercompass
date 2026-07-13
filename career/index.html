@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career | Career Compass</title>
+    <style>
+      :root {
+        --bg:#f7f2eb; --panel:#fffaf4; --text:#37261c; --muted:#6d584c;
+        --accent:#b75e3c; --accent-soft:#ead7c8; --line:#dbc8b8; --shadow:0 18px 45px rgba(76,47,28,.08); --radius:20px;
+      }
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(180deg,#fbf7f1 0%,var(--bg) 100%);color:var(--text)}
+      main{width:min(980px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
+      .hero,.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px}
+      h1,h2,h3,p{margin-top:0}
+      h1{color:var(--accent);font-size:clamp(2.2rem,6vw,4rem);margin-bottom:10px}
+      .eyebrow{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.9rem}
+      .muted{color:var(--muted);line-height:1.7}
+      .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .item{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fffdf9}
+      .item strong{display:block;margin-bottom:4px;color:var(--accent)}
+      .item span,.item li{color:var(--muted);line-height:1.6}
+      .list{display:grid;gap:12px;margin-top:12px;padding-left:0;list-style:none}
+      .pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.84rem}
+      @media (max-width:760px){.grid{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <span class="eyebrow">Role cluster evidence and credential ideas</span>
+        <h1>Career</h1>
+        <p class="muted">This page keeps the career strategy visible without turning the product into a course catalog. It summarizes the roles I am keeping open, the evidence I’m building, and the most strategic credentials to consider later.</p>
+      </section>
+
+      <section class="card">
+        <h2>Role Cluster</h2>
+        <div class="grid">
+          <div class="item"><strong>Data Analyst</strong><span>Strong SQL, analysis, reporting, and clear findings.</span></div>
+          <div class="item"><strong>Product Analyst</strong><span>Measure user behavior, diagnose friction, and recommend improvements.</span></div>
+          <div class="item"><strong>Product Manager</strong><span>Frame problems, prioritize work, and explain tradeoffs clearly.</span></div>
+          <div class="item"><strong>AI Implementation Specialist</strong><span>Translate messy needs into usable workflows and practical AI support.</span></div>
+          <div class="item"><strong>Software Engineer</strong><span>Debug, build, and communicate with enough technical depth to collaborate well.</span></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Evidence</h2>
+        <ul class="list">
+          <li class="item"><strong>SQL practice</strong><span>Filtering, sorting, joins, aggregation, and analysis are the active foundation.</span></li>
+          <li class="item"><strong>Learning system design</strong><span>Career Compass now tracks exposure, review, and mastery instead of only page visits.</span></li>
+          <li class="item"><strong>Product thinking</strong><span>The product is being redesigned around one primary action and clearer guidance.</span></li>
+          <li class="item"><strong>Technical communication</strong><span>Written learning notes, progress summaries, and career strategy docs are already part of the system.</span></li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <h2>Credential Ideas</h2>
+        <div class="grid">
+          <div class="item">
+            <strong>Data Analyst</strong>
+            <span>Google Data Analytics, IBM Data Analyst, Microsoft Power BI Data Analyst, Tableau Desktop Specialist.</span>
+          </div>
+          <div class="item">
+            <strong>Product / PM</strong>
+            <span>Google Project Management, Agile or Scrum fundamentals, product management certificate.</span>
+          </div>
+          <div class="item">
+            <strong>AI Implementation</strong>
+            <span>Google AI Essentials, Azure AI Fundamentals, practical AI workflow credentials.</span>
+          </div>
+          <div class="item">
+            <strong>Software Engineering</strong>
+            <span>AWS Cloud Practitioner, AWS Developer Associate, project-aligned technical badges.</span>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:12px;">The best credential is still one that fits the current phase and supports actual project evidence.</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -273,6 +273,50 @@
         line-height: 1.6;
       }
 
+      .today-focus {
+        margin-bottom: 16px;
+        padding: 16px;
+        border-radius: 16px;
+        border: 1px solid #ead7c8;
+        background: linear-gradient(180deg, #fffdf9, #fbf1e6);
+      }
+
+      .today-focus strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .today-focus span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .priority-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .priority-card {
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fffdf9;
+      }
+
+      .priority-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .priority-card span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
       .foundation-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -390,7 +434,8 @@
 
         .dashboard,
         .foundation-grid,
-        .credential-grid {
+        .credential-grid,
+        .priority-grid {
           grid-template-columns: 1fr;
         }
 
@@ -421,6 +466,10 @@
 
           <section class="section">
             <h2>What I Need to Do Next</h2>
+            <div class="today-focus">
+              <strong>Today’s one focus</strong>
+              <span>Do one SQLBolt lesson, one exam, and one short review block. That is enough for a win.</span>
+            </div>
             <div class="career-checklist">
               <div class="career-step">
                 <strong>1. Complete the next SQLBolt lesson</strong>
@@ -555,6 +604,25 @@
               AI implementation, and software engineering paths, then using
               evidence to see which direction fits best over time.
             </p>
+
+            <div class="priority-grid">
+              <div class="priority-card">
+                <strong>Best first target: Data Analyst</strong>
+                <span>Most aligned with SQL, Python, reporting, and the kind of structured evidence you are already building.</span>
+              </div>
+              <div class="priority-card">
+                <strong>Strong backup: Product Analyst</strong>
+                <span>Good fit if you keep liking user friction, measurement, and improving flows for real people.</span>
+              </div>
+              <div class="priority-card">
+                <strong>Stretch path: Product Manager / AI Implementation</strong>
+                <span>Good if you enjoy translating fuzzy needs into clear specs and guiding a build.</span>
+              </div>
+              <div class="priority-card">
+                <strong>Longer-term stretch: Software Engineer</strong>
+                <span>Worth keeping open, but it needs more building and debugging evidence over time.</span>
+              </div>
+            </div>
 
             <div class="links">
               <a class="link-card" href="exams/">

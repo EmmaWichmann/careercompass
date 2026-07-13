@@ -416,6 +416,25 @@
         color: var(--muted);
       }
 
+      .focus-strip {
+        margin: 14px 0 18px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px dashed var(--accent);
+        background: #fffdf9;
+      }
+
+      .focus-strip strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent-dark);
+      }
+
+      .focus-strip span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
       .celebration h2 {
         color: var(--accent-dark);
         font-size: clamp(2rem, 6vw, 3.4rem);
@@ -559,6 +578,11 @@
           <button class="mode-button language-button" data-language="swift" type="button">
             Swift
           </button>
+        </div>
+
+        <div class="focus-strip">
+          <strong>ADHD-friendly focus rule</strong>
+          <span>Pick one lane, do one card, then stop or switch. A short win counts as progress.</span>
         </div>
 
         <h2 class="language-heading">Notebook</h2>

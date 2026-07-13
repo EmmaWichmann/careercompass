@@ -292,6 +292,15 @@
         line-height: 1.6;
       }
 
+      .credential-strip a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .credential-strip a:hover {
+        text-decoration: underline;
+      }
+
       .today-focus {
         margin-bottom: 16px;
         padding: 16px;
@@ -523,7 +532,13 @@
 
             <div class="credential-strip">
               <strong>Credential targets</strong>
-              <span>SQL: freeCodeCamp Relational Database. Python: freeCodeCamp Scientific Computing with Python or Data Analysis with Python. APIs / JSON: freeCodeCamp Back End Development and APIs. Data visualization: freeCodeCamp Data Visualization. Later AI foundations: IBM SkillsBuild.</span>
+              <span>
+                SQL: <a href="https://www.freecodecamp.org/learn/relational-database/" target="_blank" rel="noreferrer">freeCodeCamp Relational Database</a>.
+                Python: <a href="https://www.freecodecamp.org/learn/scientific-computing-with-python/" target="_blank" rel="noreferrer">freeCodeCamp Scientific Computing with Python</a> or <a href="https://www.freecodecamp.org/learn/data-analysis-with-python/" target="_blank" rel="noreferrer">Data Analysis with Python</a>.
+                APIs / JSON: <a href="https://www.freecodecamp.org/learn/back-end-development-and-apis/" target="_blank" rel="noreferrer">freeCodeCamp Back End Development and APIs</a>.
+                Data visualization: <a href="https://www.freecodecamp.org/learn/data-visualization/" target="_blank" rel="noreferrer">freeCodeCamp Data Visualization</a>.
+                Later AI foundations: <a href="https://skillsbuild.org/" target="_blank" rel="noreferrer">IBM SkillsBuild</a>.
+              </span>
             </div>
 
             <div class="links">
@@ -599,6 +614,8 @@
         });
         nextAssessmentStep.textContent = recommendation.step;
         nextAssessmentLink.innerHTML =
+          "→ next step: " +
+          recommendation.step +
           '<div class="action-row">' +
           '<a class="primary-link" href="' +
           recommendation.href +

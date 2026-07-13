@@ -20,7 +20,19 @@
       .button{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
       .button.primary{background:#8f4528;border-color:#8f4528;color:white}
       .button.secondary{background:transparent;color:var(--accent)}
+      .stack{display:grid;gap:14px}
+      .topic-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .topic{padding:14px;border:1px solid var(--line);border-radius:14px;background:#fffdf9}
+      .topic strong{display:block;margin-bottom:4px;color:var(--accent)}
+      .topic p,.topic li{margin:0;color:var(--muted);line-height:1.65}
+      .topic ul{margin:8px 0 0;padding-left:18px}
+      .next-up{padding:18px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,#fffdf9,#faf2e8)}
+      .next-up h3{margin-bottom:8px;color:var(--accent)}
+      .steps{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+      .steps li{padding:12px 14px;border-radius:12px;background:white;border:1px solid var(--line)}
+      .steps strong{display:block;margin-bottom:4px}
       @media (max-width:760px){.stage{grid-template-columns:1fr}}
+      @media (max-width:760px){.topic-grid{grid-template-columns:1fr}}
     </style>
   </head>
   <body>
@@ -28,33 +40,64 @@
       <section class="hero">
         <span class="eyebrow">Python data and automation flow</span>
         <h1>Python Flow</h1>
-        <p class="muted">A compact launcher for the Python phase. Keep it interactive and practical: learn the idea, try it yourself, get feedback, then apply it to data work or simple automation.</p>
+        <p class="muted">A compact launcher for the Python phase. Keep it interactive and practical: short explanation, try it yourself, get feedback, then apply it to data work or simple automation.</p>
       </section>
 
       <section class="card">
         <h2>Recommended Flow</h2>
-        <div class="flow">
-          <div class="stage">
-            <div>
-              <strong>Step 1: Start with Python basics</strong>
-              <p class="muted">Variables, strings, numbers, booleans, and simple control flow.</p>
-            </div>
-            <a class="button primary" href="../notes/learning-notes.md">Open Python notes</a>
+        <div class="stack">
+          <div class="next-up">
+            <h3>Python Focus Right Now</h3>
+            <ul class="steps">
+              <li><strong>Variables and data types</strong><span class="muted">Store simple values and learn what type you are working with.</span></li>
+              <li><strong>Strings and lists</strong><span class="muted">Pull text apart, index values, and practice list operations.</span></li>
+              <li><strong>Dictionaries and loops</strong><span class="muted">Use key-value data and repeat actions over records.</span></li>
+              <li><strong>Functions and debugging</strong><span class="muted">Break work into reusable pieces and inspect errors calmly.</span></li>
+              <li><strong>CSV and pandas</strong><span class="muted">Load tabular data, filter rows, clean columns, and summarize results.</span></li>
+            </ul>
           </div>
-          <div class="stage">
-            <div>
-              <strong>Step 2: Try a small script</strong>
-              <p class="muted">Practice printing, conditionals, lists, dictionaries, and functions.</p>
+          <div class="flow">
+            <div class="stage">
+              <div>
+                <strong>Step 1: Learn the idea</strong>
+                <p class="muted">Keep explanations short. Focus on one concept at a time.</p>
+              </div>
+              <a class="button primary" href="../progress/">Check progress</a>
             </div>
-            <a class="button secondary" href="../projects/">Open projects</a>
-          </div>
-          <div class="stage">
-            <div>
-              <strong>Step 3: Apply it to data</strong>
-              <p class="muted">Inspect a CSV, clean data, group results, or automate a tiny task.</p>
+            <div class="stage">
+              <div>
+                <strong>Step 2: Try it yourself</strong>
+                <p class="muted">Write a tiny script or fill in missing code before looking for the answer.</p>
+              </div>
+              <a class="button secondary" href="../projects/">Open projects</a>
             </div>
-            <a class="button secondary" href="../career/">Open career path</a>
+            <div class="stage">
+              <div>
+                <strong>Step 3: Get immediate feedback</strong>
+                <p class="muted">Check the result, identify the mistake, and fix it right away.</p>
+              </div>
+              <a class="button secondary" href="../logs/">Review history</a>
+            </div>
+            <div class="stage">
+              <div>
+                <strong>Step 4: Practice and apply</strong>
+                <p class="muted">Use realistic data tasks so Python feels useful for analysis and automation.</p>
+              </div>
+              <a class="button secondary" href="../career/">Open career path</a>
+            </div>
           </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Beginner Topics</h2>
+        <div class="topic-grid">
+          <div class="topic"><strong>Core syntax</strong><p>Variables, numbers, strings, booleans, lists, and dictionaries.</p></div>
+          <div class="topic"><strong>Control flow</strong><p>Conditionals, loops, comparisons, and simple branching logic.</p></div>
+          <div class="topic"><strong>Reusable code</strong><p>Functions, parameters, return values, and debugging basics.</p></div>
+          <div class="topic"><strong>Data work</strong><p>CSV files, pandas, filtering, sorting, grouping, and missing values.</p></div>
+          <div class="topic"><strong>Useful automation</strong><p>Simple scripts for cleaning, renaming, and reshaping repetitive work.</p></div>
+          <div class="topic"><strong>Applied analysis</strong><p>Turn a messy table into a clear answer you can explain to someone else.</p></div>
         </div>
       </section>
     </main>

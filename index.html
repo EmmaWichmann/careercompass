@@ -139,6 +139,37 @@
         line-height: 1.5;
       }
 
+      .lesson-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .lesson-card {
+        background: #fffdf9;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .lesson-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .lesson-card span,
+      .lesson-card li {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .lesson-card ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+      }
+
       .note {
         margin-top: 18px;
         color: var(--muted);
@@ -207,6 +238,14 @@
       .recommendation .action-row a.primary-link {
         background: #8f4528;
         border-color: #8f4528;
+      }
+
+      .resource-note {
+        margin-top: 10px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #fffdf9;
       }
 
       .recommendation .summary-list {
@@ -301,6 +340,24 @@
           Python is part of the current career path now, alongside SQL. The focus should stay hands-on and data-centered:
           inspect data, clean it, analyze it, and automate small useful tasks.
         </p>
+        <div class="lesson-grid">
+          <div class="lesson-card">
+            <strong>Python basics</strong>
+            <span>Variables, strings, lists, dictionaries, and clean beginner syntax.</span>
+          </div>
+          <div class="lesson-card">
+            <strong>Python for data</strong>
+            <span>CSV files, pandas, cleaning, filtering, grouping, and simple summaries.</span>
+          </div>
+          <div class="lesson-card">
+            <strong>Python practice path</strong>
+            <span>Try one concept, get feedback, then apply it to a realistic data task.</span>
+          </div>
+          <div class="lesson-card">
+            <strong>Primary resource</strong>
+            <span>SQLBolt stays the main structured SQL resource, while Python stays interactive and practical here.</span>
+          </div>
+        </div>
       </section>
 
       <section class="section" style="margin-top: 20px;">

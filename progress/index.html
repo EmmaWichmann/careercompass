@@ -102,9 +102,24 @@
       .wins-highlight .item:first-child {
         background: linear-gradient(180deg, #fffdf9, #fff7ef);
       }
+      .topic-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .topic {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fffdf9;
+      }
+      .topic strong { display:block; margin-bottom:4px; color:var(--accent); }
+      .topic p { margin:0; color:var(--muted); line-height:1.6; }
       @media (max-width: 800px) {
         .grid { grid-template-columns: 1fr; }
         .item .top { display: grid; }
+        .topic-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -145,6 +160,12 @@
       <section class="card">
         <h2>Python Wins</h2>
         <div class="wins-highlight" id="python-wins-list"></div>
+      </section>
+
+      <section class="card">
+        <h2>Python Progression</h2>
+        <p class="muted">These are the beginner Python concepts I want to surface while the track is becoming active. Progress here should reflect exposure, quizzes, practice, and explanation quality.</p>
+        <div class="topic-grid" id="python-progression"></div>
       </section>
 
       <section class="card">
@@ -192,6 +213,7 @@
         renderSnapshot();
         renderWins();
         renderPythonWins();
+        renderPythonProgression();
         renderMastery();
         renderEvidence();
         renderAssessments();
@@ -285,6 +307,40 @@
               '</p></div><span class="status new">' +
               item.state +
               '</span></div>';
+            container.append(row);
+          });
+        }
+
+        function renderPythonProgression() {
+          const container = document.getElementById("python-progression");
+          container.innerHTML = "";
+          const topics = [
+            { title: "Variables and types", concepts: ["python::variables", "python::types"] },
+            { title: "Strings and lists", concepts: ["python::strings", "python::lists"] },
+            { title: "Dictionaries and loops", concepts: ["python::dicts", "python::loops"] },
+            { title: "Functions and debugging", concepts: ["python::functions", "python::debugging"] },
+            { title: "CSV and pandas basics", concepts: ["python::csv", "python::pandas"] },
+            { title: "Filtering and cleaning data", concepts: ["python::filtering", "python::cleaning"] },
+            { title: "Grouping and summaries", concepts: ["python::groupby", "python::aggregation"] },
+            { title: "Applied analysis", concepts: ["python::analysis", "python::communication"] },
+          ];
+
+          topics.forEach(function (topic) {
+            const state = getState(topic.concepts, "python");
+            const row = document.createElement("div");
+            row.className = "topic";
+            row.innerHTML =
+              "<strong>" +
+              topic.title +
+              "</strong><p>" +
+              topic.concepts.map(function (item) {
+                return item.split("::")[1];
+              }).join(", ") +
+              "</p><span class='status " +
+              state.toLowerCase().replace(/\s+/g, "-") +
+              "'>" +
+              state +
+              "</span>";
             container.append(row);
           });
         }
@@ -402,9 +458,9 @@
           return wins.slice(0, 6);
         }
 
-        function getState(concepts) {
+        function getState(concepts, prefix) {
           const states = concepts.map(function (concept) {
-            return mastery["sql::" + concept]?.state || "NOT STARTED";
+            return mastery[(prefix || "sql") + "::" + concept.split("::").pop()]?.state || "NOT STARTED";
           });
           if (states.includes("REVIEWING")) return "REVIEWING";
           if (states.every(function (state) { return state === "SOLID"; })) return "SOLID";

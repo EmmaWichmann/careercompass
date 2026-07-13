@@ -207,13 +207,22 @@
       }
 
       .foundation-nav {
+        margin-top: 14px;
+      }
+
+      .foundation-nav strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--accent);
+      }
+
+      .foundation-nav-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
-        margin-top: 12px;
       }
 
-      .foundation-nav a {
+      .foundation-nav-grid button {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -223,20 +232,16 @@
         border: 1px solid var(--line);
         background: #fffdf9;
         color: var(--text);
-        text-decoration: none;
         font-size: 0.94rem;
+        font: inherit;
+        cursor: default;
       }
 
-      .foundation-nav a:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-
-      .foundation-nav .left::before {
+      .foundation-nav-grid .left::before {
         content: "←";
       }
 
-      .foundation-nav .right::after {
+      .foundation-nav-grid .right::after {
         content: "→";
       }
 
@@ -629,10 +634,13 @@
               <p class="next-step" id="next-assessment-step"></p>
               <p class="dashboard-note" id="next-assessment-link"></p>
               <div class="foundation-nav" aria-label="Foundation navigation">
-                <a class="left" href="#sql-foundation">SQL</a>
-                <a class="right" href="#python-foundation">Python</a>
-                <a class="left" href="#product-foundation">Product</a>
-                <a class="right" href="#communication-foundation">Communication</a>
+                <strong>What’s next for each foundation</strong>
+                <div class="foundation-nav-grid">
+                  <button class="left" type="button">SQL</button>
+                  <button class="right" type="button">Python</button>
+                  <button class="left" type="button">Product</button>
+                  <button class="right" type="button">Communication</button>
+                </div>
               </div>
             </div>
             <p class="resource-note">

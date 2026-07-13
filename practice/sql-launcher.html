@@ -30,7 +30,7 @@
       <section class="hero">
         <span class="eyebrow">SQL lesson → quiz → applied challenge</span>
         <h1>SQL Flow</h1>
-        <p class="muted">A compact launcher for the current SQL phase. Start with SQLBolt, then take the matching concept check, then move into a realistic applied challenge if the concept feels steady.</p>
+        <p class="muted">A compact launcher for the current SQL certification path. Start with SQLBolt, then take the matching readiness check, then move into a realistic applied challenge when the skill feels steady.</p>
       </section>
 
       <section class="card">
@@ -42,10 +42,11 @@
     <script>
       (function () {
         const mastery = read("coding-hub-concept-mastery", {});
+        const lesson = getLesson();
         const steps = [
-          { title: "Step 1: SQLBolt lesson", note: "Short explanation first, then hands-on practice.", href: getLesson().resource, label: "Open SQLBolt" },
-          { title: "Step 2: Concept check", note: "A focused quiz to check understanding before moving on.", href: getLesson().assessment, label: "Start Quiz" },
-          { title: "Step 3: Applied challenge", note: "Try a realistic filtering or reporting scenario after the quiz.", href: "../exams/", label: "Open Applied Challenge" }
+          { title: "Step 1: SQLBolt lesson", note: "Short explanation first, then hands-on practice.", href: lesson.resource, label: "Open SQLBolt" },
+          { title: "Step 2: Readiness check", note: "A focused check to see whether the skill is ready for the credential path.", href: lesson.assessment, label: "Start Check" },
+          { title: "Step 3: Applied challenge", note: "Try a realistic filtering or reporting scenario after the check.", href: "../exams/", label: "Open Challenge" }
         ];
 
         const list = document.getElementById("flow-list");

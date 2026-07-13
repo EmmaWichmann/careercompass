@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certifications | Career Compass</title>
+    <style>
+      :root { --bg:#f7f2eb; --panel:#fffaf4; --text:#37261c; --muted:#6d584c; --accent:#b75e3c; --accent-soft:#ead7c8; --line:#dbc8b8; --shadow:0 18px 45px rgba(76,47,28,.08); --radius:20px; }
+      *{box-sizing:border-box}
+      body{margin:0;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(180deg,#fbf7f1 0%,var(--bg) 100%);color:var(--text)}
+      main{width:min(980px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
+      .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px}
+      h1,h2,h3,p{margin-top:0}
+      h1{color:var(--accent);font-size:clamp(2.2rem,6vw,4rem);margin-bottom:10px}
+      .eyebrow,.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.9rem}
+      .muted{color:var(--muted);line-height:1.7}
+      .grid{display:grid;gap:12px}
+      .cert-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .item{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fffdf9}
+      .item strong{display:block;margin-bottom:4px;color:var(--accent)}
+      .item span,.item li{color:var(--muted);line-height:1.6}
+      .group-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+      .skills{display:grid;gap:8px;margin:12px 0 0;padding:0;list-style:none}
+      .skills li{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+      .status{white-space:nowrap;padding:5px 9px;border-radius:999px;background:#f2e2d4;color:var(--accent);font-size:.82rem}
+      .status.ready{background:#ddebdc;color:#35664a}
+      .status.practicing,.status.learning{background:#f8e2d9;color:#8a4a2e}
+      .status.not-started{background:#f6eddc}
+      .button{display:inline-flex;align-items:center;justify-content:center;padding:11px 14px;border-radius:999px;border:1px solid var(--accent);text-decoration:none}
+      .button.primary{background:#8f4528;border-color:#8f4528;color:#fff}
+      .button.secondary{background:transparent;color:var(--accent)}
+      .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+      @media (max-width:760px){.cert-grid,.group-grid{grid-template-columns:1fr}}
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="card">
+        <span class="eyebrow">Current credential roadmap</span>
+        <h1>Certifications</h1>
+        <p class="muted">One active certification at a time. SQL is current, Python is next, and later stages stay visible without competing for attention.</p>
+        <div class="actions">
+          <a class="button primary" href="../index.html">Back to Home</a>
+          <a class="button secondary" href="../exams/">Open Skill Checks</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Current</h2>
+        <div class="item" id="active-cert"></div>
+      </section>
+
+      <section class="card">
+        <h2>Next and Later</h2>
+        <div class="cert-grid" id="roadmap"></div>
+      </section>
+    </main>
+
+    <script src="../data/certifications.js"></script>
+    <script>
+      const data = window.CodingHubCertifications;
+      const active = data.certifications.find((cert) => cert.id === data.activeCertificationId);
+      const activeNode = document.getElementById("active-cert");
+      activeNode.innerHTML =
+        "<strong>" + active.name + "</strong>" +
+        "<span>" + active.organization + " • " + active.status + " • " + active.readinessStage + "</span>" +
+        "<p class='muted'>" + active.careerValue + "</p>" +
+        "<p><strong>Readiness:</strong> " + active.readinessSummary + "</p>" +
+        "<p><strong>Current skill:</strong> " + active.currentSkill + "</p>" +
+        "<p><strong>Next step:</strong> " + active.currentLesson.title + "</p>" +
+        "<p class='muted'>Skill focus: " + active.currentLesson.skillFocus + "</p>" +
+        "<div class='actions'><a class='button primary' href='../index.html'>Continue learning</a><a class='button secondary' href='" + active.url + "' target='_blank' rel='noreferrer'>View credential</a></div>";
+
+      const roadmap = document.getElementById("roadmap");
+      data.certifications.slice(1).forEach((cert) => {
+        const card = document.createElement("div");
+        card.className = "item";
+        card.innerHTML =
+          "<strong>" + cert.name + "</strong>" +
+          "<span>" + cert.organization + " • " + cert.status + "</span>" +
+          "<p class='muted'>" + cert.careerValue + "</p>" +
+          "<p><strong>Cost:</strong> " + cert.cost + "</p>" +
+          "<p><strong>Verification:</strong> " + cert.verificationType + "</p>" +
+          "<p><strong>Status:</strong> " + cert.readinessStage + "</p>";
+        roadmap.append(card);
+      });
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exam | Career Compass</title>
+    <title>Skill Check | Career Compass</title>
     <link rel="stylesheet" href="../shared/styles.css" />
     <script src="../shared/storage.js" defer></script>
     <script src="../data/exam-data.js" defer></script>
@@ -14,11 +14,11 @@
       <section class="card" id="exam-intro">
         <div class="top-row">
           <div>
-            <span class="pill">Beginner exam</span>
+            <span class="pill">Beginner skill check</span>
             <h1 id="exam-title"></h1>
             <p class="muted" id="exam-description"></p>
           </div>
-          <a href="index.html">Back to Exams</a>
+          <a href="index.html">Back to Skill Checks</a>
         </div>
         <div class="stats-row">
           <div class="stat">
@@ -38,7 +38,7 @@
           You will see feedback after every answer. Missed concepts are added to
           Practice automatically.
         </p>
-        <button class="button primary" id="start-exam" type="button">Start Exam</button>
+        <button class="button primary" id="start-exam" type="button">Start Skill Check</button>
       </section>
 
       <section class="card question-shell" id="exam-shell" hidden>
@@ -66,13 +66,13 @@
       </section>
 
       <section class="card" id="exam-results" hidden>
-        <span class="pill">Exam complete</span>
+        <span class="pill">Skill check complete</span>
         <h1 class="result-score" id="result-score"></h1>
         <h2 id="result-message"></h2>
         <p><strong>Topics to review:</strong> <span id="missed-list"></span></p>
         <div class="button-row">
-          <button class="button primary" id="retake-exam" type="button">Retake Exam</button>
-          <a class="button secondary" href="index.html">Return to Exams</a>
+          <button class="button primary" id="retake-exam" type="button">Retake Skill Check</button>
+          <a class="button secondary" href="index.html">Return to Skill Checks</a>
         </div>
       </section>
     </main>

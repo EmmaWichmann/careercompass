@@ -29,7 +29,7 @@
       }
 
       .page {
-        width: min(920px, calc(100% - 32px));
+        width: min(1180px, calc(100% - 32px));
         margin: 0 auto;
         padding: 40px 0 56px;
       }
@@ -89,6 +89,19 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
         margin-top: 20px;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.95fr);
+        gap: 20px;
+        align-items: start;
+        margin-top: 20px;
+      }
+
+      .stack {
+        display: grid;
+        gap: 20px;
       }
 
       ul {
@@ -241,6 +254,42 @@
         line-height: 1.6;
       }
 
+      .foundation-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .foundation-card {
+        background: #fffdf9;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .foundation-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .foundation-card span,
+      .foundation-card li {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .foundation-card ul {
+        margin: 10px 0 0;
+        padding-left: 18px;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 18px;
+      }
+
       .recommendation .summary-list {
         display: grid;
         gap: 8px;
@@ -274,6 +323,15 @@
           grid-template-columns: 1fr;
         }
 
+        .dashboard,
+        .foundation-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+
         .page {
           width: min(100% - 20px, 760px);
           padding-top: 24px;
@@ -283,127 +341,196 @@
   </head>
   <body>
     <main class="page">
-      <section class="hero">
-        <span class="eyebrow">SQL is active • Python is active too</span>
-        <h1>Career Compass</h1>
-        <p>
-          A calm learning dashboard that tells me what matters now, why it
-          matters for my career, and what to do next without overwhelming me
-          with extra choices.
-        </p>
-        <div class="recommendation" id="next-assessment-card" aria-live="polite">
-          <span class="label">Next Recommended Assessment</span>
-          <h3 id="next-assessment-title">Loading recommendation...</h3>
-          <p id="next-assessment-reason" class="note"></p>
-          <ul id="next-assessment-concepts" class="summary-list"></ul>
-          <p class="next-step" id="next-assessment-step"></p>
-          <p class="dashboard-note" id="next-assessment-link"></p>
+      <div class="dashboard">
+        <div class="stack">
+          <section class="hero">
+            <span class="eyebrow">SQLBolt first • Python alongside • career evidence always</span>
+            <h1>Career Compass</h1>
+            <p>
+              A dashboard for moving toward a real job path without losing the thread:
+              finish the next lesson, verify it with an exam, practice the weak spots,
+              and build evidence that maps to the role cluster you want.
+            </p>
+          </section>
+
+          <section class="section">
+            <h2>What I Need to Do Next</h2>
+            <div class="career-checklist">
+              <div class="career-step">
+                <strong>1. Complete the next SQLBolt lesson</strong>
+                <span>Exposure comes first, so the lesson shows which concept is being introduced now.</span>
+              </div>
+              <div class="career-step">
+                <strong>2. Take the matching SQL concept check</strong>
+                <span>Use the exam to confirm whether the concept is still NEW, moving to REVIEWING, or becoming SOLID.</span>
+              </div>
+              <div class="career-step">
+                <strong>3. Practice the concepts marked NEW or REVIEWING</strong>
+                <span>Short drills and missing-concept review should follow the exam, not replace it.</span>
+              </div>
+              <div class="career-step">
+                <strong>4. Keep Python in the current path</strong>
+                <span>Python should stay hands-on: basics, pandas, cleanup, and simple automation for data work.</span>
+              </div>
+              <div class="career-step">
+                <strong>5. Apply both to realistic scenarios</strong>
+                <span>Use clinical research, healthcare, biotechnology, product, or business data so the skill feels employable.</span>
+              </div>
+              <div class="career-step">
+                <strong>6. Save evidence of progress</strong>
+                <span>Quizzes, notes, explanations, and project artifacts are what turn learning into a portfolio.</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Foundation Steps</h2>
+            <p class="note">Each foundation should have its own next move so the dashboard answers what to do in plain language.</p>
+            <div class="foundation-grid">
+              <div class="foundation-card">
+                <strong>SQL and Data</strong>
+                <ul>
+                  <li>Complete the next SQLBolt lesson</li>
+                  <li>Open the matching exam</li>
+                  <li>Practice missed concepts until stable</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Python and Automation</strong>
+                <ul>
+                  <li>Review one beginner topic at a time</li>
+                  <li>Write a tiny script or pandas task</li>
+                  <li>Use Python on real tabular data</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Product Thinking</strong>
+                <ul>
+                  <li>Define the user problem clearly</li>
+                  <li>Explain what should change and why</li>
+                  <li>Connect work to measurable outcomes</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Technical Communication</strong>
+                <ul>
+                  <li>Explain the reasoning behind each answer</li>
+                  <li>Write short summaries and takeaways</li>
+                  <li>Show what changed after feedback</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Systems and Workflow Thinking</strong>
+                <ul>
+                  <li>See the full flow from lesson to assessment</li>
+                  <li>Track what is exposed vs mastered</li>
+                  <li>Reduce friction in the learning system</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Technical Building</strong>
+                <ul>
+                  <li>Build small usable pieces</li>
+                  <li>Keep the interface clear and direct</li>
+                  <li>Ship iteratively and improve with evidence</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Career Direction</h2>
+            <p class="note">
+              I am building shared foundation skills for data analyst, product,
+              AI implementation, and software engineering paths, then using
+              evidence to see which direction fits best over time.
+            </p>
+
+            <div class="links">
+              <a class="link-card" href="exams/">
+                <strong>Exams</strong>
+                <span>Recommended SQL concept checks and the assessment archive.</span>
+              </a>
+
+              <a class="link-card" href="progress/">
+                <strong>Progress</strong>
+                <span>Recent evidence, mastery history, and the current learning signal.</span>
+              </a>
+
+              <a class="link-card" href="logs/">
+                <strong>Logs</strong>
+                <span>Raw exam records, export, import, and older history.</span>
+              </a>
+
+              <a class="link-card" href="career/">
+                <strong>Career</strong>
+                <span>Role evidence and credential ideas for the current cluster.</span>
+              </a>
+
+              <a class="link-card" href="practice/sql-launcher.html">
+                <strong>SQL Flow</strong>
+                <span>Lesson, concept check, and applied challenge in one compact path.</span>
+              </a>
+
+              <a class="link-card" href="practice/python-launcher.html">
+                <strong>Python Flow</strong>
+                <span>Beginner Python topics, practice, and data-focused application.</span>
+              </a>
+
+              <a class="link-card" href="notes/">
+                <strong>Notes</strong>
+                <span>Learning notes, analogies, and study-system ideas.</span>
+              </a>
+
+              <a class="link-card" href="projects/">
+                <strong>Projects</strong>
+                <span>Project-related trackers and learning artifacts.</span>
+              </a>
+            </div>
+          </section>
         </div>
-      </section>
 
-      <div class="grid">
-        <section class="section">
-          <h2>Active Work</h2>
-          <ul class="projects">
-            <li><a href="https://github.com/EmmaWichmann/codinglearninghub">Career Compass (CC)</a></li>
-            <li><a href="https://github.com/EmmaWichmann/sagespeak">Sage and Speak</a></li>
-            <li><a href="https://github.com/EmmaWichmann/musicmoodapp">Music Mood App</a></li>
-            <li><a href="https://emmawichmann.github.io/outfit-archive">Outfit Archive</a></li>
-            <li>Python Starter Project — coming soon</li>
-            <li>Animation Project — coming soon</li>
-          </ul>
-        </section>
+        <aside class="stack sidebar">
+          <section class="section">
+            <h2>Next Recommended Assessment</h2>
+            <div class="recommendation" id="next-assessment-card" aria-live="polite">
+              <span class="label">Recommended Next Assessment</span>
+              <h3 id="next-assessment-title">Loading recommendation...</h3>
+              <p id="next-assessment-reason" class="note"></p>
+              <ul id="next-assessment-concepts" class="summary-list"></ul>
+              <p class="next-step" id="next-assessment-step"></p>
+              <p class="dashboard-note" id="next-assessment-link"></p>
+            </div>
+            <p class="resource-note">
+              Exams should stay focused on assessments. Use this area to see the next quiz, not a separate course library.
+            </p>
+          </section>
 
-        <section class="section">
-          <h2>Foundation</h2>
-          <ul class="skills">
-            <li>SQL and data - active</li>
-            <li>Python and automation - active too</li>
-            <li>Product thinking - building alongside technical work</li>
-            <li>Technical communication - building alongside technical work</li>
-            <li>Systems and workflow thinking - building alongside technical work</li>
-            <li>Technical building - developing</li>
-          </ul>
-        </section>
+          <section class="section">
+            <h2>Active Work</h2>
+            <ul class="projects">
+              <li><a href="https://github.com/EmmaWichmann/codinglearninghub">Career Compass (CC)</a></li>
+              <li><a href="https://github.com/EmmaWichmann/sagespeak">Sage and Speak</a></li>
+              <li><a href="https://github.com/EmmaWichmann/musicmoodapp">Music Mood App</a></li>
+              <li><a href="https://emmawichmann.github.io/outfit-archive">Outfit Archive</a></li>
+              <li>Python Starter Project — coming soon</li>
+              <li>Animation Project — coming soon</li>
+            </ul>
+          </section>
+
+          <section class="section">
+            <h2>Foundation Snapshot</h2>
+            <ul class="skills">
+              <li>SQL and data - active</li>
+              <li>Python and automation - active too</li>
+              <li>Product thinking - building alongside technical work</li>
+              <li>Technical communication - building alongside technical work</li>
+              <li>Systems and workflow thinking - building alongside technical work</li>
+              <li>Technical building - developing</li>
+            </ul>
+          </section>
+        </aside>
       </div>
-
-      <section class="section" style="margin-top: 20px;">
-        <h2>Career Direction</h2>
-        <p class="note">
-          I am building shared foundation skills for data analyst, product,
-          AI implementation, and software engineering paths, then using
-          evidence to see which direction fits best over time.
-        </p>
-
-        <div class="career-checklist">
-          <div class="career-step">
-            <strong>1. Finish the next SQLBolt lesson</strong>
-            <span>Complete the linked lesson first so exposure stays structured and current.</span>
-          </div>
-          <div class="career-step">
-            <strong>2. Take the matching SQL concept check</strong>
-            <span>Use the exam to see whether the concept is NEW, REVIEWING, or starting to become SOLID.</span>
-          </div>
-          <div class="career-step">
-            <strong>3. Do targeted practice</strong>
-            <span>Review missed concepts, then practice the exact ideas that need repetition.</span>
-          </div>
-          <div class="career-step">
-            <strong>4. Work Python in alongside SQL</strong>
-            <span>Keep Python hands-on with beginner topics, data cleanup, and simple automation.</span>
-          </div>
-          <div class="career-step">
-            <strong>5. Apply both to realistic work</strong>
-            <span>Use clinical research, healthcare, biotechnology, product, or business scenarios to build evidence.</span>
-          </div>
-          <div class="career-step">
-            <strong>6. Gather career evidence</strong>
-            <span>Save quizzes, projects, progress, and explanations that show you can think, build, and communicate.</span>
-          </div>
-        </div>
-
-        <div class="links">
-          <a class="link-card" href="exams/">
-            <strong>Exams</strong>
-            <span>Recommended SQL concept checks and the assessment archive.</span>
-          </a>
-
-          <a class="link-card" href="progress/">
-            <strong>Progress</strong>
-            <span>Recent evidence, mastery history, and the current learning signal.</span>
-          </a>
-
-          <a class="link-card" href="logs/">
-            <strong>Logs</strong>
-            <span>Raw exam records, export, import, and older history.</span>
-          </a>
-
-          <a class="link-card" href="career/">
-            <strong>Career</strong>
-            <span>Role evidence and credential ideas for the current cluster.</span>
-          </a>
-
-          <a class="link-card" href="practice/sql-launcher.html">
-            <strong>SQL Flow</strong>
-            <span>Lesson, concept check, and applied challenge in one compact path.</span>
-          </a>
-
-          <a class="link-card" href="practice/python-launcher.html">
-            <strong>Python Flow</strong>
-            <span>Beginner Python topics, practice, and data-focused application.</span>
-          </a>
-
-          <a class="link-card" href="notes/">
-            <strong>Notes</strong>
-            <span>Learning notes, analogies, and study-system ideas.</span>
-          </a>
-
-          <a class="link-card" href="projects/">
-            <strong>Projects</strong>
-            <span>Project-related trackers and learning artifacts.</span>
-          </a>
-        </div>
-      </section>
     </main>
 
     <script>

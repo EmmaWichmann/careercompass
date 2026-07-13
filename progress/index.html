@@ -143,6 +143,11 @@
       </section>
 
       <section class="card">
+        <h2>Python Wins</h2>
+        <div class="wins-highlight" id="python-wins-list"></div>
+      </section>
+
+      <section class="card">
         <h2>Recent Wins</h2>
         <div class="wins-highlight" id="wins-list"></div>
       </section>
@@ -186,6 +191,7 @@
 
         renderSnapshot();
         renderWins();
+        renderPythonWins();
         renderMastery();
         renderEvidence();
         renderAssessments();
@@ -257,6 +263,30 @@
               "<strong>What this means</strong><span>You are building evidence through repeated correct work, passing assessments, and fewer unresolved misses.</span>";
             container.prepend(summary);
           }
+        }
+
+        function renderPythonWins() {
+          const container = document.getElementById("python-wins-list");
+          container.innerHTML = "";
+          const items = [
+            { title: "Python is on the path", detail: "The roadmap now shows Python as part of the current path, not a distant side note.", state: "ACTIVE" },
+            { title: "Python launcher added", detail: "Practice now has a compact Python entry point alongside SQL Flow.", state: "READY" },
+            { title: "Career path updated", detail: "The career page now reflects the SQL + Python foundation and the broader role cluster.", state: "VISIBLE" },
+          ];
+
+          items.forEach(function (item) {
+            const row = document.createElement("div");
+            row.className = "item";
+            row.innerHTML =
+              '<div class="top"><div><strong>' +
+              item.title +
+              '</strong><p>' +
+              item.detail +
+              '</p></div><span class="status new">' +
+              item.state +
+              '</span></div>';
+            container.append(row);
+          });
         }
 
         function renderEvidence() {

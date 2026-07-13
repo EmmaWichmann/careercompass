@@ -282,6 +282,52 @@
 
       .foundation-card ul {
         margin: 10px 0 0;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .foundation-card li {
+        position: relative;
+        padding-left: 18px;
+        margin-top: 8px;
+      }
+
+      .foundation-card li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .credential-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .credential-card {
+        background: #fffdf9;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .credential-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .credential-card span,
+      .credential-card a,
+      .credential-card li {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .credential-card ul {
+        margin: 10px 0 0;
         padding-left: 18px;
       }
 
@@ -324,7 +370,8 @@
         }
 
         .dashboard,
-        .foundation-grid {
+        .foundation-grid,
+        .credential-grid {
           grid-template-columns: 1fr;
         }
 
@@ -433,6 +480,45 @@
                   <li>Build small usable pieces</li>
                   <li>Keep the interface clear and direct</li>
                   <li>Ship iteratively and improve with evidence</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="section">
+            <h2>Free Certifications To Aim For</h2>
+            <p class="note">These are free, official options that fit the current path better than expensive course bundles.</p>
+            <div class="credential-grid">
+              <div class="credential-card">
+                <strong>Data Analyst</strong>
+                <span>Use free Google and Microsoft training plus portfolio evidence.</span>
+                <ul>
+                  <li><a href="https://skillshop.exceedlms.com/student/catalog" target="_blank" rel="noreferrer">Google Skillshop</a> for Google Analytics certification training.</li>
+                  <li><a href="https://skillsbuild.org/" target="_blank" rel="noreferrer">IBM SkillsBuild</a> for free courses and digital credentials.</li>
+                </ul>
+              </div>
+              <div class="credential-card">
+                <strong>Python</strong>
+                <span>Keep the signal practical and visible with free practice and certificates.</span>
+                <ul>
+                  <li><a href="https://www.freecodecamp.org/" target="_blank" rel="noreferrer">freeCodeCamp</a> certificates for Python and data work.</li>
+                  <li>Use the Python Flow page as your parallel hands-on track.</li>
+                </ul>
+              </div>
+              <div class="credential-card">
+                <strong>Product / PM</strong>
+                <span>Use free learning from Google-style career resources and show product thinking through projects.</span>
+                <ul>
+                  <li><a href="https://skillshop.exceedlms.com/student/catalog" target="_blank" rel="noreferrer">Skillshop</a> for free Google career-readiness and analytics learning.</li>
+                  <li>Build product evidence through redesigns, metrics, and user-flow improvements.</li>
+                </ul>
+              </div>
+              <div class="credential-card">
+                <strong>AI Implementation / Software</strong>
+                <span>Use free learning plus small shipped projects rather than expensive certificates first.</span>
+                <ul>
+                  <li><a href="https://skillsbuild.org/" target="_blank" rel="noreferrer">IBM SkillsBuild</a> for free AI and digital credentials.</li>
+                  <li>Use freeCodeCamp and open project work to build technical proof.</li>
                 </ul>
               </div>
             </div>

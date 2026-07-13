@@ -41,9 +41,10 @@
 
     <script>
       (function () {
+        const mastery = read("coding-hub-concept-mastery", {});
         const steps = [
-          { title: "Step 1: SQLBolt lesson", note: "Short explanation first, then hands-on practice.", href: "https://sqlbolt.com/lesson/select_queries_introduction", label: "Open SQLBolt" },
-          { title: "Step 2: Concept check", note: "A focused quiz to check understanding before moving on.", href: "../exams/exam.html?language=sql&exam=1", label: "Start Quiz" },
+          { title: "Step 1: SQLBolt lesson", note: "Short explanation first, then hands-on practice.", href: getLesson().resource, label: "Open SQLBolt" },
+          { title: "Step 2: Concept check", note: "A focused quiz to check understanding before moving on.", href: getLesson().assessment, label: "Start Quiz" },
           { title: "Step 3: Applied challenge", note: "Try a realistic filtering or reporting scenario after the quiz.", href: "../exams/", label: "Open Applied Challenge" }
         ];
 
@@ -56,6 +57,33 @@
             '<a class="button ' + (index === 0 ? "primary" : "secondary") + '" href="' + step.href + '">' + step.label + '</a>';
           list.append(row);
         });
+
+        function getLesson() {
+          const progression = [
+            { key: "sql::SELECT", title: "SQL Lesson 1: SELECT queries 101", resource: "https://sqlbolt.com/lesson/select_queries_introduction", assessment: "../exams/exam.html?language=sql&exam=1" },
+            { key: "sql::WHERE", title: "SQL Lesson 2: Queries with constraints (Pt. 1)", resource: "https://sqlbolt.com/lesson/select_queries_with_constraints", assessment: "../exams/exam.html?language=sql&exam=2" },
+            { key: "sql::ORDER BY", title: "SQL Lesson 4: Filtering and sorting Query results", resource: "https://sqlbolt.com/lesson/filtering_sorting_query_results", assessment: "../exams/exam.html?language=sql&exam=3" },
+            { key: "sql::COUNT()", title: "SQL Lesson 10: Queries with aggregates (Pt. 1)", resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates", assessment: "../exams/exam.html?language=sql&exam=4" },
+            { key: "sql::GROUP BY", title: "SQL Lesson 11: Queries with aggregates (Pt. 2)", resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates_pt_2", assessment: "../exams/exam.html?language=sql&exam=5" },
+            { key: "sql::INNER JOIN", title: "SQL Lesson 6: Multi-table queries with JOINs", resource: "https://sqlbolt.com/lesson/select_queries_with_joins", assessment: "../exams/exam.html?language=sql&exam=7" },
+            { key: "sql::LEFT JOIN", title: "SQL Lesson 7: OUTER JOINs", resource: "https://sqlbolt.com/lesson/select_queries_with_outer_joins", assessment: "../exams/exam.html?language=sql&exam=8" },
+            { key: "sql::CASE WHEN", title: "SQL Lesson 9: Queries with expressions", resource: "https://sqlbolt.com/lesson/select_queries_with_expressions", assessment: "../exams/exam.html?language=sql&exam=9" },
+            { key: "sql::subquery", title: "SQL Topic: Subqueries", resource: "https://sqlbolt.com/lesson/select_queries_with_subqueries", assessment: "../exams/exam.html?language=sql&exam=10" },
+            { key: "sql::IS NULL", title: "SQL Lesson 8: A short note on NULLs", resource: "https://sqlbolt.com/lesson/select_queries_with_nulls", assessment: "../exams/exam.html?language=sql&exam=11" },
+          ];
+
+          return progression.find(function (item) {
+            return (mastery[item.key]?.state || "NOT STARTED") !== "SOLID";
+          }) || progression[0];
+        }
+
+        function read(key, fallback) {
+          try {
+            return JSON.parse(localStorage.getItem(key)) ?? fallback;
+          } catch {
+            return fallback;
+          }
+        }
       })();
     </script>
   </body>

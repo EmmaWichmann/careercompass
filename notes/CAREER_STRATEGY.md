@@ -44,30 +44,51 @@ Concept mastery tracking
 
 These are not required all at once. They are a menu of resume and LinkedIn-friendly options that can match the role cluster.
 
+Rule of thumb:
+
+- one primary credential target per major foundation
+- free and verifiable first when possible
+- only choose credentials that support the current learning order
+- do not collect badges that do not reinforce the portfolio
+
 ### Data Analyst
 
-- Google Data Analytics Certificate
-- IBM Data Analyst Professional Certificate
-- Microsoft Certified: Power BI Data Analyst Associate
-- Tableau Desktop Specialist
+- Primary free target: freeCodeCamp Relational Database certification
+- Then, if you want an extra free credential lane, use IBM SkillsBuild digital credentials for data/AI foundations
+- Later paid or formal option: Google Data Analytics Certificate
+- Later paid or formal option: IBM Data Analyst Professional Certificate
+- Later paid or formal option: Microsoft Certified: Power BI Data Analyst Associate
+- Later paid or formal option: Tableau Desktop Specialist
+
+Suggested order:
+
+1. SQL and relational database credential after SQL + portfolio project
+2. Python credential after Python practice starts to feel stable
+3. APIs/data workflow credential after APIs and JSON work
+4. Data visualization credential after charting and dashboard practice
 
 ### Product Analyst / Product Manager
 
-- Google Project Management Certificate
-- Agile or Scrum fundamentals certificate
-- Product management fundamentals certificate from a recognized provider
+- Primary free target: build product evidence through projects before paying for any certificate
+- Optional free supporting option: IBM SkillsBuild digital credentials where available
+- Later paid or formal option: Google Project Management Certificate
+- Later paid or formal option: Agile or Scrum fundamentals certificate
+- Later paid or formal option: product management fundamentals certificate from a recognized provider
 
 ### AI Implementation Specialist
 
-- Google AI Essentials
-- Microsoft Azure AI Fundamentals
-- AI workflow or prompt engineering certificate from a recognized provider
+- Primary free target: IBM SkillsBuild AI and digital-credential offerings when available
+- Optional free supporting option: keep portfolio evidence from AI workflow experiments and shipped projects
+- Later paid or formal option: Google AI Essentials
+- Later paid or formal option: Microsoft Azure AI Fundamentals
+- Later paid or formal option: AI workflow or prompt engineering certificate from a recognized provider
 
 ### Software Engineer
 
-- AWS Certified Cloud Practitioner
-- AWS Certified Developer Associate
-- a language-specific certificate or badge if it clearly supports the projects I am actually building
+- Primary free target: freeCodeCamp certifications that match the language/project phase
+- Later paid or formal option: AWS Certified Cloud Practitioner
+- Later paid or formal option: AWS Certified Developer Associate
+- Later paid or formal option: a language-specific certificate or badge if it clearly supports the projects I am actually building
 
 ### How To Choose
 
@@ -100,7 +121,11 @@ Track repeated evidence from:
 
 ## Current Priority Reminder
 
-The strategy should keep SQL as the active track, but the assessment and certification paths should stay broad enough to support later product, AI, and software directions.
+The strategy should keep SQL as the active track, but the certification path should follow the learning order:
+
+SQL -> SQL portfolio project -> Python -> APIs/JSON -> Data visualization -> later AI/data foundations
+
+The assessment and credential paths should stay broad enough to support later product, AI, and software directions without adding multiple courses at once.
 
 ## Naming Direction
 

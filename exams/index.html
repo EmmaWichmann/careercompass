@@ -146,6 +146,11 @@
         color: var(--accent);
       }
 
+      .button.arrow::before {
+        content: "→";
+        margin-right: 8px;
+      }
+
       .progress-list {
         display: grid;
         gap: 12px;
@@ -267,6 +272,7 @@
           <p id="rec-reason" class="muted"></p>
           <div class="muted" id="rec-meta"></div>
           <ul class="summary-list" id="rec-covers"></ul>
+          <p class="muted" id="rec-next-arrow"></p>
           <div class="actions" id="rec-actions"></div>
         </div>
       </section>
@@ -359,6 +365,7 @@
                 reason: "A recent missed concept should be reviewed before moving to the next SQL check.",
                 meta: "Focus on the weak spot first, then return to the SQL progression.",
                 covers: [latestMissed.topic, latestMissed.prompt],
+                nextStep: "open missed concepts, then return to study mode",
                 actions: [
                   { label: "Open Missed Concepts", href: "../practice/coding-question-log.html", primary: true },
                   { label: "Open Study Mode", href: "../practice/study-mode.html", primary: false },
@@ -369,6 +376,7 @@
                 reason: "This is the next SQL concept in the current progression.",
                 meta: "5 questions • 5-10 min • career-relevant SQL practice",
                 covers: nextConcept.concepts,
+                nextStep: "start the recommended quiz after the current lesson",
                 actions: [
                   { label: "Start Recommended Quiz", href: nextConcept.href, primary: true },
                   { label: "Open SQLBolt", href: "https://sqlbolt.com/", primary: false },
@@ -378,6 +386,8 @@
           document.getElementById("rec-title").textContent = recommendation.title;
           document.getElementById("rec-reason").textContent = recommendation.reason;
           document.getElementById("rec-meta").textContent = recommendation.meta;
+          document.getElementById("rec-next-arrow").textContent =
+            "→ Next step: " + recommendation.nextStep;
           const covers = document.getElementById("rec-covers");
           covers.innerHTML = "";
           recommendation.covers.forEach(function (item) {
@@ -389,7 +399,7 @@
           actions.innerHTML = "";
           recommendation.actions.forEach(function (item) {
             const link = document.createElement("a");
-            link.className = "button " + (item.primary ? "primary" : "secondary");
+            link.className = "button " + (item.primary ? "primary arrow" : "secondary");
             link.href = item.href;
             link.textContent = item.label;
             actions.append(link);

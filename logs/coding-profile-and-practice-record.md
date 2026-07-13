@@ -20,7 +20,7 @@ I am learning front-end development first, with a focus on:
 
 ## Selected Projects
 
-### 1. Career Systems Lab
+### 1. Career Compass
 
 A personal learning system for my coding journey.
 

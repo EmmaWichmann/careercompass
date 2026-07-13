@@ -1,4 +1,4 @@
-# Career Systems Lab
+# Career Compass
 
 I am working with `Codex` in an AI-assisted workflow to track progress, test ideas, review changes, and improve this project over time.
 
@@ -14,7 +14,7 @@ This project is a shared-foundation learning system for SQL, Python, product thi
 
 ## Current Project List
 
-1. `Career Systems Lab`
+1. `Career Compass (CC)`
 2. `Sage and Speak`
 3. `Music Mood App`
 4. `Closet Tracker`

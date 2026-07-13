@@ -58,4 +58,5 @@ The old name was useful, but the system has grown beyond coding alone.
 
 Current preferred name:
 
-- Career Systems Lab
+- Career Compass
+- Short form: `CC`

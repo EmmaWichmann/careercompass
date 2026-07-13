@@ -306,12 +306,17 @@
         <div class="links">
           <a class="link-card" href="exams/">
             <strong>Exams</strong>
-            <span>General skill checks and applied assessments tied to the current learning phase.</span>
+            <span>Recommended SQL concept checks, applied challenges, and archive assessments.</span>
           </a>
 
-<a class="link-card" href="logs/">
+          <a class="link-card" href="progress/">
+            <strong>Progress</strong>
+            <span>Recent evidence, mastery history, and the current learning signal.</span>
+          </a>
+
+          <a class="link-card" href="logs/">
             <strong>Logs</strong>
-            <span>Automatic exam records, progress backup, and restore tools.</span>
+            <span>Raw exam records, export, import, and older history.</span>
           </a>
 
           <a class="link-card" href="notes/">
@@ -397,15 +402,15 @@
 
           if (sqlStatus.nextLesson && sqlStatus.completedLessons <= 2) {
             return {
-              title: "SQLBolt lesson",
-              reason: "SQL is the active track, so the next best move is the next SQLBolt lesson plus a short check.",
+              title: sqlStatus.nextLesson.title + " concept check",
+              reason: "SQL is the active track, so the next concept check should match the next step in the SQL sequence.",
               concepts: [sqlStatus.nextLesson.title, sqlStatus.nextLesson.concepts.join(", "), sqlStatus.masteryHint],
               step:
-                "Complete the linked SQLBolt lesson, then use the concept check to confirm you can apply it.",
-              linkLabel: "Open SQLBolt",
-              href: "https://sqlbolt.com/",
-              secondaryLabel: "Open Exams",
-              secondaryHref: "exams/",
+                "Complete the linked SQLBolt lesson, then take the matching SQL concept check to confirm the skill.",
+              linkLabel: "Open SQLBolt lesson",
+              href: sqlStatus.nextLesson.resource,
+              secondaryLabel: "Start Quiz",
+              secondaryHref: sqlStatus.nextLesson.assessment,
             };
           }
 
@@ -428,14 +433,14 @@
 
         function getSqlStatus(progress, activityLog, conceptMastery) {
           const progression = [
-            { title: "SQL basics", concepts: ["SELECT", "FROM"] },
-            { title: "Filtering", concepts: ["WHERE"] },
-            { title: "Sorting", concepts: ["ORDER BY"] },
-            { title: "Limiting results", concepts: ["LIMIT"] },
-            { title: "Aggregates", concepts: ["COUNT", "SUM", "AVG"] },
-            { title: "Grouping", concepts: ["GROUP BY", "HAVING"] },
-            { title: "Joins", concepts: ["INNER JOIN", "LEFT JOIN"] },
-            { title: "Case and cleanup", concepts: ["CASE WHEN", "NULL handling"] },
+            { title: "SQL basics", concepts: ["SELECT", "FROM"], resource: "https://sqlbolt.com/lesson/select_queries_introduction", assessment: "exams/exam.html?language=sql&exam=1" },
+            { title: "Filtering", concepts: ["WHERE"], resource: "https://sqlbolt.com/lesson/select_queries_where", assessment: "exams/exam.html?language=sql&exam=2" },
+            { title: "Sorting", concepts: ["ORDER BY"], resource: "https://sqlbolt.com/lesson/query_order", assessment: "exams/exam.html?language=sql&exam=3" },
+            { title: "Limiting results", concepts: ["LIMIT"], resource: "https://sqlbolt.com/lesson/select_queries_order_of_execution", assessment: "exams/exam.html?language=sql&exam=3" },
+            { title: "Aggregates", concepts: ["COUNT", "SUM", "AVG"], resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates", assessment: "exams/exam.html?language=sql&exam=4" },
+            { title: "Grouping", concepts: ["GROUP BY", "HAVING"], resource: "https://sqlbolt.com/lesson/select_queries_with_group_by", assessment: "exams/exam.html?language=sql&exam=5" },
+            { title: "Joins", concepts: ["INNER JOIN", "LEFT JOIN"], resource: "https://sqlbolt.com/lesson/select_queries_with_joins", assessment: "exams/exam.html?language=sql&exam=7" },
+            { title: "Case and cleanup", concepts: ["CASE WHEN", "NULL handling"], resource: "https://sqlbolt.com/lesson/select_queries_with_expressions", assessment: "exams/exam.html?language=sql&exam=9" },
           ];
 
           const completedLessons = activityLog
@@ -463,12 +468,12 @@
 
           if (sqlStatus.completedLessons <= 1) {
             return {
-              title: "Concept check",
-              reason: "You are still early in SQL, so a short targeted check is better than a long mixed exam.",
+              title: "SELECT and FROM concept check",
+              reason: "You are still early in SQL, so the first check should stay tightly focused on selecting data from a table.",
               concepts: ["SELECT", "FROM", "WHERE"],
-              step: "Do the short SQL concept check after the next lesson.",
-              linkLabel: "Open Exams",
-              href: "exams/",
+              step: "Do the short SQL concept check after the next SQLBolt lesson.",
+              linkLabel: "Start Quiz",
+              href: "exams/exam.html?language=sql&exam=1",
             };
           }
 

@@ -116,10 +116,12 @@
       correctCount += 1;
       feedback.textContent = "Correct. " + question.explanation;
       feedback.className = "feedback correct";
+      updateConceptMastery(question, true, false);
     } else {
       feedback.textContent =
         "Not quite. The answer is " + question.answer + ". " + question.explanation;
       feedback.className = "feedback incorrect";
+      updateConceptMastery(question, false, true);
       window.CodingHubStorage.addMissedCard(
         question,
         exam.languageName,
@@ -216,5 +218,22 @@
 
   function normalize(value) {
     return value.trim().toLowerCase().replace(/\s+/g, " ");
+  }
+
+  function updateConceptMastery(question, correct, missed) {
+    if (!window.CodingHubStorage?.saveConceptMastery) {
+      return;
+    }
+
+    window.CodingHubStorage.saveConceptMastery({
+      key: exam.language + "::" + question.topic,
+      source: "exam-" + exam.examNumber,
+      exposure: true,
+      correct: correct,
+      missed: missed,
+      reviewing: missed || !correct,
+      outcome: correct ? "correct" : "missed",
+      timestamp: new Date().toISOString(),
+    });
   }
 })();

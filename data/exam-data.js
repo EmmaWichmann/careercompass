@@ -1,5 +1,5 @@
 (function () {
-  /* ── Topic lists (10 exams per language) ── */
+  /* ── Topic lists (10+ exams per language) ── */
   const htmlTopics = [
     ["Document foundations", "doctype, html, head, body, title, metadata"],
     ["Text and meaning", "headings, paragraphs, emphasis, quotations, semantic meaning"],
@@ -53,16 +53,17 @@
   ];
 
   const sqlTopics = [
-    ["SELECT basics", "SELECT, FROM, column aliases, DISTINCT"],
-    ["Filtering with WHERE", "WHERE, AND, OR, LIKE, IS NULL, IN"],
-    ["Sorting and limiting", "ORDER BY, ASC, DESC, LIMIT"],
-    ["Aggregate functions", "COUNT, SUM, AVG, MIN, MAX"],
-    ["GROUP BY and HAVING", "GROUP BY, HAVING, grouped aggregates"],
-    ["JOINs", "INNER JOIN, LEFT JOIN, ON, table aliases"],
-    ["Modifying data", "INSERT INTO, UPDATE, DELETE, WHERE safety"],
+    ["SELECT and FROM", "SELECT, FROM, basic column selection"],
+    ["WHERE", "WHERE, AND, OR, LIKE, IN, text and numeric filters"],
+    ["ORDER BY and LIMIT", "ORDER BY, ASC, DESC, LIMIT"],
+    ["COUNT, SUM, AVG", "COUNT, SUM, AVG, aggregate functions"],
+    ["GROUP BY", "GROUP BY, grouped aggregates"],
+    ["HAVING", "HAVING, filtering grouped results"],
+    ["INNER JOIN", "INNER JOIN, ON, table aliases"],
+    ["LEFT JOIN", "LEFT JOIN, unmatched rows, null fill"],
+    ["CASE WHEN", "CASE WHEN, output logic, conditional labeling"],
     ["Subqueries", "nested SELECT, IN with subquery, scalar subquery"],
-    ["Comprehensive review", "all beginner SQL topics"],
-    ["Beginner final", "debugging queries, join logic, aggregation review"],
+    ["NULL handling and cleaning", "IS NULL, DISTINCT, BETWEEN, basic data cleaning"],
   ];
 
   const typescriptTopics = [
@@ -515,7 +516,8 @@
   function getExam(language, examNumber) {
     const topics = allTopics[language];
     const bank = banks[language];
-    const start = ((examNumber - 1) * 3) % bank.length;
+    const examIndex = Math.min(Math.max(1, examNumber), topics.length);
+    const start = ((examIndex - 1) * 3) % bank.length;
     const selected = [];
 
     for (let index = 0; index < 10; index += 1) {
@@ -531,9 +533,9 @@
     return {
       language: language,
       languageName: displayLanguage(language),
-      examNumber: examNumber,
-      title: topics[examNumber - 1][0],
-      description: topics[examNumber - 1][1],
+      examNumber: examIndex,
+      title: topics[examIndex - 1][0],
+      description: topics[examIndex - 1][1],
       questions: questions,
       passingPercent: 80,
     };

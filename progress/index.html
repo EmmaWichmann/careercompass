@@ -68,6 +68,7 @@
         white-space: nowrap; padding: 6px 10px; border-radius: 999px; background: #f2e2d4; color: var(--accent); font-size: 0.84rem;
       }
       .status.solid { background: #ddebdc; color: #35664a; }
+      .status.passed { background: #ddebdc; color: #35664a; }
       .status.reviewing { background: #f8e2d9; color: #8a4a2e; }
       .status.new { background: #f6eddc; }
       .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
@@ -119,6 +120,11 @@
       </section>
 
       <section class="card">
+        <h2>Recent Wins</h2>
+        <div class="timeline" id="wins-list"></div>
+      </section>
+
+      <section class="card">
         <h2>Mastery History</h2>
         <div class="list" id="mastery-list"></div>
       </section>
@@ -142,20 +148,21 @@
         const missed = read("coding-hub-missed-concepts", []);
 
         const sqlPlan = [
-          { title: "SELECT and FROM", concepts: ["retrieve columns", "source table", "column alias"] },
-          { title: "WHERE", concepts: ["filter rows", "pattern match", "null check", "in list"] },
-          { title: "ORDER BY and LIMIT", concepts: ["sort results", "limit rows"] },
-          { title: "COUNT, SUM, AVG", concepts: ["count rows", "sum values", "average value"] },
-          { title: "GROUP BY", concepts: ["group rows"] },
-          { title: "HAVING", concepts: ["filter groups"] },
-          { title: "INNER JOIN", concepts: ["inner join", "join condition"] },
-          { title: "LEFT JOIN", concepts: ["left join", "join condition"] },
-          { title: "CASE WHEN", concepts: ["case when"] },
-          { title: "Subqueries", concepts: ["subquery"] },
-          { title: "NULL handling and cleaning", concepts: ["null check", "unique values", "between range"] },
+          { title: "SQL Lesson 1: SELECT queries 101", concepts: ["SELECT", "FROM", "column alias"] },
+          { title: "SQL Lesson 2: Queries with constraints (Pt. 1)", concepts: ["WHERE", "in list", "null check"] },
+          { title: "SQL Lesson 4: Filtering and sorting Query results", concepts: ["ORDER BY", "LIMIT"] },
+          { title: "SQL Lesson 10: Queries with aggregates (Pt. 1)", concepts: ["COUNT", "SUM", "AVG"] },
+          { title: "SQL Lesson 11: Queries with aggregates (Pt. 2)", concepts: ["GROUP BY", "HAVING"] },
+          { title: "SQL Lesson 6: Multi-table queries with JOINs", concepts: ["INNER JOIN", "join condition"] },
+          { title: "SQL Lesson 7: OUTER JOINs", concepts: ["LEFT JOIN", "join condition"] },
+          { title: "SQL Lesson 8: A short note on NULLs", concepts: ["null check", "unique values", "between range"] },
+          { title: "SQL Lesson 9: Queries with expressions", concepts: ["CASE WHEN"] },
+          { title: "SQL Topic: Subqueries", concepts: ["subquery"] },
+          { title: "SQL data cleaning", concepts: ["between range", "null check", "unique values"] },
         ];
 
         renderSnapshot();
+        renderWins();
         renderMastery();
         renderEvidence();
         renderAssessments();
@@ -186,6 +193,36 @@
               state.toLowerCase() +
               '">' +
               state +
+              '</span></div>';
+            container.append(row);
+          });
+        }
+
+        function renderWins() {
+          const container = document.getElementById("wins-list");
+          container.innerHTML = "";
+          const wins = collectWins();
+
+          if (wins.length === 0) {
+            const empty = document.createElement("div");
+            empty.className = "item";
+            empty.textContent = "No recent wins yet. As you practice, this section will capture passing work and solid concepts.";
+            container.append(empty);
+            return;
+          }
+
+          wins.forEach(function (win) {
+            const row = document.createElement("div");
+            row.className = "item";
+            row.innerHTML =
+              '<div class="top"><div><strong>' +
+              win.title +
+              '</strong><p>' +
+              win.detail +
+              '</p></div><span class="status ' +
+              win.state.toLowerCase() +
+              '">' +
+              win.state +
               '</span></div>';
             container.append(row);
           });
@@ -270,6 +307,38 @@
               "</span></div>";
             container.append(row);
           });
+        }
+
+        function collectWins() {
+          const wins = [];
+
+          Object.entries(mastery)
+            .filter(function ([key, value]) {
+              return value.state === "SOLID";
+            })
+            .slice(0, 4)
+            .forEach(function ([key, value]) {
+              wins.push({
+                title: key.split("::")[1] || key,
+                detail: "This concept has enough repeated correct evidence to count as solid.",
+                state: value.state,
+              });
+            });
+
+          activity
+            .filter(function (entry) {
+              return entry.passed;
+            })
+            .slice(0, 3)
+            .forEach(function (entry) {
+              wins.push({
+                title: entry.examTitle || "Assessment passed",
+                detail: entry.percent + "% on " + formatDate(entry.date),
+                state: "PASSED",
+              });
+            });
+
+          return wins.slice(0, 6);
         }
 
         function getState(concepts) {

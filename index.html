@@ -433,14 +433,17 @@
 
         function getSqlStatus(progress, activityLog, conceptMastery) {
           const progression = [
-            { title: "SQL basics", concepts: ["SELECT", "FROM"], resource: "https://sqlbolt.com/lesson/select_queries_introduction", assessment: "exams/exam.html?language=sql&exam=1" },
-            { title: "Filtering", concepts: ["WHERE"], resource: "https://sqlbolt.com/lesson/select_queries_where", assessment: "exams/exam.html?language=sql&exam=2" },
-            { title: "Sorting", concepts: ["ORDER BY"], resource: "https://sqlbolt.com/lesson/query_order", assessment: "exams/exam.html?language=sql&exam=3" },
-            { title: "Limiting results", concepts: ["LIMIT"], resource: "https://sqlbolt.com/lesson/select_queries_order_of_execution", assessment: "exams/exam.html?language=sql&exam=3" },
-            { title: "Aggregates", concepts: ["COUNT", "SUM", "AVG"], resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates", assessment: "exams/exam.html?language=sql&exam=4" },
-            { title: "Grouping", concepts: ["GROUP BY", "HAVING"], resource: "https://sqlbolt.com/lesson/select_queries_with_group_by", assessment: "exams/exam.html?language=sql&exam=5" },
-            { title: "Joins", concepts: ["INNER JOIN", "LEFT JOIN"], resource: "https://sqlbolt.com/lesson/select_queries_with_joins", assessment: "exams/exam.html?language=sql&exam=7" },
-            { title: "Case and cleanup", concepts: ["CASE WHEN", "NULL handling"], resource: "https://sqlbolt.com/lesson/select_queries_with_expressions", assessment: "exams/exam.html?language=sql&exam=9" },
+            { title: "SQL Lesson 1: SELECT queries 101", concepts: ["SELECT", "FROM"], resource: "https://sqlbolt.com/lesson/select_queries_introduction", assessment: "exams/exam.html?language=sql&exam=1" },
+            { title: "SQL Lesson 2: Queries with constraints (Pt. 1)", concepts: ["WHERE"], resource: "https://sqlbolt.com/lesson/select_queries_with_constraints", assessment: "exams/exam.html?language=sql&exam=2" },
+            { title: "SQL Lesson 4: Filtering and sorting Query results", concepts: ["ORDER BY", "LIMIT"], resource: "https://sqlbolt.com/lesson/filtering_sorting_query_results", assessment: "exams/exam.html?language=sql&exam=3" },
+            { title: "SQL Lesson 10: Queries with aggregates (Pt. 1)", concepts: ["COUNT", "SUM", "AVG"], resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates", assessment: "exams/exam.html?language=sql&exam=4" },
+            { title: "SQL Lesson 11: Queries with aggregates (Pt. 2)", concepts: ["GROUP BY", "HAVING"], resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates_pt_2", assessment: "exams/exam.html?language=sql&exam=5" },
+            { title: "SQL Lesson 6: Multi-table queries with JOINs", concepts: ["INNER JOIN"], resource: "https://sqlbolt.com/lesson/select_queries_with_joins", assessment: "exams/exam.html?language=sql&exam=7" },
+            { title: "SQL Lesson 7: OUTER JOINs", concepts: ["LEFT JOIN"], resource: "https://sqlbolt.com/lesson/select_queries_with_outer_joins", assessment: "exams/exam.html?language=sql&exam=8" },
+            { title: "SQL Lesson 8: A short note on NULLs", concepts: ["NULL handling"], resource: "https://sqlbolt.com/lesson/select_queries_with_nulls", assessment: "exams/exam.html?language=sql&exam=11" },
+            { title: "SQL Lesson 9: Queries with expressions", concepts: ["CASE WHEN"], resource: "https://sqlbolt.com/lesson/select_queries_with_expressions", assessment: "exams/exam.html?language=sql&exam=9" },
+            { title: "SQL Topic: Subqueries", concepts: ["subquery"], resource: "https://sqlbolt.com/lesson/select_queries_with_subqueries", assessment: "exams/exam.html?language=sql&exam=10" },
+            { title: "SQL Lesson 8: A short note on NULLs", concepts: ["DISTINCT", "BETWEEN", "NULL handling"], resource: "https://sqlbolt.com/lesson/select_queries_with_nulls", assessment: "exams/exam.html?language=sql&exam=11" },
           ];
 
           const completedLessons = activityLog

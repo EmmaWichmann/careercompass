@@ -292,31 +292,6 @@
         line-height: 1.6;
       }
 
-      .priority-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 16px;
-      }
-
-      .priority-card {
-        padding: 14px 16px;
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fffdf9;
-      }
-
-      .priority-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--accent);
-      }
-
-      .priority-card span {
-        color: var(--muted);
-        line-height: 1.6;
-      }
-
       .foundation-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -362,38 +337,6 @@
         color: var(--accent);
       }
 
-      .credential-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 16px;
-      }
-
-      .credential-card {
-        background: #fffdf9;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 16px;
-      }
-
-      .credential-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--accent);
-      }
-
-      .credential-card span,
-      .credential-card a,
-      .credential-card li {
-        color: var(--muted);
-        line-height: 1.55;
-      }
-
-      .credential-card ul {
-        margin: 10px 0 0;
-        padding-left: 18px;
-      }
-
       .sidebar {
         position: sticky;
         top: 18px;
@@ -434,8 +377,7 @@
 
         .dashboard,
         .foundation-grid,
-        .credential-grid,
-        .priority-grid {
+        .credential-grid {
           grid-template-columns: 1fr;
         }
 
@@ -559,70 +501,12 @@
           </section>
 
           <section class="section">
-            <h2>Free Certifications To Aim For</h2>
-            <p class="note">These are free, official options that fit the current path better than expensive course bundles.</p>
-            <div class="credential-grid">
-              <div class="credential-card">
-                <strong>Data Analyst</strong>
-                <span>Use free Google and Microsoft training plus portfolio evidence.</span>
-                <ul>
-                  <li><a href="https://skillshop.exceedlms.com/student/catalog" target="_blank" rel="noreferrer">Google Skillshop</a> for Google Analytics certification training.</li>
-                  <li><a href="https://skillsbuild.org/" target="_blank" rel="noreferrer">IBM SkillsBuild</a> for free courses and digital credentials.</li>
-                </ul>
-              </div>
-              <div class="credential-card">
-                <strong>Python</strong>
-                <span>Keep the signal practical and visible with free practice and certificates.</span>
-                <ul>
-                  <li><a href="https://www.freecodecamp.org/" target="_blank" rel="noreferrer">freeCodeCamp</a> certificates for Python and data work.</li>
-                  <li>Use the Python Flow page as your parallel hands-on track.</li>
-                </ul>
-              </div>
-              <div class="credential-card">
-                <strong>Product / PM</strong>
-                <span>Use free learning from Google-style career resources and show product thinking through projects.</span>
-                <ul>
-                  <li><a href="https://skillshop.exceedlms.com/student/catalog" target="_blank" rel="noreferrer">Skillshop</a> for free Google career-readiness and analytics learning.</li>
-                  <li>Build product evidence through redesigns, metrics, and user-flow improvements.</li>
-                </ul>
-              </div>
-              <div class="credential-card">
-                <strong>AI Implementation / Software</strong>
-                <span>Use free learning plus small shipped projects rather than expensive certificates first.</span>
-                <ul>
-                  <li><a href="https://skillsbuild.org/" target="_blank" rel="noreferrer">IBM SkillsBuild</a> for free AI and digital credentials.</li>
-                  <li>Use freeCodeCamp and open project work to build technical proof.</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <section class="section">
             <h2>Career Direction</h2>
             <p class="note">
               I am building shared foundation skills for data analyst, product,
               AI implementation, and software engineering paths, then using
               evidence to see which direction fits best over time.
             </p>
-
-            <div class="priority-grid">
-              <div class="priority-card">
-                <strong>Best first target: Data Analyst</strong>
-                <span>Most aligned with SQL, Python, reporting, and the kind of structured evidence you are already building.</span>
-              </div>
-              <div class="priority-card">
-                <strong>Strong backup: Product Analyst</strong>
-                <span>Good fit if you keep liking user friction, measurement, and improving flows for real people.</span>
-              </div>
-              <div class="priority-card">
-                <strong>Stretch path: Product Manager / AI Implementation</strong>
-                <span>Good if you enjoy translating fuzzy needs into clear specs and guiding a build.</span>
-              </div>
-              <div class="priority-card">
-                <strong>Longer-term stretch: Software Engineer</strong>
-                <span>Worth keeping open, but it needs more building and debugging evidence over time.</span>
-              </div>
-            </div>
 
             <div class="links">
               <a class="link-card" href="exams/">
@@ -633,11 +517,6 @@
               <a class="link-card" href="progress/">
                 <strong>Progress</strong>
                 <span>Recent evidence, mastery history, and the current learning signal.</span>
-              </a>
-
-              <a class="link-card" href="career/">
-                <strong>Career</strong>
-                <span>Role evidence and credential ideas for the current cluster.</span>
               </a>
 
               <a class="link-card" href="practice/sql-launcher.html">
@@ -653,11 +532,6 @@
               <a class="link-card" href="notes/">
                 <strong>Notes</strong>
                 <span>Learning notes, analogies, and study-system ideas.</span>
-              </a>
-
-              <a class="link-card" href="projects/">
-                <strong>Projects</strong>
-                <span>Project-related trackers and learning artifacts.</span>
               </a>
             </div>
           </section>
@@ -683,11 +557,8 @@
             <h2>Active Work</h2>
             <ul class="projects">
               <li><a href="https://github.com/EmmaWichmann/codinglearninghub">Career Compass (CC)</a></li>
-              <li><a href="https://github.com/EmmaWichmann/sagespeak">Sage and Speak</a></li>
-              <li><a href="https://github.com/EmmaWichmann/musicmoodapp">Music Mood App</a></li>
               <li><a href="https://emmawichmann.github.io/outfit-archive">Outfit Archive</a></li>
-              <li>Python Starter Project — coming soon</li>
-              <li>Animation Project — coming soon</li>
+              <li>Python Starter Project — next</li>
             </ul>
           </section>
 
@@ -697,9 +568,6 @@
               <li>SQL and data - active</li>
               <li>Python and automation - active too</li>
               <li>Product thinking - building alongside technical work</li>
-              <li>Technical communication - building alongside technical work</li>
-              <li>Systems and workflow thinking - building alongside technical work</li>
-              <li>Technical building - developing</li>
             </ul>
           </section>
         </aside>

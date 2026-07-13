@@ -132,6 +132,71 @@
         line-height: 1.7;
       }
 
+      .recommendation {
+        margin-top: 16px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: linear-gradient(180deg, #fffdf9, #faf2e8);
+      }
+
+      .recommendation h3 {
+        margin: 0 0 8px;
+        color: var(--accent);
+      }
+
+      .recommendation .label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 10px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.88rem;
+      }
+
+      .recommendation ul {
+        margin-top: 10px;
+      }
+
+      .recommendation .next-step {
+        margin-top: 14px;
+        font-weight: bold;
+      }
+
+      .recommendation .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .recommendation .action-row a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: white;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .recommendation .action-row a.secondary {
+        background: transparent;
+        color: var(--accent);
+      }
+
+      .dashboard-note {
+        margin-top: 12px;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
       @media (max-width: 760px) {
         .grid,
         .links {
@@ -155,6 +220,14 @@
           with <strong>Codex</strong> in an AI-assisted workflow to test ideas,
           review changes, and improve this project over time.
         </p>
+        <div class="recommendation" id="next-assessment-card" aria-live="polite">
+          <span class="label">Next Recommended Assessment</span>
+          <h3 id="next-assessment-title">Loading recommendation...</h3>
+          <p id="next-assessment-reason" class="note"></p>
+          <ul id="next-assessment-concepts"></ul>
+          <p class="next-step" id="next-assessment-step"></p>
+          <p class="dashboard-note" id="next-assessment-link"></p>
+        </div>
       </section>
 
       <div class="grid">
@@ -195,7 +268,7 @@
         <div class="links">
           <a class="link-card" href="exams/">
             <strong>Exams</strong>
-          <span>Ten HTML exams and ten JavaScript exams with saved progress.</span>
+            <span>General skill checks and applied assessments tied to the current learning phase.</span>
           </a>
 
 <a class="link-card" href="logs/">
@@ -215,5 +288,229 @@
         </div>
       </section>
     </main>
+
+    <script>
+      (function () {
+        const progressKey = "coding-hub-study-progress";
+        const missedKey = "coding-hub-missed-concepts";
+        const examProgressKey = "coding-hub-exam-progress-v2";
+        const activityLogKey = "coding-hub-activity-log";
+        const masteryKey = "coding-hub-concept-mastery";
+
+        const nextAssessmentTitle = document.getElementById("next-assessment-title");
+        const nextAssessmentReason = document.getElementById("next-assessment-reason");
+        const nextAssessmentConcepts = document.getElementById("next-assessment-concepts");
+        const nextAssessmentStep = document.getElementById("next-assessment-step");
+        const nextAssessmentLink = document.getElementById("next-assessment-link");
+
+        const recommendation = getRecommendation();
+        nextAssessmentTitle.textContent = recommendation.title;
+        nextAssessmentReason.textContent = recommendation.reason;
+        nextAssessmentConcepts.innerHTML = "";
+        recommendation.concepts.forEach(function (concept) {
+          const item = document.createElement("li");
+          item.textContent = concept;
+          nextAssessmentConcepts.append(item);
+        });
+        nextAssessmentStep.textContent = recommendation.step;
+        nextAssessmentLink.innerHTML =
+          '<div class="action-row">' +
+          '<a href="' +
+          recommendation.href +
+          '">' +
+          recommendation.linkLabel +
+          "</a>" +
+          (recommendation.secondaryHref
+            ? '<a class="secondary" href="' +
+              recommendation.secondaryHref +
+              '">' +
+              recommendation.secondaryLabel +
+              "</a>"
+            : "") +
+          "</div>";
+
+        function getRecommendation() {
+          const studyProgress = read(progressKey, {});
+          const missedConcepts = read(missedKey, []);
+          const examProgress = read(examProgressKey, {});
+          const activityLog = read(activityLogKey, []);
+          const conceptMastery = read(masteryKey, {});
+
+          const sqlStatus = getSqlStatus(studyProgress, activityLog, conceptMastery);
+          const latestMissed = missedConcepts.find(function (item) {
+            return !item.reviewed;
+          });
+          const recommendedExam = getRecommendedAssessment(sqlStatus, examProgress);
+          const reviewConcepts = getReviewConcepts(conceptMastery, missedConcepts);
+
+          if (latestMissed && !latestMissed.reviewed) {
+            return {
+              title: "Targeted review",
+              reason:
+                "You recently missed a concept, so the best next step is to review that weak spot before moving on.",
+              concepts: [latestMissed.topic, latestMissed.prompt, ...reviewConcepts.slice(0, 1)],
+              step: "Do the missed-concepts review first, then return to the next concept check.",
+              linkLabel: "Open Missed Concepts",
+              href: "practice/coding-question-log.html",
+              secondaryLabel: "Open Study Mode",
+              secondaryHref: "practice/study-mode.html",
+            };
+          }
+
+          if (sqlStatus.nextLesson && sqlStatus.completedLessons <= 2) {
+            return {
+              title: "SQLBolt lesson",
+              reason: "SQL is the active track, so the next best move is the next SQLBolt lesson plus a short check.",
+              concepts: [sqlStatus.nextLesson.title, sqlStatus.nextLesson.concepts.join(", "), sqlStatus.masteryHint],
+              step:
+                "Complete the linked SQLBolt lesson, then use the concept check to confirm you can apply it.",
+              linkLabel: "Open SQLBolt",
+              href: "https://sqlbolt.com/",
+              secondaryLabel: "Open Exams",
+              secondaryHref: "exams/",
+            };
+          }
+
+          if (recommendedExam) {
+            return recommendedExam;
+          }
+
+          return {
+            title: "General practice",
+            reason:
+              "You do not have a weak concept needing immediate review, so the safest next move is a short mixed practice set.",
+            concepts: reviewConcepts.slice(0, 3).concat(["SQL", "Python"]),
+            step: "Use Study Mode for a short mixed practice session, then check the missed-concepts log.",
+            linkLabel: "Open Study Mode",
+            href: "practice/study-mode.html",
+            secondaryLabel: "Open Exams",
+            secondaryHref: "exams/",
+          };
+        }
+
+        function getSqlStatus(progress, activityLog, conceptMastery) {
+          const progression = [
+            { title: "SQL basics", concepts: ["SELECT", "FROM"] },
+            { title: "Filtering", concepts: ["WHERE"] },
+            { title: "Sorting", concepts: ["ORDER BY"] },
+            { title: "Limiting results", concepts: ["LIMIT"] },
+            { title: "Aggregates", concepts: ["COUNT", "SUM", "AVG"] },
+            { title: "Grouping", concepts: ["GROUP BY", "HAVING"] },
+            { title: "Joins", concepts: ["INNER JOIN", "LEFT JOIN"] },
+            { title: "Case and cleanup", concepts: ["CASE WHEN", "NULL handling"] },
+          ];
+
+          const completedLessons = activityLog
+            .filter(function (entry) {
+              return entry.track === "sql" || entry.source === "sqlbolt";
+            })
+            .length;
+          const storedProgress = Object.keys(progress).filter(function (key) {
+            return key.toLowerCase().includes("sql");
+          }).length;
+          const lessonIndex = Math.max(completedLessons, storedProgress);
+          const masteryHint = getConceptMasterySummary(conceptMastery, "sql");
+
+          return {
+            completedLessons: lessonIndex,
+            nextLesson: progression[lessonIndex] || null,
+            masteryHint: masteryHint,
+          };
+        }
+
+        function getRecommendedAssessment(sqlStatus, examProgress) {
+          const passedGeneralAssessment = Object.values(examProgress).some(function (item) {
+            return item.passed && item.bestScore >= 80;
+          });
+
+          if (sqlStatus.completedLessons <= 1) {
+            return {
+              title: "Concept check",
+              reason: "You are still early in SQL, so a short targeted check is better than a long mixed exam.",
+              concepts: ["SELECT", "FROM", "WHERE"],
+              step: "Do the short SQL concept check after the next lesson.",
+              linkLabel: "Open Exams",
+              href: "exams/",
+            };
+          }
+
+          if (passedGeneralAssessment) {
+            return {
+              title: "Mixed practice",
+              reason:
+                "You have already shown enough baseline skill for a mixed assessment, so the next step can combine related concepts.",
+              concepts: ["SQL", "product thinking", "workflow thinking"],
+              step: "Choose a mixed assessment only after you finish the current SQLBolt lesson.",
+              linkLabel: "Open Exams",
+              href: "exams/",
+            };
+          }
+
+          return {
+            title: "Applied challenge",
+            reason:
+              "You have enough exposure for a realistic scenario, so use an applied challenge that connects the skill to a project problem.",
+            concepts: ["SQL", "data interpretation", "communication"],
+            step: "Use an applied challenge after the current concept check to practice transfer.",
+            linkLabel: "Open Exams",
+            href: "exams/",
+          };
+        }
+
+        function getReviewConcepts(conceptMastery, missedConcepts) {
+          const mastery = Object.entries(conceptMastery || {}).map(function ([key, value]) {
+            return { key: key, state: value.state || "NEW", misses: value.misses || 0 };
+          });
+
+          const weakByMastery = mastery
+            .filter(function (item) {
+              return item.state === "NEW" || item.state === "REVIEWING";
+            })
+            .sort(function (a, b) {
+              return b.misses - a.misses;
+            })
+            .map(function (item) {
+              return item.key.split("::")[1] || item.key;
+            });
+
+          const weakByMissed = missedConcepts
+            .filter(function (item) {
+              return !item.reviewed;
+            })
+            .map(function (item) {
+              return item.topic;
+            });
+
+          return Array.from(new Set([...weakByMissed, ...weakByMastery]));
+        }
+
+        function getConceptMasterySummary(conceptMastery, prefix) {
+          const items = Object.entries(conceptMastery || {}).filter(function ([key, value]) {
+            return key.indexOf(prefix) === 0 && value.state !== "SOLID";
+          });
+
+          if (items.length === 0) {
+            return "No weak SQL concepts at the moment.";
+          }
+
+          const conceptNames = items
+            .slice(0, 2)
+            .map(function ([key, value]) {
+              return key.split("::")[1] || key;
+            })
+            .join(", ");
+
+          return "Focus review on " + conceptNames + ".";
+        }
+
+        function read(key, fallback) {
+          try {
+            return JSON.parse(localStorage.getItem(key)) ?? fallback;
+          } catch {
+            return fallback;
+          }
+        }
+      })();
+    </script>
   </body>
 </html>

@@ -172,9 +172,11 @@ function checkOption(button, option) {
 
   if (option === card.answer) {
     button.classList.add("correct");
+    updateConceptMastery(card, true, "good");
   } else {
     button.classList.add("incorrect");
     logMissedConcept(card);
+    updateConceptMastery(card, false, "again");
   }
 
   revealAnswer();
@@ -190,6 +192,7 @@ function rateCard(rating) {
   const card = currentCards[currentIndex];
   const oldProgress = progress[card.id] || { intervalIndex: -1 };
   let intervalIndex = oldProgress.intervalIndex;
+  const mastered = isMasteryPositive(rating);
 
   if (rating === "again") {
     intervalIndex = 0;
@@ -215,6 +218,7 @@ function rateCard(rating) {
   };
 
   localStorage.setItem(progressKey, JSON.stringify(progress));
+  updateConceptMastery(card, mastered, rating);
   reviewedThisSession += 1;
   currentIndex += 1;
   showCard();
@@ -242,6 +246,32 @@ function logMissedConcept(card) {
   }
 
   localStorage.setItem(missedKey, JSON.stringify(missedConcepts));
+}
+
+function updateConceptMastery(card, mastered, rating) {
+  if (!window.CodingHubStorage?.saveConceptMastery) {
+    return;
+  }
+
+  const key = getConceptMasteryKey(card);
+  window.CodingHubStorage.saveConceptMastery({
+    key: key,
+    source: card.source || "study-mode",
+    exposure: true,
+    correct: mastered,
+    missed: rating === "again",
+    reviewing: rating === "hard" || rating === "again",
+    outcome: rating,
+    timestamp: new Date().toISOString(),
+  });
+}
+
+function isMasteryPositive(rating) {
+  return rating === "good" || rating === "easy";
+}
+
+function getConceptMasteryKey(card) {
+  return `${getCardLanguage(card)}::${card.topic}`;
 }
 
 function showFinishedState(title, message) {

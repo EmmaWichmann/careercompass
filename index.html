@@ -216,9 +216,15 @@
         color: var(--accent);
       }
 
+      .foundation-nav .foundation-nav-note {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
       .foundation-nav-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 10px;
       }
 
@@ -237,12 +243,45 @@
         cursor: default;
       }
 
-      .foundation-nav-grid .left::before {
-        content: "←";
+      .foundation-nav-grid button.is-active {
+        background: #f8e7db;
+        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: 0 8px 20px rgba(95, 64, 46, 0.08);
       }
 
-      .foundation-nav-grid .right::after {
-        content: "→";
+      .foundation-detail {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(175, 128, 98, 0.28);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .foundation-detail .detail-label {
+        margin: 0 0 6px;
+        color: var(--accent);
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .foundation-detail .detail-title {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .foundation-detail .detail-body {
+        margin: 0;
+        color: var(--text);
+      }
+
+      .foundation-detail .detail-next {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
       }
 
       .recommendation .action-row {
@@ -482,7 +521,7 @@
             <h1>Career Compass</h1>
             <p>
               A dashboard for moving toward a real job path without losing the thread:
-              finish the next lesson, verify it with an exam, practice the weak spots,
+              finish the next lesson, verify it with a skill check, practice the weak spots,
               and build evidence that maps to the role cluster you want.
             </p>
           </section>
@@ -491,7 +530,7 @@
             <h2>What I Need to Do Next</h2>
             <div class="today-focus">
               <strong>Today’s one focus</strong>
-              <span>Do one SQLBolt lesson, one exam, and one short review block. That is enough for a win.</span>
+              <span>Do one SQLBolt lesson, one skill check, and one short review block. That is enough for a win.</span>
             </div>
             <div class="career-checklist">
               <div class="career-step">
@@ -500,11 +539,11 @@
               </div>
               <div class="career-step">
                 <strong>2. Take the matching SQL concept check</strong>
-                <span>Use the exam to confirm whether the concept is still NEW, moving to REVIEWING, or becoming SOLID.</span>
+                <span>Use the Skill Check to confirm whether the concept is still NEW, moving to REVIEWING, or becoming SOLID.</span>
               </div>
               <div class="career-step">
                 <strong>3. Practice the concepts marked NEW or REVIEWING</strong>
-                <span>Short drills and missing-concept review should follow the exam, not replace it.</span>
+                <span>Short drills and missing-concept review should follow the Skill Check, not replace it.</span>
               </div>
               <div class="career-step">
                 <strong>4. Keep Python in the current path</strong>
@@ -533,7 +572,7 @@
                 <strong>SQL and Data</strong>
                 <ul>
                   <li>current | next SQLBolt lesson</li>
-                  <li>open the matching exam</li>
+                  <li>open the matching Skill Check</li>
                   <li>mark Lesson 4 complete when you finish it</li>
                 </ul>
               </div>
@@ -596,7 +635,7 @@
 
             <div class="links">
               <a class="link-card" href="exams/">
-                <strong>Exams</strong>
+                <strong>Skill Checks</strong>
                 <span>Recommended SQL concept checks and the assessment archive.</span>
               </a>
 
@@ -617,7 +656,7 @@
 
               <a class="link-card" href="notes/">
                 <strong>Notes</strong>
-                <span>Learning notes, analogies, and study-system ideas.</span>
+                <span>Learning notes, analogies, and study ideas.</span>
               </a>
             </div>
           </section>
@@ -625,7 +664,7 @@
 
         <aside class="stack sidebar">
           <section class="section">
-            <h2>Next Recommended Assessment</h2>
+            <h2>Next Recommended Skill Check</h2>
             <div class="recommendation" id="next-assessment-card" aria-live="polite">
               <span class="label">Recommended Next Assessment</span>
               <h3 id="next-assessment-title">Loading recommendation...</h3>
@@ -635,16 +674,27 @@
               <p class="dashboard-note" id="next-assessment-link"></p>
               <div class="foundation-nav" aria-label="Foundation navigation">
                 <strong>What’s next for each foundation</strong>
+                <p class="foundation-nav-note">Pick a foundation to see its next move inside this box.</p>
                 <div class="foundation-nav-grid">
-                  <button class="left" type="button">SQL</button>
-                  <button class="right" type="button">Python</button>
-                  <button class="left" type="button">Product</button>
-                  <button class="right" type="button">Communication</button>
+                  <button class="is-active" type="button" data-foundation="sql">SQL</button>
+                  <button type="button" data-foundation="python">Python</button>
+                  <button type="button" data-foundation="product">Product</button>
+                  <button type="button" data-foundation="communication">Communication</button>
+                  <button type="button" data-foundation="systems">Systems</button>
+                  <button type="button" data-foundation="building">Building</button>
+                </div>
+                <div class="foundation-detail" id="foundation-detail">
+                  <p class="detail-label" id="foundation-detail-label">SQL</p>
+                  <p class="detail-title" id="foundation-detail-title">Complete the next SQLBolt lesson</p>
+                  <p class="detail-body" id="foundation-detail-body">
+                    Stay in the same box, finish the current SQLBolt lesson, then open the matching concept check.
+                  </p>
+                  <p class="detail-next" id="foundation-detail-next">Next move: SQL lesson → quiz → practice.</p>
                 </div>
               </div>
             </div>
             <p class="resource-note">
-              Exams should stay focused on assessments. Use this area to see the next quiz, not a separate course library.
+              Skill checks should stay focused on assessments. Use this area to see the next quiz, not a separate course library.
             </p>
           </section>
         </aside>
@@ -664,6 +714,50 @@
         const nextAssessmentConcepts = document.getElementById("next-assessment-concepts");
         const nextAssessmentStep = document.getElementById("next-assessment-step");
         const nextAssessmentLink = document.getElementById("next-assessment-link");
+        const foundationButtons = Array.from(document.querySelectorAll("[data-foundation]"));
+        const foundationDetailLabel = document.getElementById("foundation-detail-label");
+        const foundationDetailTitle = document.getElementById("foundation-detail-title");
+        const foundationDetailBody = document.getElementById("foundation-detail-body");
+        const foundationDetailNext = document.getElementById("foundation-detail-next");
+
+        const foundationDetails = {
+          sql: {
+            label: "SQL",
+            title: "Complete the next SQLBolt lesson",
+            body: "Stay in the same box, finish the current SQLBolt lesson, then open the matching concept check.",
+            next: "Next move: SQL lesson → quiz → practice.",
+          },
+          python: {
+            label: "Python",
+            title: "Review one beginner Python topic",
+            body: "Use short hands-on practice to reinforce basics before moving to a bigger task.",
+            next: "Next move: short explanation → try it yourself → immediate feedback.",
+          },
+          product: {
+            label: "Product",
+            title: "Write down the user problem and the change",
+            body: "Keep it concrete: what is confusing, what should improve, and what would count as success?",
+            next: "Next move: problem statement → improvement → measurable outcome.",
+          },
+          communication: {
+            label: "Communication",
+            title: "Explain one answer in plain language",
+            body: "Practice concise writing that shows your reasoning without extra fluff.",
+            next: "Next move: answer → explain → summarize.",
+          },
+          systems: {
+            label: "Systems",
+            title: "Trace the flow from lesson to assessment",
+            body: "Look at how the external lesson, knowledge check, and mastery update fit together.",
+            next: "Next move: lesson exposure → concept check → mastery update.",
+          },
+          building: {
+            label: "Building",
+            title: "Ship one small usable piece",
+            body: "Focus on a small improvement that works clearly and can be refined with evidence.",
+            next: "Next move: small build → test → improve.",
+          },
+        };
 
         const recommendation = getRecommendation();
         nextAssessmentTitle.textContent = recommendation.title;
@@ -692,6 +786,23 @@
               "</a>"
             : "") +
           "</div>";
+
+        foundationButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const key = button.getAttribute("data-foundation");
+            const detail = foundationDetails[key];
+            if (!detail) return;
+
+            foundationButtons.forEach(function (item) {
+              item.classList.toggle("is-active", item === button);
+            });
+
+            foundationDetailLabel.textContent = detail.label;
+            foundationDetailTitle.textContent = detail.title;
+            foundationDetailBody.textContent = detail.body;
+            foundationDetailNext.textContent = detail.next;
+          });
+        });
 
         function getRecommendation() {
           const studyProgress = read(progressKey, {});

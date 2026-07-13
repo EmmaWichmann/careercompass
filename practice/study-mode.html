@@ -275,6 +275,45 @@
         min-height: 500px;
       }
 
+      .notebook-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .notebook-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,251,245,.98)),
+          repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 27px,
+            rgba(189, 161, 129, 0.18) 28px
+          );
+        padding: 16px;
+        min-height: 160px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .notebook-card strong {
+        color: var(--accent-dark);
+      }
+
+      .notebook-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .notebook-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
       .activity-score-row {
         justify-content: space-between;
         margin-bottom: 18px;
@@ -348,6 +387,33 @@
       .celebration {
         text-align: center;
         padding-block: 44px;
+      }
+
+      .inline-link-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+
+      .link-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 13px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .check-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        color: var(--muted);
       }
 
       .celebration h2 {
@@ -494,6 +560,14 @@
             Swift
           </button>
         </div>
+
+        <h2 class="language-heading">Notebook</h2>
+        <p class="muted">Use this to keep quick notes, short reminders, and card fixes while you study.</p>
+        <div class="notebook-grid" id="notebook-grid"></div>
+        <div class="inline-link-row">
+          <a class="link-chip" href="../notes/">Open Notes notebook</a>
+          <a class="link-chip" href="../notes/learning-notes.md">Learning notes</a>
+        </div>
       </section>
 
       <section class="card practice-card" id="flashcard-card">
@@ -508,6 +582,9 @@
 
         <button class="primary-button" id="reveal-answer" type="button">
           Flip card
+        </button>
+        <button class="quiet-button" id="edit-card" type="button">
+          Edit card
         </button>
 
         <div class="answer-panel" id="answer-panel" hidden>

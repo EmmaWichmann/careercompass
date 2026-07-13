@@ -172,6 +172,31 @@
         color: var(--muted);
       }
 
+      .checklist {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .check-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fffdf9;
+      }
+
+      .check-row input {
+        width: 18px;
+        height: 18px;
+      }
+
+      .check-row span {
+        color: var(--muted);
+      }
+
       .status {
         padding: 6px 10px;
         border-radius: 999px;
@@ -250,6 +275,13 @@
         <h2>What Comes Next</h2>
         <p class="muted">After the recommended quiz, the next step will usually be review, a follow-up concept check, or a short applied scenario.</p>
         <div class="progress-list" id="next-steps"></div>
+        <div class="checklist">
+          <label class="check-row">
+            <input type="checkbox" id="sqlbolt-lesson-4" />
+            <span>Mark SQLBolt Lesson 4 as complete on my side when I finish it</span>
+          </label>
+          <p class="muted">I could not verify an official SQLBolt completion certificate, so this page treats SQLBolt as a structured learning resource rather than a credential.</p>
+        </div>
       </section>
 
       <section class="card">
@@ -311,6 +343,7 @@
         renderRecommendation();
         renderNextSteps();
         renderProgression();
+        renderLessonCheckbox();
 
         function renderRecommendation() {
           const latestMissed = missedConcepts.find(function (item) {
@@ -432,6 +465,15 @@
           }
 
           return "NOT STARTED";
+        }
+
+        function renderLessonCheckbox() {
+          const checkbox = document.getElementById("sqlbolt-lesson-4");
+          const key = "coding-hub-sqlbolt-lesson-4-complete";
+          checkbox.checked = read(key, false);
+          checkbox.addEventListener("change", function () {
+            localStorage.setItem(key, JSON.stringify(checkbox.checked));
+          });
         }
       })();
     </script>

@@ -139,37 +139,6 @@
         line-height: 1.5;
       }
 
-      .lesson-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 16px;
-      }
-
-      .lesson-card {
-        background: #fffdf9;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        padding: 16px;
-      }
-
-      .lesson-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--accent);
-      }
-
-      .lesson-card span,
-      .lesson-card li {
-        color: var(--muted);
-        line-height: 1.55;
-      }
-
-      .lesson-card ul {
-        margin: 10px 0 0;
-        padding-left: 18px;
-      }
-
       .note {
         margin-top: 18px;
         color: var(--muted);
@@ -246,6 +215,30 @@
         border-radius: 14px;
         border: 1px solid var(--line);
         background: #fffdf9;
+      }
+
+      .career-checklist {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .career-step {
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fffdf9;
+      }
+
+      .career-step strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent);
+      }
+
+      .career-step span {
+        color: var(--muted);
+        line-height: 1.6;
       }
 
       .recommendation .summary-list {
@@ -335,43 +328,44 @@
       </div>
 
       <section class="section" style="margin-top: 20px;">
-        <h2>Python Is Part Of The Current Path</h2>
-        <p class="note">
-          Python is part of the current career path now, alongside SQL. The focus should stay hands-on and data-centered:
-          inspect data, clean it, analyze it, and automate small useful tasks.
-        </p>
-        <div class="lesson-grid">
-          <div class="lesson-card">
-            <strong>Python basics</strong>
-            <span>Variables, strings, lists, dictionaries, and clean beginner syntax.</span>
-          </div>
-          <div class="lesson-card">
-            <strong>Python for data</strong>
-            <span>CSV files, pandas, cleaning, filtering, grouping, and simple summaries.</span>
-          </div>
-          <div class="lesson-card">
-            <strong>Python practice path</strong>
-            <span>Try one concept, get feedback, then apply it to a realistic data task.</span>
-          </div>
-          <div class="lesson-card">
-            <strong>Primary resource</strong>
-            <span>SQLBolt stays the main structured SQL resource, while Python stays interactive and practical here.</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" style="margin-top: 20px;">
         <h2>Career Direction</h2>
         <p class="note">
-          I'm building shared foundation skills for data analyst, product,
+          I am building shared foundation skills for data analyst, product,
           AI implementation, and software engineering paths, then using
           evidence to see which direction fits best over time.
         </p>
 
+        <div class="career-checklist">
+          <div class="career-step">
+            <strong>1. Finish the next SQLBolt lesson</strong>
+            <span>Complete the linked lesson first so exposure stays structured and current.</span>
+          </div>
+          <div class="career-step">
+            <strong>2. Take the matching SQL concept check</strong>
+            <span>Use the exam to see whether the concept is NEW, REVIEWING, or starting to become SOLID.</span>
+          </div>
+          <div class="career-step">
+            <strong>3. Do targeted practice</strong>
+            <span>Review missed concepts, then practice the exact ideas that need repetition.</span>
+          </div>
+          <div class="career-step">
+            <strong>4. Work Python in alongside SQL</strong>
+            <span>Keep Python hands-on with beginner topics, data cleanup, and simple automation.</span>
+          </div>
+          <div class="career-step">
+            <strong>5. Apply both to realistic work</strong>
+            <span>Use clinical research, healthcare, biotechnology, product, or business scenarios to build evidence.</span>
+          </div>
+          <div class="career-step">
+            <strong>6. Gather career evidence</strong>
+            <span>Save quizzes, projects, progress, and explanations that show you can think, build, and communicate.</span>
+          </div>
+        </div>
+
         <div class="links">
           <a class="link-card" href="exams/">
             <strong>Exams</strong>
-            <span>Recommended SQL concept checks, applied challenges, and archive assessments.</span>
+            <span>Recommended SQL concept checks and the assessment archive.</span>
           </a>
 
           <a class="link-card" href="progress/">
@@ -392,6 +386,11 @@
           <a class="link-card" href="practice/sql-launcher.html">
             <strong>SQL Flow</strong>
             <span>Lesson, concept check, and applied challenge in one compact path.</span>
+          </a>
+
+          <a class="link-card" href="practice/python-launcher.html">
+            <strong>Python Flow</strong>
+            <span>Beginner Python topics, practice, and data-focused application.</span>
           </a>
 
           <a class="link-card" href="notes/">

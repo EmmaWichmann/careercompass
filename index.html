@@ -206,6 +206,40 @@
         color: var(--accent);
       }
 
+      .foundation-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .foundation-nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #fffdf9;
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.94rem;
+      }
+
+      .foundation-nav a:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      .foundation-nav .left::before {
+        content: "←";
+      }
+
+      .foundation-nav .right::after {
+        content: "→";
+      }
+
       .recommendation .action-row {
         display: flex;
         flex-wrap: wrap;
@@ -490,7 +524,7 @@
               <span>SQL and Python both stay active. If you want the cleanest next move, finish the current SQLBolt lesson first, then keep Python in parallel review mode.</span>
             </div>
             <div class="foundation-grid">
-              <div class="foundation-card">
+              <div class="foundation-card" id="sql-foundation">
                 <strong>SQL and Data</strong>
                 <ul>
                   <li>← current | → next SQLBolt lesson</li>
@@ -498,35 +532,35 @@
                   <li>→ mark Lesson 4 complete when you finish it</li>
                 </ul>
               </div>
-              <div class="foundation-card">
+              <div class="foundation-card" id="python-foundation">
                 <strong>Python and Automation</strong>
                 <ul>
                   <li>← current | → review one beginner topic at a time</li>
                   <li>→ write a tiny script or pandas task</li>
                 </ul>
               </div>
-              <div class="foundation-card">
+              <div class="foundation-card" id="product-foundation">
                 <strong>Product Thinking</strong>
                 <ul>
                   <li>← current | → define the user problem clearly</li>
                   <li>→ explain what should change and why</li>
                 </ul>
               </div>
-              <div class="foundation-card">
+              <div class="foundation-card" id="communication-foundation">
                 <strong>Technical Communication</strong>
                 <ul>
                   <li>← current | → explain the reasoning behind each answer</li>
                   <li>→ write one short summary after practice</li>
                 </ul>
               </div>
-              <div class="foundation-card">
+              <div class="foundation-card" id="systems-foundation">
                 <strong>Systems and Workflow Thinking</strong>
                 <ul>
                   <li>← current | → see the flow from lesson to assessment</li>
                   <li>→ track exposed vs mastered concepts</li>
                 </ul>
               </div>
-              <div class="foundation-card">
+              <div class="foundation-card" id="building-foundation">
                 <strong>Technical Building</strong>
                 <ul>
                   <li>← current | → build one small usable piece</li>
@@ -594,6 +628,12 @@
               <ul id="next-assessment-concepts" class="summary-list"></ul>
               <p class="next-step" id="next-assessment-step"></p>
               <p class="dashboard-note" id="next-assessment-link"></p>
+              <div class="foundation-nav" aria-label="Foundation navigation">
+                <a class="left" href="#sql-foundation">SQL</a>
+                <a class="right" href="#python-foundation">Python</a>
+                <a class="left" href="#product-foundation">Product</a>
+                <a class="right" href="#communication-foundation">Communication</a>
+              </div>
             </div>
             <p class="resource-note">
               Exams should stay focused on assessments. Use this area to see the next quiz, not a separate course library.

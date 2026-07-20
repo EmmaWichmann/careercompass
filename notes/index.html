@@ -4,57 +4,280 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Notes | Coding Learning Hub</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
     <style>
-      body {
+      code {
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: 0.88em;
+        padding: 2px 7px;
+        background: var(--accent-soft);
+        color: var(--accent-dark);
+        border-radius: 5px;
+      }
+
+      .concept-list {
+        list-style: none;
+        padding: 0;
         margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        background: #f7f2eb;
-        color: #37261c;
+        display: grid;
+        gap: 10px;
       }
 
-      main {
-        width: min(760px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 48px;
+      .concept-list li {
+        padding: 12px 14px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        line-height: 1.65;
       }
 
-      .card {
-        background: #fffaf4;
-        border: 1px solid #dbc8b8;
-        border-radius: 18px;
-        padding: 24px;
-        margin-bottom: 18px;
+      .cloze-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 10px;
       }
 
-      h1,
-      h2 {
-        margin-top: 0;
+      .cloze-list li {
+        padding: 12px 14px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        line-height: 1.65;
       }
 
-      a {
-        color: #b75e3c;
+      .cloze-answer {
+        margin-top: 5px;
+        font-size: 0.88rem;
+        color: var(--muted);
       }
 
-      ul {
-        padding-left: 20px;
+      .system-step {
+        padding: 16px;
+        margin-bottom: 10px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+      }
+
+      .system-step h3 {
+        margin: 0 0 6px;
+        color: var(--accent-dark);
+        font-size: 1rem;
+      }
+
+      .system-step p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      .section-label {
+        margin: 0 0 6px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .gap-top {
+        margin-top: 18px;
       }
     </style>
   </head>
   <body>
-    <main>
-      <section class="card">
-        <h1>Notes</h1>
-        <p>This section holds my learning notes, analogies, and study-system ideas.</p>
-        <p><a href="../index.html">Back to Home</a></p>
-      </section>
+    <main class="page">
 
       <section class="card">
-        <h2>Current Items</h2>
-        <ul>
-          <li><a href="learning-notes.md">Learning Notes</a></li>
-          <li><a href="LEARNING_SYSTEM.md">Learning System</a></li>
+        <div class="top-row">
+          <div>
+            <span class="pill">Personal notes</span>
+            <h1>Notes</h1>
+            <p class="muted">Analogies, key concepts, and learning-system notes from real sessions.</p>
+          </div>
+          <a href="../index.html">Back to Home</a>
+        </div>
+      </section>
+
+      <!-- Analogies -->
+      <section class="card">
+        <h2>Analogies &amp; Mental Models</h2>
+        <p class="muted">Things that clicked when explained a different way.</p>
+
+        <p class="section-label gap-top">Breaking down one line of code</p>
+        <div class="code">const songTitleInput = document.getElementById("song-title");</div>
+
+        <ul class="concept-list gap-top">
+          <li><code>document</code> — the whole Life360 map, meaning the whole webpage.</li>
+          <li><code>.getElementById()</code> — searches for one specific element by its unique name, like looking up a person in Life360.</li>
+          <li><code>"song-title"</code> — the HTML element's unique ID, the name you're searching for.</li>
+          <li><code>songTitleInput</code> — the nickname JavaScript saves for that element after finding it.</li>
+          <li><code>const</code> — locks that nickname so JavaScript won't point it at something else later.</li>
+          <li><code>songTitleInput.value</code> — reads what the user typed inside the input.</li>
+        </ul>
+
+        <p class="section-label gap-top">Spacing</p>
+        <ul class="concept-list">
+          <li><code>margin</code> — space <em>outside</em> an element, like the gap between two pieces of furniture.</li>
+          <li><code>padding</code> — space <em>inside</em> an element, like the cushioning inside a box.</li>
+        </ul>
+
+        <p class="section-label gap-top">Other analogies</p>
+        <ul class="concept-list">
+          <li><code>console.log()</code> — leaving yourself a sticky note in the browser's hidden developer notebook.</li>
+          <li><code>let</code> — creates a named variable whose value is allowed to change later.</li>
+          <li><code>id</code> — a unique name tag or location pin. JavaScript uses it to find the right element on the page.</li>
+          <li><code>ul</code> — like a <code>div</code> for lists. It groups list items together, but specifically for bullet-style content.</li>
+        </ul>
+
+        <p class="section-label gap-top">The <code>=</code> sign in HTML attributes</p>
+        <p class="muted" style="margin-bottom: 10px;">It works like a label maker saying "is":</p>
+        <ul class="concept-list">
+          <li><code>class="mood-chip"</code> — the class <em>is</em> mood-chip.</li>
+          <li><code>type="button"</code> — the type <em>is</em> button.</li>
+          <li><code>data-mood="All"</code> — the stored mood <em>is</em> All.</li>
+          <li>The reusable pattern is <code>attribute="value"</code>.</li>
         </ul>
       </section>
+
+      <!-- Key Concepts -->
+      <section class="card">
+        <h2>Key Concepts</h2>
+        <p class="muted">Short definitions picked up from real projects and sessions.</p>
+        <ul class="concept-list gap-top">
+          <li><code>CSS Grid</code> — makes items line up in columns, like putting Song and Artist side by side.</li>
+          <li><code>hero section</code> — the big opening area at the top of a page that sets the mood and explains what the app is.</li>
+          <li><code>cards / panels</code> — separate content visually so the layout feels cleaner and easier to scan.</li>
+          <li><code>responsive layout</code> — the page rearranges itself to fit smaller screens instead of staying stuck in a desktop shape.</li>
+          <li><code>visual hierarchy</code> — making the most important things stand out first through size, spacing, color, and placement.</li>
+          <li><code>data-mood</code> — stores the category assigned to a song.</li>
+          <li><code>data-filter</code> — stores the category the user wants to view.</li>
+          <li><code>activeFilter</code> — remembers which category the user currently has selected.</li>
+          <li><code>entries.filter(...)</code> — keeps only the entries that pass a condition.</li>
+          <li><code>visibleEntries.length === 0</code> — checks whether the chosen category has no saved songs.</li>
+          <li><code>filter</code> — creates a smaller visible list from a larger saved list.</li>
+        </ul>
+      </section>
+
+      <!-- Fill in the blank -->
+      <section class="card">
+        <h2>Fill-in-the-Blank Practice</h2>
+        <p class="muted">Read the sentence, recall the missing word, then check the answer below it.</p>
+        <ul class="cloze-list gap-top">
+          <li>
+            <code>&lt;p&gt;</code> creates a _____ on the page.
+            <p class="cloze-answer">Answer: paragraph</p>
+          </li>
+          <li>
+            HTML controls structure; CSS controls _____.
+            <p class="cloze-answer">Answer: appearance</p>
+          </li>
+          <li>
+            JavaScript adds _____ to a page.
+            <p class="cloze-answer">Answer: behavior</p>
+          </li>
+          <li>
+            <code>document.getElementById()</code> finds one HTML element using its unique _____.
+            <p class="cloze-answer">Answer: id</p>
+          </li>
+          <li>
+            <code>songTitleInput.value</code> reads what the user _____ into the input.
+            <p class="cloze-answer">Answer: typed</p>
+          </li>
+          <li>
+            <code>textContent</code> changes an element's visible _____.
+            <p class="cloze-answer">Answer: text</p>
+          </li>
+          <li>
+            <code>addEventListener()</code> listens for an _____ such as a click or submit.
+            <p class="cloze-answer">Answer: event</p>
+          </li>
+          <li>
+            <code>let</code> creates a variable whose value can be _____ later.
+            <p class="cloze-answer">Answer: changed or reassigned</p>
+          </li>
+          <li>
+            In <code>class="mood-chip"</code>, the <code>=</code> connects the attribute name to its _____.
+            <p class="cloze-answer">Answer: value</p>
+          </li>
+          <li>
+            <code>data-mood</code> describes the category being _____, while a filter controls what is shown.
+            <p class="cloze-answer">Answer: saved</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- How I learn best -->
+      <section class="card">
+        <h2>How I Learn Best</h2>
+        <p class="muted">Patterns that work well right now.</p>
+        <ul class="concept-list gap-top">
+          <li>Pause to ask what individual lines and symbols mean before moving on.</li>
+          <li>Try to recognize and extend patterns before asking AI to finish them.</li>
+          <li>Use AI as a tutor and assistant, not as a replacement for understanding the code.</li>
+          <li>Short explanations — one small task at a time.</li>
+          <li>Multiple choice first, short answer later.</li>
+          <li>Frequent check-ins and personal analogies help things stick.</li>
+          <li>Beautiful, motivating projects keep momentum going.</li>
+        </ul>
+      </section>
+
+      <!-- Learning System -->
+      <section class="card">
+        <h2>Learning System</h2>
+        <p class="muted">The approach behind the exams, cards, and review sessions.</p>
+
+        <p class="section-label gap-top">The five methods</p>
+        <div class="system-step">
+          <h3>1. Retrieval practice</h3>
+          <p>Answer questions from memory instead of rereading. Repeated, spaced retrieval builds stronger long-term memory than passive review.</p>
+        </div>
+        <div class="system-step">
+          <h3>2. Spacing</h3>
+          <p>Come back to concepts over time instead of cramming. Spread-out reviews beat massed sessions for long-term retention.</p>
+        </div>
+        <div class="system-step">
+          <h3>3. Worked examples</h3>
+          <p>Study a small example, then change it yourself. Explaining the steps out loud reduces cognitive load and deepens understanding.</p>
+        </div>
+        <div class="system-step">
+          <h3>4. Subgoals</h3>
+          <p>Break coding into named mini-steps: find the button → listen for the click → read the input → update the text.</p>
+        </div>
+        <div class="system-step">
+          <h3>5. Build while learning</h3>
+          <p>Don't wait until you "know enough." Tie one idea to one visible result in a real project.</p>
+        </div>
+
+        <p class="section-label gap-top">The four-step tutor rule</p>
+        <ul class="concept-list">
+          <li>1. Learn one tiny concept.</li>
+          <li>2. Use it right away.</li>
+          <li>3. Answer a short quiz.</li>
+          <li>4. Revisit it later.</li>
+        </ul>
+
+        <p class="section-label gap-top">Spaced review schedule</p>
+        <div class="pill-row">
+          <span class="pill">1 day</span>
+          <span class="pill">3 days</span>
+          <span class="pill">7 days</span>
+          <span class="pill">14 days</span>
+          <span class="pill">30 days</span>
+        </div>
+
+        <p class="section-label gap-top">What to avoid</p>
+        <ul class="concept-list">
+          <li>Copying large code blocks without testing them.</li>
+          <li>Learning five new ideas in one sitting.</li>
+          <li>Only watching tutorials without building anything.</li>
+          <li>Mistaking recognition for understanding — being able to read code is not the same as being able to write it.</li>
+        </ul>
+      </section>
+
     </main>
   </body>
 </html>

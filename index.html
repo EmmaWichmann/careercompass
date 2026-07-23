@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coding Learning Hub</title>
+    <title>Career Compass</title>
     <style>
       :root {
         --bg: #f7f2eb;
@@ -29,7 +29,7 @@
       }
 
       .page {
-        width: min(920px, calc(100% - 32px));
+        width: min(1180px, calc(100% - 32px));
         margin: 0 auto;
         padding: 40px 0 56px;
       }
@@ -54,6 +54,19 @@
         margin-bottom: 0;
       }
 
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
+      }
+
       h1,
       h2 {
         margin-top: 0;
@@ -76,6 +89,19 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 20px;
         margin-top: 20px;
+      }
+
+      .dashboard {
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.95fr);
+        gap: 20px;
+        align-items: start;
+        margin-top: 20px;
+      }
+
+      .stack {
+        display: grid;
+        gap: 20px;
       }
 
       ul {
@@ -132,10 +158,351 @@
         line-height: 1.7;
       }
 
+      .recommendation {
+        margin-top: 16px;
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: linear-gradient(180deg, #fffdf9, #faf2e8);
+      }
+
+      .recommendation h3 {
+        margin: 0 0 8px;
+        color: var(--accent);
+      }
+
+      .recommendation .label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 10px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 0.88rem;
+      }
+
+      .recommendation ul {
+        margin-top: 10px;
+      }
+
+      .recommendation .next-step {
+        margin-top: 14px;
+        font-weight: bold;
+      }
+
+      .next-step-banner {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-left: 4px solid var(--accent);
+        border-radius: 14px;
+        background: #fffdf9;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .next-step-banner strong {
+        color: var(--accent);
+      }
+
+      .foundation-nav {
+        margin-top: 14px;
+      }
+
+      .foundation-nav strong {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--accent);
+      }
+
+      .foundation-nav .foundation-nav-note {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .foundation-nav-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .foundation-nav-grid button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #fffdf9;
+        color: var(--text);
+        font-size: 0.94rem;
+        font: inherit;
+        cursor: default;
+      }
+
+      .foundation-nav-grid button.is-active {
+        background: #f8e7db;
+        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: 0 8px 20px rgba(95, 64, 46, 0.08);
+      }
+
+      .foundation-detail {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(175, 128, 98, 0.28);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .foundation-detail .detail-label {
+        margin: 0 0 6px;
+        color: var(--accent);
+        font-size: 0.84rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .foundation-detail .detail-title {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .foundation-detail .detail-body {
+        margin: 0;
+        color: var(--text);
+      }
+
+      .foundation-detail .detail-next {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .recommendation .action-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .recommendation .action-row a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--accent);
+        background: var(--accent);
+        color: white;
+        text-decoration: none;
+        font-size: 0.95rem;
+      }
+
+      .recommendation .action-row a.secondary {
+        background: transparent;
+        color: var(--accent);
+      }
+
+      .recommendation .action-row a.primary-link {
+        background: #8f4528;
+        border-color: #8f4528;
+      }
+
+      .resource-note {
+        margin-top: 10px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: #fffdf9;
+      }
+
+      .career-checklist {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .career-step {
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: #fffdf9;
+      }
+
+      .career-step strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent);
+      }
+
+      .career-step span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .next-foundation {
+        margin-top: 16px;
+        padding: 16px;
+        border: 1px dashed var(--accent);
+        border-radius: 16px;
+        background: #fffdf9;
+      }
+
+      .next-foundation strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .next-foundation span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .credential-strip {
+        margin-top: 16px;
+        padding: 16px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background: #fffdf9;
+      }
+
+      .credential-strip strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .credential-strip span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .credential-strip a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .credential-strip a:hover {
+        text-decoration: underline;
+      }
+
+      .today-focus {
+        margin-bottom: 16px;
+        padding: 16px;
+        border-radius: 16px;
+        border: 1px solid #ead7c8;
+        background: linear-gradient(180deg, #fffdf9, #fbf1e6);
+      }
+
+      .today-focus strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .today-focus span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .foundation-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .foundation-card {
+        background: #fffdf9;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .foundation-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--accent);
+      }
+
+      .foundation-card span,
+      .foundation-card li {
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .foundation-card ul {
+        margin: 10px 0 0;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .foundation-card li {
+        position: relative;
+        padding-left: 18px;
+        margin-top: 8px;
+      }
+
+      .foundation-card li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 18px;
+      }
+
+      .recommendation .summary-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 10px;
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .recommendation .summary-list li {
+        margin: 0;
+        padding-left: 14px;
+        position: relative;
+      }
+
+      .recommendation .summary-list li::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+      }
+
+      .dashboard-note {
+        margin-top: 12px;
+        font-size: 0.95rem;
+        color: var(--muted);
+      }
+
       @media (max-width: 760px) {
         .grid,
         .links {
           grid-template-columns: 1fr;
+        }
+
+        .dashboard,
+        .foundation-grid,
+        .credential-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
         }
 
         .page {
@@ -147,75 +514,442 @@
   </head>
   <body>
     <main class="page">
-      <section class="hero">
-        <h1>Coding Learning Hub</h1>
-        <p>
-          A cleaner snapshot of what I am building, what I am learning, and how
-          I am tracking my progress as I grow my coding skills. I am working
-          with <strong>Codex</strong> in an AI-assisted workflow to test ideas,
-          review changes, and improve this project over time.
-        </p>
-      </section>
+      <div class="dashboard">
+        <div class="stack">
+          <section class="hero">
+            <span class="eyebrow">Certification-first career compass</span>
+            <h1>Career Compass</h1>
+            <p>
+              One active credential at a time. Right now the site is centered on SQL /
+              relational database readiness, with the next move always visible and the
+              rest of the roadmap kept calm and secondary.
+            </p>
+          </section>
 
-      <div class="grid">
-        <section class="section">
-          <h2>What I'm Working On</h2>
-          <ul class="projects">
-            <li><a href="https://github.com/EmmaWichmann/codinglearninghub">Coding Learning Hub</a></li>
-            <li><a href="https://github.com/EmmaWichmann/sagespeak">Sage and Speak</a></li>
-            <li><a href="https://github.com/EmmaWichmann/musicmoodapp">Music Mood App</a></li>
-            <li><a href="https://emmawichmann.github.io/outfit-archive">Outfit Archive</a></li>
-            <li>Python Starter Project — coming soon</li>
-            <li>Animation Project — coming soon</li>
-          </ul>
-        </section>
+          <section class="section">
+            <h2>Current Certification</h2>
+            <div class="today-focus" id="cert-summary">
+              <strong>SQL / Relational Database</strong>
+              <span>Preparing</span>
+            </div>
+            <div class="career-checklist">
+              <div class="career-step">
+                <strong>Readiness</strong>
+                <span>6 of 18 required SQL skills introduced</span>
+              </div>
+              <div class="career-step">
+                <strong>Current skill</strong>
+                <span>LIKE for filtering and pattern matching</span>
+              </div>
+              <div class="career-step">
+                <strong>Your next step</strong>
+                <span>SQLBolt Lesson 4</span>
+              </div>
+              <div class="career-step">
+                <strong>Why this matters</strong>
+                <span>This is a required skill for the SQL credential and a strong foundation for data work.</span>
+              </div>
+            </div>
+          </section>
 
-        <section class="section">
-          <h2>Skills Progress</h2>
-          <ul class="skills">
-            <li>HTML - beginner</li>
-            <li>CSS - beginner</li>
-            <li>JavaScript - beginner</li>
-            <li>SwiftUI - exploring</li>
-            <li>UX / product thinking - practicing</li>
-            <li>C++ - early exposure</li>
-            <li>Python - coming soon</li>
-            <li>Harvard CS50 - in progress</li>
-            <li>freeCodeCamp Web Developer - in progress</li>
-          </ul>
-        </section>
-      </div>
+          <section class="section">
+            <h2>Required Skills</h2>
+            <div class="foundation-grid">
+              <div class="foundation-card">
+                <strong>SQL Basics</strong>
+                <ul>
+                  <li>SELECT, FROM, WHERE</li>
+                  <li>DISTINCT, ORDER BY</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Filtering</strong>
+                <ul>
+                  <li>BETWEEN, LIKE, IN</li>
+                  <li>IS NULL, LIMIT</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Aggregation</strong>
+                <ul>
+                  <li>COUNT, SUM, AVG</li>
+                  <li>GROUP BY, HAVING</li>
+                </ul>
+              </div>
+              <div class="foundation-card">
+                <strong>Relational Queries</strong>
+                <ul>
+                  <li>JOIN, LEFT JOIN</li>
+                  <li>Subqueries</li>
+                </ul>
+              </div>
+            </div>
+          </section>
 
-      <section class="section" style="margin-top: 20px;">
-        <h2>Why I'm Building This</h2>
-        <p class="note">
-          I'm building this hub to track my coding progress, organize my
-          projects, and make it easier for people to quickly understand what I
-          am actively learning and creating.
-        </p>
+          <section class="section">
+            <h2>Certification Roadmap</h2>
+            <p class="note">SQL is current. Python comes next. APIs / JSON, visualization, and AI foundations stay later in the lane.</p>
+            <div class="links">
+              <a class="link-card" href="certifications/">
+                <strong>Certifications</strong>
+                <span>See the active credential and the later roadmap.</span>
+              </a>
 
-        <div class="links">
-          <a class="link-card" href="exams/">
-            <strong>Exams</strong>
-            <span>Ten HTML exams and ten JavaScript exams with saved progress.</span>
-          </a>
+              <a class="link-card" href="exams/">
+                <strong>Skill Checks</strong>
+                <span>Certification readiness checks and archived assessments.</span>
+              </a>
 
-<a class="link-card" href="logs/">
-            <strong>Logs</strong>
-            <span>Automatic exam records, progress backup, and restore tools.</span>
-          </a>
+              <a class="link-card" href="practice/sql-launcher.html">
+                <strong>SQL Flow</strong>
+                <span>Lesson, readiness check, and applied challenge.</span>
+              </a>
 
-          <a class="link-card" href="notes/">
-            <strong>Notes</strong>
-            <span>Learning notes, analogies, and study-system ideas.</span>
-          </a>
+              <a class="link-card" href="practice/python-launcher.html">
+                <strong>Python Flow</strong>
+                <span>Keep Python visible as the next credential lane.</span>
+              </a>
 
-          <a class="link-card" href="projects/">
-            <strong>Projects</strong>
-            <span>Project-related trackers and learning artifacts.</span>
-          </a>
+              <a class="link-card" href="progress/">
+                <strong>Progress</strong>
+                <span>Evidence, readiness, and recent wins.</span>
+              </a>
+
+              <a class="link-card" href="notes/">
+                <strong>Notes</strong>
+                <span>Short explanations and learning notes.</span>
+              </a>
+            </div>
+          </section>
         </div>
-      </section>
+
+        <aside class="stack sidebar">
+          <section class="section">
+            <h2>Next Recommended Skill Check</h2>
+            <div class="recommendation" id="next-assessment-card" aria-live="polite">
+              <span class="label">Recommended Next Assessment</span>
+              <h3 id="next-assessment-title">Loading recommendation...</h3>
+              <p id="next-assessment-reason" class="note"></p>
+              <ul id="next-assessment-concepts" class="summary-list"></ul>
+              <p class="next-step" id="next-assessment-step"></p>
+              <p class="dashboard-note" id="next-assessment-link"></p>
+              <div class="foundation-nav" aria-label="Foundation navigation">
+                <strong>What’s next for each foundation</strong>
+                <p class="foundation-nav-note">Pick a foundation to see its next move inside this box.</p>
+                <div class="foundation-nav-grid">
+                  <button class="is-active" type="button" data-foundation="sql">SQL</button>
+                  <button type="button" data-foundation="python">Python</button>
+                  <button type="button" data-foundation="product">Product</button>
+                  <button type="button" data-foundation="communication">Communication</button>
+                  <button type="button" data-foundation="systems">Systems</button>
+                  <button type="button" data-foundation="building">Building</button>
+                </div>
+                <div class="foundation-detail" id="foundation-detail">
+                  <p class="detail-label" id="foundation-detail-label">SQL</p>
+                  <p class="detail-title" id="foundation-detail-title">Complete the next SQLBolt lesson</p>
+                  <p class="detail-body" id="foundation-detail-body">
+                    Stay in the same box, finish the current SQLBolt lesson, then open the matching concept check.
+                  </p>
+                  <p class="detail-next" id="foundation-detail-next">Next move: SQL lesson → quiz → practice.</p>
+                </div>
+              </div>
+            </div>
+            <p class="resource-note">
+              Skill checks should stay focused on assessments. Use this area to see the next quiz, not a separate course library.
+            </p>
+          </section>
+        </aside>
+      </div>
     </main>
+
+    <script>
+      (function () {
+        const progressKey = "coding-hub-study-progress";
+        const missedKey = "coding-hub-missed-concepts";
+        const examProgressKey = "coding-hub-exam-progress-v2";
+        const activityLogKey = "coding-hub-activity-log";
+        const masteryKey = "coding-hub-concept-mastery";
+
+        const nextAssessmentTitle = document.getElementById("next-assessment-title");
+        const nextAssessmentReason = document.getElementById("next-assessment-reason");
+        const nextAssessmentConcepts = document.getElementById("next-assessment-concepts");
+        const nextAssessmentStep = document.getElementById("next-assessment-step");
+        const nextAssessmentLink = document.getElementById("next-assessment-link");
+        const foundationButtons = Array.from(document.querySelectorAll("[data-foundation]"));
+        const foundationDetailLabel = document.getElementById("foundation-detail-label");
+        const foundationDetailTitle = document.getElementById("foundation-detail-title");
+        const foundationDetailBody = document.getElementById("foundation-detail-body");
+        const foundationDetailNext = document.getElementById("foundation-detail-next");
+
+        const foundationDetails = {
+          sql: {
+            label: "SQL",
+            title: "Complete the next SQLBolt lesson",
+            body: "Stay in the same box, finish the current SQLBolt lesson, then open the matching concept check.",
+            next: "Next move: SQL lesson → quiz → practice.",
+          },
+          python: {
+            label: "Python",
+            title: "Review one beginner Python topic",
+            body: "Use short hands-on practice to reinforce basics before moving to a bigger task.",
+            next: "Next move: short explanation → try it yourself → immediate feedback.",
+          },
+          product: {
+            label: "Product",
+            title: "Write down the user problem and the change",
+            body: "Keep it concrete: what is confusing, what should improve, and what would count as success?",
+            next: "Next move: problem statement → improvement → measurable outcome.",
+          },
+          communication: {
+            label: "Communication",
+            title: "Explain one answer in plain language",
+            body: "Practice concise writing that shows your reasoning without extra fluff.",
+            next: "Next move: answer → explain → summarize.",
+          },
+          systems: {
+            label: "Systems",
+            title: "Trace the flow from lesson to assessment",
+            body: "Look at how the external lesson, knowledge check, and mastery update fit together.",
+            next: "Next move: lesson exposure → concept check → mastery update.",
+          },
+          building: {
+            label: "Building",
+            title: "Ship one small usable piece",
+            body: "Focus on a small improvement that works clearly and can be refined with evidence.",
+            next: "Next move: small build → test → improve.",
+          },
+        };
+
+        const recommendation = getRecommendation();
+        nextAssessmentTitle.textContent = recommendation.title;
+        nextAssessmentReason.textContent = recommendation.reason;
+        nextAssessmentConcepts.innerHTML = "";
+        recommendation.concepts.forEach(function (concept) {
+          const item = document.createElement("li");
+          item.textContent = concept;
+          nextAssessmentConcepts.append(item);
+        });
+        nextAssessmentStep.textContent = recommendation.step;
+        nextAssessmentLink.innerHTML =
+          '<div class="next-step-banner"><strong>→ next step:</strong> ' +
+          recommendation.step +
+          '</div><div class="action-row">' +
+          '<a class="primary-link" href="' +
+          recommendation.href +
+          '">' +
+          recommendation.linkLabel +
+          "</a>" +
+          (recommendation.secondaryHref
+            ? '<a class="secondary" href="' +
+              recommendation.secondaryHref +
+              '">' +
+              recommendation.secondaryLabel +
+              "</a>"
+            : "") +
+          "</div>";
+
+        foundationButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            const key = button.getAttribute("data-foundation");
+            const detail = foundationDetails[key];
+            if (!detail) return;
+
+            foundationButtons.forEach(function (item) {
+              item.classList.toggle("is-active", item === button);
+            });
+
+            foundationDetailLabel.textContent = detail.label;
+            foundationDetailTitle.textContent = detail.title;
+            foundationDetailBody.textContent = detail.body;
+            foundationDetailNext.textContent = detail.next;
+          });
+        });
+
+        function getRecommendation() {
+          const studyProgress = read(progressKey, {});
+          const missedConcepts = read(missedKey, []);
+          const examProgress = read(examProgressKey, {});
+          const activityLog = read(activityLogKey, []);
+          const conceptMastery = read(masteryKey, {});
+
+          const sqlStatus = getSqlStatus(studyProgress, activityLog, conceptMastery);
+          const latestMissed = missedConcepts.find(function (item) {
+            return !item.reviewed;
+          });
+          const recommendedExam = getRecommendedAssessment(sqlStatus, examProgress);
+          const reviewConcepts = getReviewConcepts(conceptMastery, missedConcepts);
+
+          if (latestMissed && !latestMissed.reviewed) {
+            return {
+              title: "Targeted review",
+              reason:
+                "You recently missed a concept, so the best next step is to review that weak spot before moving on.",
+              concepts: [latestMissed.topic, latestMissed.prompt, ...reviewConcepts.slice(0, 1)],
+              step: "Do the missed-concepts review first, then return to the next concept check.",
+              linkLabel: "Open Missed Concepts",
+              href: "practice/study-mode.html",
+              secondaryLabel: "Open Study Mode",
+              secondaryHref: "practice/study-mode.html",
+            };
+          }
+
+          if (sqlStatus.nextLesson && sqlStatus.completedLessons <= 2) {
+            return {
+              title: sqlStatus.nextLesson.title + " concept check",
+              reason: "SQL is the active track, so the next concept check should match the next step in the SQL sequence.",
+              concepts: [sqlStatus.nextLesson.title, sqlStatus.nextLesson.concepts.join(", "), sqlStatus.masteryHint],
+              step:
+                "Complete the linked SQLBolt lesson, then take the matching SQL concept check to confirm the skill.",
+              linkLabel: "Open SQLBolt lesson",
+              href: sqlStatus.nextLesson.resource,
+              secondaryLabel: "Start Quiz",
+              secondaryHref: sqlStatus.nextLesson.assessment,
+            };
+          }
+
+          if (recommendedExam) {
+            return recommendedExam;
+          }
+
+          return {
+            title: "General practice",
+            reason:
+              "You do not have a weak concept needing immediate review, so the safest next move is a short mixed practice set.",
+            concepts: reviewConcepts.slice(0, 3).concat(["SQL", "Python"]),
+            step: "Use Study Mode for a short mixed practice session, then check the missed-concepts log.",
+            linkLabel: "Open Study Mode",
+            href: "practice/study-mode.html",
+            secondaryLabel: "Open Exams",
+            secondaryHref: "exams/",
+          };
+        }
+
+        function getSqlStatus(progress, activityLog, conceptMastery) {
+          const progression = [
+            { title: "SQL Lesson 1: SELECT queries 101", concepts: ["SELECT", "FROM"], resource: "https://sqlbolt.com/lesson/select_queries_introduction", assessment: "exams/exam.html?language=sql&exam=1" },
+            { title: "SQL Lesson 2: Queries with constraints (Pt. 1)", concepts: ["WHERE"], resource: "https://sqlbolt.com/lesson/select_queries_with_constraints", assessment: "exams/exam.html?language=sql&exam=2" },
+            { title: "SQL Lesson 4: Filtering and sorting Query results", concepts: ["ORDER BY", "LIMIT"], resource: "https://sqlbolt.com/lesson/filtering_sorting_query_results", assessment: "exams/exam.html?language=sql&exam=3" },
+            { title: "SQL Lesson 10: Queries with aggregates (Pt. 1)", concepts: ["COUNT", "SUM", "AVG"], resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates", assessment: "exams/exam.html?language=sql&exam=4" },
+            { title: "SQL Lesson 11: Queries with aggregates (Pt. 2)", concepts: ["GROUP BY", "HAVING"], resource: "https://sqlbolt.com/lesson/select_queries_with_aggregates_pt_2", assessment: "exams/exam.html?language=sql&exam=5" },
+            { title: "SQL Lesson 6: Multi-table queries with JOINs", concepts: ["INNER JOIN"], resource: "https://sqlbolt.com/lesson/select_queries_with_joins", assessment: "exams/exam.html?language=sql&exam=7" },
+            { title: "SQL Lesson 7: OUTER JOINs", concepts: ["LEFT JOIN"], resource: "https://sqlbolt.com/lesson/select_queries_with_outer_joins", assessment: "exams/exam.html?language=sql&exam=8" },
+            { title: "SQL Lesson 8: A short note on NULLs", concepts: ["NULL handling"], resource: "https://sqlbolt.com/lesson/select_queries_with_nulls", assessment: "exams/exam.html?language=sql&exam=11" },
+            { title: "SQL Lesson 9: Queries with expressions", concepts: ["CASE WHEN"], resource: "https://sqlbolt.com/lesson/select_queries_with_expressions", assessment: "exams/exam.html?language=sql&exam=9" },
+            { title: "SQL Topic: Subqueries", concepts: ["subquery"], resource: "https://sqlbolt.com/lesson/select_queries_with_subqueries", assessment: "exams/exam.html?language=sql&exam=10" },
+            { title: "SQL Lesson 8: A short note on NULLs", concepts: ["DISTINCT", "BETWEEN", "NULL handling"], resource: "https://sqlbolt.com/lesson/select_queries_with_nulls", assessment: "exams/exam.html?language=sql&exam=11" },
+          ];
+
+          const completedLessons = activityLog
+            .filter(function (entry) {
+              return entry.track === "sql" || entry.source === "sqlbolt";
+            })
+            .length;
+          const storedProgress = Object.keys(progress).filter(function (key) {
+            return key.toLowerCase().includes("sql");
+          }).length;
+          const lessonIndex = Math.max(completedLessons, storedProgress);
+          const masteryHint = getConceptMasterySummary(conceptMastery, "sql");
+
+          return {
+            completedLessons: lessonIndex,
+            nextLesson: progression[lessonIndex] || null,
+            masteryHint: masteryHint,
+          };
+        }
+
+        function getRecommendedAssessment(sqlStatus, examProgress) {
+          const passedGeneralAssessment = Object.values(examProgress).some(function (item) {
+            return item.passed && item.bestScore >= 80;
+          });
+
+          if (sqlStatus.completedLessons <= 1) {
+            return {
+              title: "SELECT and FROM concept check",
+              reason: "You are still early in SQL, so the first check should stay tightly focused on selecting data from a table.",
+              concepts: ["SELECT", "FROM", "WHERE"],
+              step: "Do the short SQL concept check after the next SQLBolt lesson.",
+              linkLabel: "Start Quiz",
+              href: "exams/exam.html?language=sql&exam=1",
+            };
+          }
+
+          if (passedGeneralAssessment) {
+            return {
+              title: "Mixed practice",
+              reason:
+                "You have already shown enough baseline skill for a mixed assessment, so the next step can combine related concepts.",
+              concepts: ["SQL", "product thinking", "workflow thinking"],
+              step: "Choose a mixed assessment only after you finish the current SQLBolt lesson.",
+              linkLabel: "Open Exams",
+              href: "exams/",
+            };
+          }
+
+          return {
+            title: "Applied challenge",
+            reason:
+              "You have enough exposure for a realistic scenario, so use an applied challenge that connects the skill to a project problem.",
+            concepts: ["SQL", "data interpretation", "communication"],
+            step: "Use an applied challenge after the current concept check to practice transfer.",
+            linkLabel: "Open Exams",
+            href: "exams/",
+          };
+        }
+
+        function getReviewConcepts(conceptMastery, missedConcepts) {
+          const mastery = Object.entries(conceptMastery || {}).map(function ([key, value]) {
+            return { key: key, state: value.state || "NEW", misses: value.misses || 0 };
+          });
+
+          const weakByMastery = mastery
+            .filter(function (item) {
+              return item.state === "NEW" || item.state === "REVIEWING";
+            })
+            .sort(function (a, b) {
+              return b.misses - a.misses;
+            })
+            .map(function (item) {
+              return item.key.split("::")[1] || item.key;
+            });
+
+          const weakByMissed = missedConcepts
+            .filter(function (item) {
+              return !item.reviewed;
+            })
+            .map(function (item) {
+              return item.topic;
+            });
+
+          return Array.from(new Set([...weakByMissed, ...weakByMastery]));
+        }
+
+        function getConceptMasterySummary(conceptMastery, prefix) {
+          const items = Object.entries(conceptMastery || {}).filter(function ([key, value]) {
+            return key.indexOf(prefix) === 0 && value.state !== "SOLID";
+          });
+
+          if (items.length === 0) {
+            return "No weak SQL concepts at the moment.";
+          }
+
+          const conceptNames = items
+            .slice(0, 2)
+            .map(function ([key, value]) {
+              return key.split("::")[1] || key;
+            })
+            .join(", ");
+
+          return "Focus review on " + conceptNames + ".";
+        }
+
+        function read(key, fallback) {
+          try {
+            return JSON.parse(localStorage.getItem(key)) ?? fallback;
+          } catch {
+            return fallback;
+          }
+        }
+      })();
+    </script>
   </body>
 </html>

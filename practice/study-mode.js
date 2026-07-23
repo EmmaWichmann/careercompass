@@ -1,5 +1,6 @@
 const progressKey = "coding-hub-study-progress";
 const missedKey = "coding-hub-missed-concepts";
+const notebookKey = "coding-hub-study-notebook";
 const reviewIntervals = [1, 3, 7, 14, 30];
 
 const modeButtons = document.querySelectorAll("[data-mode]");
@@ -21,9 +22,12 @@ const streakNode = document.getElementById("streak-count");
 const progressBar = document.getElementById("progress-bar");
 const progressText = document.getElementById("progress-text");
 const resetButton = document.getElementById("reset-progress");
+const editButton = document.getElementById("edit-card");
+const notebookGrid = document.getElementById("notebook-grid");
 
 let progress = readStorage(progressKey, {});
 let missedConcepts = readStorage(missedKey, []);
+let notebookNotes = readStorage(notebookKey, defaultNotebookNotes());
 let studyDeck = mergeStudyDeck();
 let currentMode = "due";
 let activeLanguage = "all";
@@ -51,6 +55,7 @@ languageButtons.forEach((button) => {
 });
 
 revealButton.addEventListener("click", revealAnswer);
+editButton.addEventListener("click", editCard);
 
 ratingButtons.addEventListener("click", (event) => {
   const button = event.target.closest("[data-rating]");
@@ -133,12 +138,13 @@ function showCard() {
 
   topicLabel.textContent = card.topic;
   typeLabel.textContent = formatType(card.type);
-  promptNode.textContent = card.prompt;
-  answerNode.textContent = card.answer;
-  explanationNode.textContent = card.explanation;
+  const cardView = getEditableCard(card);
+  promptNode.textContent = cardView.prompt;
+  answerNode.textContent = cardView.answer;
+  explanationNode.textContent = cardView.explanation;
 
-  codeNode.hidden = !card.code;
-  codeNode.textContent = card.code || "";
+  codeNode.hidden = !cardView.code;
+  codeNode.textContent = cardView.code || "";
 
   optionsNode.innerHTML = "";
   if (card.options) {
@@ -155,13 +161,14 @@ function showCard() {
   answerPanel.hidden = true;
   ratingButtons.hidden = true;
   revealButton.hidden = false;
-  revealButton.textContent = card.options ? "Show answer instead" : "Flip card";
+  revealButton.textContent = cardView.options ? "Show answer instead" : "Flip card";
   updateRatingDateLabels(card);
   updateProgressDisplay();
+  renderNotebook();
 }
 
 function checkOption(button, option) {
-  const card = currentCards[currentIndex];
+  const card = getEditableCard(currentCards[currentIndex]);
   const buttons = optionsNode.querySelectorAll("button");
   buttons.forEach((item) => {
     item.disabled = true;
@@ -172,9 +179,11 @@ function checkOption(button, option) {
 
   if (option === card.answer) {
     button.classList.add("correct");
+    updateConceptMastery(card, true, "good");
   } else {
     button.classList.add("incorrect");
     logMissedConcept(card);
+    updateConceptMastery(card, false, "again");
   }
 
   revealAnswer();
@@ -187,9 +196,10 @@ function revealAnswer() {
 }
 
 function rateCard(rating) {
-  const card = currentCards[currentIndex];
+  const card = getEditableCard(currentCards[currentIndex]);
   const oldProgress = progress[card.id] || { intervalIndex: -1 };
   let intervalIndex = oldProgress.intervalIndex;
+  const mastered = isMasteryPositive(rating);
 
   if (rating === "again") {
     intervalIndex = 0;
@@ -215,6 +225,7 @@ function rateCard(rating) {
   };
 
   localStorage.setItem(progressKey, JSON.stringify(progress));
+  updateConceptMastery(card, mastered, rating);
   reviewedThisSession += 1;
   currentIndex += 1;
   showCard();
@@ -244,6 +255,32 @@ function logMissedConcept(card) {
   localStorage.setItem(missedKey, JSON.stringify(missedConcepts));
 }
 
+function updateConceptMastery(card, mastered, rating) {
+  if (!window.CodingHubStorage?.saveConceptMastery) {
+    return;
+  }
+
+  const key = getConceptMasteryKey(card);
+  window.CodingHubStorage.saveConceptMastery({
+    key: key,
+    source: card.source || "study-mode",
+    exposure: true,
+    correct: mastered,
+    missed: rating === "again",
+    reviewing: rating === "hard" || rating === "again",
+    outcome: rating,
+    timestamp: new Date().toISOString(),
+  });
+}
+
+function isMasteryPositive(rating) {
+  return rating === "good" || rating === "easy";
+}
+
+function getConceptMasteryKey(card) {
+  return `${getCardLanguage(card)}::${card.topic}`;
+}
+
 function showFinishedState(title, message) {
   topicLabel.textContent = "Study Mode";
   typeLabel.textContent = "Complete";
@@ -257,6 +294,105 @@ function showFinishedState(title, message) {
   revealButton.hidden = true;
   ratingButtons.hidden = true;
   updateProgressDisplay();
+}
+
+function editCard() {
+  const card = currentCards[currentIndex];
+  if (!card) {
+    return;
+  }
+
+  const current = getEditableCard(card);
+  const prompt = window.prompt("Edit prompt", current.prompt);
+  if (prompt === null) return;
+  const answer = window.prompt("Edit answer", current.answer);
+  if (answer === null) return;
+  const explanation = window.prompt("Edit explanation", current.explanation);
+  if (explanation === null) return;
+
+  notebookNotes = {
+    ...notebookNotes,
+    [card.id]: {
+      ...current,
+      prompt: prompt.trim() || current.prompt,
+      answer: answer.trim() || current.answer,
+      explanation: explanation.trim() || current.explanation,
+      updatedAt: new Date().toISOString(),
+    },
+  };
+
+  localStorage.setItem(notebookKey, JSON.stringify(notebookNotes));
+  showCard();
+}
+
+function getEditableCard(card) {
+  return {
+    ...card,
+    ...(notebookNotes[card.id] || {}),
+  };
+}
+
+function defaultNotebookNotes() {
+  return {
+    sql: {
+      title: "SQL notebook",
+      body: "Keep SQLBolt notes here: joins, WHERE tricks, aggregates, and anything you want to revisit.",
+    },
+    python: {
+      title: "Python notebook",
+      body: "Keep tiny scripts, pandas reminders, and cleanup patterns here.",
+    },
+    product: {
+      title: "Product notebook",
+      body: "Write problem statements, user friction, and what should change next.",
+    },
+    communication: {
+      title: "Communication notebook",
+      body: "Capture short explanations, summaries, and how you would teach the idea back.",
+    },
+  };
+}
+
+function renderNotebook() {
+  if (!notebookGrid) return;
+  const cards = Object.values(notebookNotes);
+  notebookGrid.innerHTML = "";
+  cards.forEach((note) => {
+    const row = document.createElement("div");
+    row.className = "notebook-card";
+    row.innerHTML =
+      "<strong>" +
+      note.title +
+      "</strong><p>" +
+      note.body +
+      "</p><div class='notebook-actions'><button class='quiet-button' type='button' data-note-edit='" +
+      note.title +
+      "'>Edit note</button></div>";
+    notebookGrid.append(row);
+  });
+
+  notebookGrid.querySelectorAll("[data-note-edit]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const title = button.getAttribute("data-note-edit");
+      const entry = cards.find((note) => note.title === title);
+      if (!entry) return;
+      const nextTitle = window.prompt("Notebook title", entry.title);
+      if (nextTitle === null) return;
+      const nextBody = window.prompt("Notebook note", entry.body);
+      if (nextBody === null) return;
+      const nextNotes = { ...notebookNotes };
+      const key = Object.keys(nextNotes).find((item) => nextNotes[item].title === entry.title);
+      if (!key) return;
+      nextNotes[key] = {
+        ...entry,
+        title: nextTitle.trim() || entry.title,
+        body: nextBody.trim() || entry.body,
+      };
+      notebookNotes = nextNotes;
+      localStorage.setItem(notebookKey, JSON.stringify(notebookNotes));
+      renderNotebook();
+    });
+  });
 }
 
 function updateStats() {
@@ -320,12 +456,59 @@ function formatType(type) {
 }
 
 function getCardLanguage(card) {
+  if (card.id && card.id.startsWith("note-")) {
+    return card.topic?.toLowerCase() || "all";
+  }
   if (card.topic === "HTML" || card.topic === "HTML + JavaScript") {
     return "html";
   }
 
   if (card.topic === "CSS" || card.topic === "Design") {
     return "css";
+  }
+
+  if (card.topic === "Python") {
+    return "python";
+  }
+
+  if (card.topic === "SQL") {
+    return "sql";
+  }
+
+  if (card.topic === "Product Thinking") {
+    return "product";
+  }
+
+  if (card.topic === "Systems Thinking") {
+    return "systems";
+  }
+
+  if (card.topic === "Technical Communication") {
+    return "communication";
+  }
+
+  if (card.topic === "Workflow Thinking") {
+    return "workflow";
+  }
+
+  if (card.topic === "TypeScript") {
+    return "typescript";
+  }
+
+  if (card.topic === "Java") {
+    return "java";
+  }
+
+  if (card.topic === "C#") {
+    return "csharp";
+  }
+
+  if (card.topic === "Go") {
+    return "go";
+  }
+
+  if (card.topic === "Swift") {
+    return "swift";
   }
 
   return "javascript";

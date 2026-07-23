@@ -1,20 +1,20 @@
-# Coding Learning Hub
+# Career Compass
 
 I am working with `Codex` in an AI-assisted workflow to track progress, test ideas, review changes, and improve this project over time.
 
-This project is a one-stop learning system for coding practice, quizzes, concept review, and project tracking.
+This project is a shared-foundation learning system for SQL, Python, product thinking, communication, workflow thinking, and light technical building.
 
 ## Main Goals
 
-- log coding practice time
+- log practice time
 - take short quizzes and longer exams
 - track concepts as `new`, `reviewing`, or `solid`
 - store personal learning notes and analogies
-- help you build evidence of consistent coding practice over time
+- build evidence of strengths across multiple technology roles
 
 ## Current Project List
 
-1. `Coding Learning Hub`
+1. `Career Compass (CC)`
 2. `Sage and Speak`
 3. `Music Mood App`
 4. `Closet Tracker`
@@ -25,6 +25,9 @@ This project is a one-stop learning system for coding practice, quizzes, concept
 - `HTML` gives the page structure
 - `CSS` controls how the page looks
 - `JavaScript` adds behavior and interactivity
+- `SQL` retrieves and shapes data
+- `Python` helps with analysis and automation
+- `Product thinking` helps define the actual problem
 - `id` is a unique label that helps JavaScript find an element
 - `textContent` changes visible text on the page
 - `.value` reads what a user typed into an input
@@ -43,7 +46,8 @@ This project is a one-stop learning system for coding practice, quizzes, concept
 - learning notes with your own analogies
 - a concept tracker
 - a project history
-- later: practice paths, easier two button review, and more languages
+- interactive exams for foundational technical skills
+- later: practice paths, easier two button review, more languages, and an interactive web app version of the lab
 
 ## Daily Workflow
 
@@ -52,6 +56,11 @@ This project is a one-stop learning system for coding practice, quizzes, concept
 3. Mark concepts as `new`, `reviewing`, or `solid`.
 4. Build or fix one small feature.
 5. Write one sentence about what confused you or clicked.
+
+## Integrity Check
+
+- Run `node scripts/check-links.js` to scan the repository for broken internal links.
+- The script is meant to catch stale navigation targets such as removed exam pages before they reach the dashboard.
 
 ## First Version Of This Hub
 

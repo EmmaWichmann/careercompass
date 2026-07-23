@@ -3,6 +3,7 @@
     examProgress: "coding-hub-exam-progress-v2",
     activityLog: "coding-hub-activity-log",
     missedConcepts: "coding-hub-missed-concepts",
+    conceptMastery: "coding-hub-concept-mastery",
   };
 
   function read(key, fallback) {
@@ -19,6 +20,58 @@
 
   function getExamProgress() {
     return read(keys.examProgress, {});
+  }
+
+  function getConceptMastery() {
+    return read(keys.conceptMastery, {});
+  }
+
+  function saveConceptMastery(update) {
+    const mastery = getConceptMastery();
+    const current = mastery[update.key] || {
+      state: "NEW",
+      exposures: 0,
+      correctStreak: 0,
+      misses: 0,
+      lastSeen: null,
+      lastOutcome: null,
+      sources: [],
+    };
+
+    const exposures = (current.exposures || 0) + (update.exposure ? 1 : 0);
+    const misses = (current.misses || 0) + (update.missed ? 1 : 0);
+    const correctStreak = update.correct
+      ? (current.correctStreak || 0) + 1
+      : 0;
+    const lastOutcome = update.outcome || current.lastOutcome || null;
+    let state = current.state || "NEW";
+
+    if (misses >= 2 || update.reviewing) {
+      state = "REVIEWING";
+    }
+
+    if (correctStreak >= 3 && exposures >= 3 && misses === 0) {
+      state = "SOLID";
+    } else if (exposures > 0 && state === "NEW" && (update.correct || update.reviewing)) {
+      state = "REVIEWING";
+    }
+
+    const sources = new Set(current.sources || []);
+    if (update.source) {
+      sources.add(update.source);
+    }
+
+    mastery[update.key] = {
+      state: state,
+      exposures: exposures,
+      correctStreak: correctStreak,
+      misses: misses,
+      lastSeen: update.timestamp || new Date().toISOString(),
+      lastOutcome: lastOutcome,
+      sources: Array.from(sources),
+    };
+    write(keys.conceptMastery, mastery);
+    return mastery[update.key];
   }
 
   function saveExamAttempt(attempt) {
@@ -112,6 +165,8 @@
     read: read,
     write: write,
     getExamProgress: getExamProgress,
+    getConceptMastery: getConceptMastery,
+    saveConceptMastery: saveConceptMastery,
     saveExamAttempt: saveExamAttempt,
     addMissedCard: addMissedCard,
     exportAll: exportAll,

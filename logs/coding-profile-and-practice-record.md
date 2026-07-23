@@ -1,4 +1,4 @@
-# Emma Wichmann | Coding Profile
+# Emma Wichmann | Career Profile
 
 ## Profile
 
@@ -20,7 +20,7 @@ I am learning front-end development first, with a focus on:
 
 ## Selected Projects
 
-### 1. Coding Learning Hub
+### 1. Career Compass
 
 A personal learning system for my coding journey.
 

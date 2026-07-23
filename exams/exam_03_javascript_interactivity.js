@@ -1,9 +1,9 @@
 const questions = [
   {
-    prompt: "What does document.getElementById(\"closet-grid\") do?",
+    prompt: "What does document.getElementById(\"project-grid\") do?",
     choices: {
-      A: "Creates a new closet grid",
-      B: "Finds the existing element whose id is closet-grid",
+      A: "Creates a new grid automatically",
+      B: "Finds the existing element whose id is project-grid",
       C: "Changes the grid's CSS",
       D: "Deletes the grid",
     },
@@ -33,18 +33,18 @@ const questions = [
     explanation: "The value property reads the current information inside a form input.",
   },
   {
-    prompt: "What is an array useful for in Outfit Archive?",
+    prompt: "What is an array useful for in a project that stores many items?",
     choices: {
-      A: "Keeping an ordered collection of clothing item objects",
+      A: "Keeping an ordered collection of related objects",
       B: "Changing a PNG into CSS",
       C: "Creating a heading automatically",
       D: "Publishing the project to GitHub Pages",
     },
     correct: "A",
-    explanation: "An array can store many related values, such as all of the clothing item objects in the closet.",
+    explanation: "An array can store many related values, such as all of the items in a project list.",
   },
   {
-    prompt: "What does localStorage help the browser app do?",
+  prompt: "What does localStorage help the browser app do?",
     choices: {
       A: "Upload clothing photos to a public server",
       B: "Remember data in that browser after the page is refreshed",
@@ -99,9 +99,9 @@ const questions = [
     explanation: "preventDefault stops the normal form submission and reload, giving JavaScript control over what happens next.",
   },
   {
-    prompt: "What should renderCloset() usually do after the clothing data changes?",
+    prompt: "What should a render function usually do after the data changes?",
     choices: {
-      A: "Update the visible closet so it matches the current data",
+      A: "Update the visible interface so it matches the current data",
       B: "Download every image again",
       C: "Rename the JavaScript file",
       D: "Open Visual Studio Code",

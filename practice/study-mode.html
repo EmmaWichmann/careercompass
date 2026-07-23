@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Study Mode | Coding Learning Hub</title>
+    <title>Study Mode | Career Compass</title>
     <style>
       :root {
         --bg: #f7f2eb;
@@ -275,6 +275,45 @@
         min-height: 500px;
       }
 
+      .notebook-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .notebook-card {
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,251,245,.98)),
+          repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 27px,
+            rgba(189, 161, 129, 0.18) 28px
+          );
+        padding: 16px;
+        min-height: 160px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .notebook-card strong {
+        color: var(--accent-dark);
+      }
+
+      .notebook-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .notebook-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
       .activity-score-row {
         justify-content: space-between;
         margin-bottom: 18px;
@@ -350,6 +389,52 @@
         padding-block: 44px;
       }
 
+      .inline-link-row {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+
+      .link-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 13px;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--panel-strong);
+        color: var(--text);
+        text-decoration: none;
+      }
+
+      .check-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 12px;
+        color: var(--muted);
+      }
+
+      .focus-strip {
+        margin: 14px 0 18px;
+        padding: 14px 16px;
+        border-radius: 16px;
+        border: 1px dashed var(--accent);
+        background: #fffdf9;
+      }
+
+      .focus-strip strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent-dark);
+      }
+
+      .focus-strip span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
       .celebration h2 {
         color: var(--accent-dark);
         font-size: clamp(2rem, 6vw, 3.4rem);
@@ -387,7 +472,7 @@
         <div class="top-row">
           <div>
             <h1>Study Mode</h1>
-            <p class="muted">Small coding concepts, practiced a little at a time.</p>
+            <p class="muted">Small shared-foundation concepts, practiced a little at a time.</p>
           </div>
           <a href="index.html">Back to Practice</a>
         </div>
@@ -446,10 +531,10 @@
           </button>
           <a class="mode-button" href="skill-practice.html">Skill practice</a>
         </div>
-        <h2 class="language-heading">Choose a language</h2>
+        <h2 class="language-heading">Choose a study lane</h2>
         <div class="mode-list">
           <button class="mode-button language-button active" data-language="all" type="button">
-            All languages
+            All lanes
           </button>
           <button class="mode-button language-button" data-language="html" type="button">
             HTML
@@ -460,6 +545,52 @@
           <button class="mode-button language-button" data-language="javascript" type="button">
             JavaScript
           </button>
+          <button class="mode-button language-button" data-language="python" type="button">
+            Python
+          </button>
+          <button class="mode-button language-button" data-language="sql" type="button">
+            SQL
+          </button>
+          <button class="mode-button language-button" data-language="product" type="button">
+            Product
+          </button>
+          <button class="mode-button language-button" data-language="systems" type="button">
+            Systems
+          </button>
+          <button class="mode-button language-button" data-language="communication" type="button">
+            Communication
+          </button>
+          <button class="mode-button language-button" data-language="workflow" type="button">
+            Workflow
+          </button>
+          <button class="mode-button language-button" data-language="typescript" type="button">
+            TypeScript
+          </button>
+          <button class="mode-button language-button" data-language="java" type="button">
+            Java
+          </button>
+          <button class="mode-button language-button" data-language="csharp" type="button">
+            C#
+          </button>
+          <button class="mode-button language-button" data-language="go" type="button">
+            Go
+          </button>
+          <button class="mode-button language-button" data-language="swift" type="button">
+            Swift
+          </button>
+        </div>
+
+        <div class="focus-strip">
+          <strong>ADHD-friendly focus rule</strong>
+          <span>Pick one lane, do one card, then stop or switch. A short win counts as progress.</span>
+        </div>
+
+        <h2 class="language-heading">Notebook</h2>
+        <p class="muted">Use this to keep quick notes, short reminders, and card fixes while you study.</p>
+        <div class="notebook-grid" id="notebook-grid"></div>
+        <div class="inline-link-row">
+          <a class="link-chip" href="../notes/">Open Notes notebook</a>
+          <a class="link-chip" href="../notes/learning-notes.md">Learning notes</a>
         </div>
       </section>
 
@@ -475,6 +606,9 @@
 
         <button class="primary-button" id="reveal-answer" type="button">
           Flip card
+        </button>
+        <button class="quiet-button" id="edit-card" type="button">
+          Edit card
         </button>
 
         <div class="answer-panel" id="answer-panel" hidden>

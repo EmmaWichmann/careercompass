@@ -4,431 +4,297 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Progress | Career Compass</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
     <style>
-      :root {
-        --bg: #f7f2eb;
-        --panel: #fffaf4;
-        --text: #37261c;
-        --muted: #6d584c;
-        --accent: #b75e3c;
-        --accent-soft: #ead7c8;
-        --line: #dbc8b8;
-        --shadow: 0 18px 45px rgba(76, 47, 28, 0.08);
-        --radius: 20px;
-      }
-
-      * { box-sizing: border-box; }
-
-      body {
-        margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        background: linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
-        color: var(--text);
-      }
-
-      main {
-        width: min(980px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 56px;
-      }
-
-      .hero,
-      .card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        padding: 24px;
-        margin-bottom: 18px;
-      }
-
-      h1, h2, h3, p { margin-top: 0; }
-      h1 { color: var(--accent); font-size: clamp(2.2rem, 6vw, 4rem); margin-bottom: 10px; }
-      .eyebrow, .pill {
-        display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px;
-        border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 0.9rem;
-      }
-      .muted { color: var(--muted); line-height: 1.7; }
-      .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
-      .stat {
-        padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: #fffdf9;
-      }
-      .stat strong { display: block; margin-bottom: 6px; color: var(--accent); font-size: 1.4rem; }
-      .stat span { color: var(--muted); }
-      .list {
-        display: grid; gap: 12px; margin-top: 14px;
-      }
-      .item {
-        padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: #fffdf9;
-      }
-      .item .top { display: flex; justify-content: space-between; gap: 12px; align-items: start; }
-      .item strong { display: block; margin-bottom: 4px; }
-      .item p { margin-bottom: 0; color: var(--muted); line-height: 1.6; }
-      .status {
-        white-space: nowrap; padding: 6px 10px; border-radius: 999px; background: #f2e2d4; color: var(--accent); font-size: 0.84rem;
-      }
-      .status.solid { background: #ddebdc; color: #35664a; }
-      .status.passed { background: #ddebdc; color: #35664a; }
-      .status.reviewing { background: #f8e2d9; color: #8a4a2e; }
-      .status.new { background: #f6eddc; }
-      .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-      .button {
-        display: inline-flex; align-items: center; justify-content: center; padding: 11px 14px; border-radius: 999px;
-        border: 1px solid var(--accent); text-decoration: none;
-      }
-      .button.primary { background: #8f4528; border-color: #8f4528; color: white; }
-      .button.secondary { color: var(--accent); background: transparent; }
-      .evidence {
-        display: grid; gap: 10px;
-      }
-      .evidence-item {
-        border-top: 1px solid var(--line); padding-top: 12px;
-      }
-      .evidence-item:first-child { border-top: 0; padding-top: 0; }
-      .timeline {
-        display: grid; gap: 10px;
-      }
-
-      .wins-highlight {
+      .skill-list {
         display: grid;
-        gap: 12px;
-        margin-top: 14px;
+        gap: 8px;
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .wins-highlight .item {
-        border-left: 4px solid var(--accent);
+      .skill-list li {
+        padding: 10px 12px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 12px;
       }
 
-      .wins-highlight .item:first-child {
-        background: linear-gradient(180deg, #fffdf9, #fff7ef);
+      .skill-list li.current {
+        border-color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent-dark);
       }
-      @media (max-width: 800px) {
-        .grid { grid-template-columns: 1fr; }
-        .item .top { display: grid; }
+
+      .win-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .win-item {
+        padding: 12px 14px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .win-item .win-date {
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+
+      .roadmap-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 10px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .roadmap-list li {
+        padding: 10px 12px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .roadmap-list .roadmap-label {
+        color: var(--muted);
+        font-size: 0.84rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-right: 8px;
+      }
+
+      .reset-row {
+        margin-top: 24px;
+        padding-top: 18px;
+        border-top: 1px solid var(--line);
       }
     </style>
   </head>
   <body>
-    <main>
-      <section class="hero">
-        <span class="eyebrow">Certification readiness and evidence</span>
+    <nav class="top-nav">
+      <a class="top-nav-brand" href="../index.html">Career Compass</a>
+      <div class="top-nav-links">
+        <a href="../index.html">Today</a>
+        <a href="index.html" class="is-current">Progress</a>
+        <a href="../notes/">Notes</a>
+      </div>
+    </nav>
+
+    <main class="page">
+      <section class="card">
         <h1>Progress</h1>
-        <p class="muted">
-          This page shows the current certification readiness signal, recent evidence, and the few skills that still need work.
-        </p>
-        <div class="actions">
-          <a class="button primary" href="../exams/">Open Skill Check</a>
-          <a class="button secondary" href="../certifications/">View Certifications</a>
-          <a class="button secondary" href="../notes/">Open Notes</a>
+        <p class="muted">A plain look at what is done, what is in motion, and what comes next.</p>
+
+        <div class="stats-row">
+          <div class="stat">
+            <strong id="stat-lessons">0</strong>
+            <span>Lessons completed</span>
+          </div>
+          <div class="stat">
+            <strong id="stat-checks">0</strong>
+            <span>Skill checks completed</span>
+          </div>
+          <div class="stat">
+            <strong id="stat-next">—</strong>
+            <span>Next skill</span>
+          </div>
         </div>
       </section>
 
       <section class="card">
-        <h2>Snapshot</h2>
-        <div class="grid">
-          <div class="stat"><strong id="sql-status">-</strong><span>Current SQL certification status</span></div>
-          <div class="stat"><strong id="recent-evidence-count">-</strong><span>Recent evidence items</span></div>
-          <div class="stat"><strong id="review-count">-</strong><span>Skills needing practice</span></div>
-        </div>
+        <h2>SQL</h2>
+        <p class="muted">Currently learning: <strong id="sql-current">—</strong></p>
+        <p class="muted" id="sql-completed-label">Skills completed</p>
+        <ul class="skill-list" id="sql-completed-list"></ul>
       </section>
 
       <section class="card">
-        <h2>Current Certification</h2>
-        <div class="grid">
-          <div class="stat"><strong>SQL / Relational Database</strong><span>Preparing for the current credential.</span></div>
-          <div class="stat"><strong>Readiness</strong><span>Keep moving through the required SQL skills and checks.</span></div>
-          <div class="stat"><strong>Next move</strong><span>Use the recommended SQL skill check, then continue SQLBolt.</span></div>
-        </div>
-      </section>
-
-      <section class="card">
-        <h2>Current Practice Needs</h2>
-        <p class="muted">The skills below are the ones still in motion for the active credential.</p>
-        <div class="wins-highlight" id="python-wins-list"></div>
+        <h2>Python</h2>
+        <p class="muted">Currently learning: <strong id="python-current">—</strong></p>
+        <p class="muted" id="python-completed-label">Skills completed</p>
+        <ul class="skill-list" id="python-completed-list"></ul>
       </section>
 
       <section class="card">
         <h2>Recent Wins</h2>
-        <div class="wins-highlight" id="wins-list"></div>
+        <div class="win-list" id="win-list"></div>
       </section>
 
       <section class="card">
-        <h2>Mastery History</h2>
-        <div class="list" id="mastery-list"></div>
-      </section>
+        <p class="muted">
+          Every completed skill check lives in the full archive.
+          <a href="../exams/">Browse all skill checks</a>
+        </p>
 
-      <section class="card">
-        <h2>Recent Evidence</h2>
-        <div class="timeline" id="evidence-list"></div>
-      </section>
+        <details class="collapsible">
+          <summary>See My Future Roadmap</summary>
+          <div class="collapsible-body">
+            <ul class="roadmap-list" id="roadmap-list"></ul>
+          </div>
+        </details>
 
-      <section class="card">
-        <h2>Assessment History</h2>
-        <div class="timeline" id="assessment-list"></div>
+        <div class="reset-row">
+          <button class="button" id="reset-button" type="button">Reset progress</button>
+          <p class="muted" id="reset-status" role="status" aria-live="polite"></p>
+        </div>
       </section>
     </main>
 
+    <script src="../shared/storage.js"></script>
+    <script src="../shared/path-data.js"></script>
+    <script src="../shared/path-progress.js"></script>
     <script>
       (function () {
-        const mastery = read("coding-hub-concept-mastery", {});
-        const activity = read("coding-hub-activity-log", []);
-        const examProgress = read("coding-hub-exam-progress-v2", {});
-        const missed = read("coding-hub-missed-concepts", []);
+        const data = window.CareerPathData;
 
-        const sqlPlan = [
-          { title: "SQL Lesson 1: SELECT queries 101", concepts: ["SELECT", "FROM", "column alias"] },
-          { title: "SQL Lesson 2: Queries with constraints (Pt. 1)", concepts: ["WHERE", "in list", "null check"] },
-          { title: "SQL Lesson 4: Filtering and sorting Query results", concepts: ["ORDER BY", "LIMIT"] },
-          { title: "SQL Lesson 10: Queries with aggregates (Pt. 1)", concepts: ["COUNT", "SUM", "AVG"] },
-          { title: "SQL Lesson 11: Queries with aggregates (Pt. 2)", concepts: ["GROUP BY", "HAVING"] },
-          { title: "SQL Lesson 6: Multi-table queries with JOINs", concepts: ["INNER JOIN", "join condition"] },
-          { title: "SQL Lesson 7: OUTER JOINs", concepts: ["LEFT JOIN", "join condition"] },
-          { title: "SQL Lesson 8: A short note on NULLs", concepts: ["null check", "unique values", "between range"] },
-          { title: "SQL Lesson 9: Queries with expressions", concepts: ["CASE WHEN"] },
-          { title: "SQL Topic: Subqueries", concepts: ["subquery"] },
-          { title: "SQL data cleaning", concepts: ["between range", "null check", "unique values"] },
-        ];
+        render();
 
-        renderSnapshot();
-        renderWins();
-        renderPythonWins();
-        renderMastery();
-        renderEvidence();
-        renderAssessments();
+        document.getElementById("reset-button").addEventListener("click", function () {
+          const confirmed = window.confirm(
+            "Reset all lesson progress back to the start? This cannot be undone."
+          );
+          if (!confirmed) {
+            return;
+          }
+          window.CareerPath.reset();
+          document.getElementById("reset-status").textContent = "Progress has been reset.";
+          render();
+        });
 
-        function renderSnapshot() {
-          const states = sqlPlan.map(function (item) {
-            return getState(item.concepts);
-          });
-          document.getElementById("sql-status").textContent =
-            states.includes("REVIEWING") ? "REVIEWING" : states.every(function (state) { return state === "SOLID"; }) ? "SOLID" : "ACTIVE";
-          document.getElementById("recent-evidence-count").textContent = String(activity.length + missed.length);
-          document.getElementById("review-count").textContent = String(states.filter(function (state) { return state !== "SOLID"; }).length);
+        function render() {
+          const state = window.CareerPath.load();
+          const examProgress = window.CodingHubStorage.getExamProgress();
+          const activityLog = window.CodingHubStorage.read(
+            window.CodingHubStorage.keys.activityLog,
+            []
+          );
+
+          renderLanguageSection("sql", state);
+          renderLanguageSection("python", state);
+          renderSnapshot(state, examProgress);
+          renderWins(state, activityLog);
+          renderRoadmap();
         }
 
-        function renderMastery() {
-          const container = document.getElementById("mastery-list");
-          container.innerHTML = "";
-          sqlPlan.forEach(function (item) {
-            const state = getState(item.concepts);
-            const row = document.createElement("div");
-            row.className = "item";
-            row.innerHTML =
-              '<div class="top"><div><strong>' +
-              item.title +
-              '</strong><p>' +
-              item.concepts.join(", ") +
-              '</p></div><span class="status ' +
-              state.toLowerCase() +
-              '">' +
-              state +
-              '</span></div>';
-            container.append(row);
+        function renderLanguageSection(key, state) {
+          const language = data.languages[key];
+          const completed = state[key].completed;
+          const currentNode = document.getElementById(key + "-current");
+          const listNode = document.getElementById(key + "-completed-list");
+          const labelNode = document.getElementById(key + "-completed-label");
+
+          if (completed >= language.lessons.length) {
+            currentNode.textContent = "All " + language.label + " lessons complete";
+          } else {
+            currentNode.textContent = language.lessons[completed].title;
+          }
+
+          labelNode.textContent =
+            completed === 0
+              ? "No skills completed yet"
+              : "Skills completed (" + completed + " of " + language.lessons.length + ")";
+
+          listNode.innerHTML = "";
+          language.lessons.slice(0, completed).forEach(function (lesson) {
+            const item = document.createElement("li");
+            item.textContent = lesson.title;
+            listNode.append(item);
           });
         }
 
-        function renderWins() {
-          const container = document.getElementById("wins-list");
+        function renderSnapshot(state, examProgress) {
+          const totalLessons = data.order.reduce(function (sum, key) {
+            return sum + state[key].completed;
+          }, 0);
+          const totalChecksPassed = Object.values(examProgress).filter(function (item) {
+            return item.passed;
+          }).length;
+
+          const current = window.CareerPath.getCurrentLesson(state);
+
+          document.getElementById("stat-lessons").textContent = String(totalLessons);
+          document.getElementById("stat-checks").textContent = String(totalChecksPassed);
+          document.getElementById("stat-next").textContent = current
+            ? current.lesson.title
+            : "All done";
+        }
+
+        function renderWins(state, activityLog) {
+          const container = document.getElementById("win-list");
           container.innerHTML = "";
-          const wins = collectWins();
+
+          const lessonWins = state.completions.map(function (item) {
+            return {
+              title: "Completed " + item.title + " (" + data.languages[item.languageKey].label + ")",
+              date: item.date,
+            };
+          });
+
+          const checkWins = activityLog
+            .filter(function (entry) {
+              return entry.passed && (entry.language === "sql" || entry.language === "python");
+            })
+            .map(function (entry) {
+              return {
+                title:
+                  "Passed " + (entry.languageName || entry.language) + " skill check: " + entry.examTitle,
+                date: entry.date,
+              };
+            });
+
+          const wins = lessonWins
+            .concat(checkWins)
+            .sort(function (a, b) {
+              return new Date(b.date) - new Date(a.date);
+            })
+            .slice(0, 6);
 
           if (wins.length === 0) {
-            const empty = document.createElement("div");
-            empty.className = "item";
-            empty.textContent = "No recent wins yet. As you practice, this section will capture passing work and solid concepts.";
+            const empty = document.createElement("p");
+            empty.className = "muted";
+            empty.textContent = "No wins yet. Complete a lesson or a skill check and it will show up here.";
             container.append(empty);
             return;
           }
 
           wins.forEach(function (win) {
-            const row = document.createElement("div");
-            row.className = "item";
-            row.innerHTML =
-              '<div class="top"><div><strong>' +
-              win.title +
-              '</strong><p>' +
-              win.detail +
-              '</p></div><span class="status ' +
-              win.state.toLowerCase() +
-              '">' +
-              win.state +
-              '</span></div>';
-            container.append(row);
-          });
-
-          if (wins.length > 0) {
-            const summary = document.createElement("div");
-            summary.className = "item";
-            summary.innerHTML =
-              "<strong>What this means</strong><span>You are building evidence through repeated correct work, passing assessments, and fewer unresolved misses.</span>";
-            container.prepend(summary);
-          }
-        }
-
-        function renderPythonWins() {
-          const container = document.getElementById("python-wins-list");
-          container.innerHTML = "";
-          const items = [
-            { title: "Python is on the path", detail: "The roadmap now shows Python as part of the current path, not a distant side note.", state: "ACTIVE" },
-            { title: "Python launcher added", detail: "Practice now has a compact Python entry point alongside SQL Flow.", state: "READY" },
-            { title: "Career path updated", detail: "The career page now reflects the SQL + Python foundation and the broader role cluster.", state: "VISIBLE" },
-          ];
-
-          items.forEach(function (item) {
-            const row = document.createElement("div");
-            row.className = "item";
-            row.innerHTML =
-              '<div class="top"><div><strong>' +
-              item.title +
-              '</strong><p>' +
-              item.detail +
-              '</p></div><span class="status new">' +
-              item.state +
-              '</span></div>';
-            container.append(row);
+            const item = document.createElement("div");
+            item.className = "win-item";
+            const title = document.createElement("div");
+            title.textContent = win.title;
+            const date = document.createElement("div");
+            date.className = "win-date";
+            date.textContent = formatDate(win.date);
+            item.append(title, date);
+            container.append(item);
           });
         }
 
-        function renderEvidence() {
-          const container = document.getElementById("evidence-list");
-          container.innerHTML = "";
-          const recentActivity = activity.slice(0, 5);
-          const recentMissed = missed.slice(0, 5);
-
-          if (recentActivity.length === 0 && recentMissed.length === 0) {
-            const empty = document.createElement("div");
-            empty.className = "item";
-            empty.textContent = "Complete an assessment or practice session to see evidence here.";
-            container.append(empty);
-            return;
-          }
-
-          recentActivity.forEach(function (entry) {
-            const row = document.createElement("div");
-            row.className = "item evidence-item";
-            row.innerHTML =
-              '<div class="top"><div><strong>' +
-              (entry.examTitle || "Practice session") +
-              '</strong><p>' +
-              formatDate(entry.date) +
-              " • " +
-              entry.percent +
-              "% • " +
-              formatTime(entry.timeSeconds || 0) +
-              "</p></div><span class=\"status " +
-              (entry.passed ? "solid" : "reviewing") +
-              '">' +
-              (entry.passed ? "Passed" : "Review") +
-              '</span></div><p>' +
-              (entry.missedTopics && entry.missedTopics.length ? "Missed topics: " + entry.missedTopics.join(", ") : "No missed topics.") +
-              "</p>";
-            container.append(row);
+        function renderRoadmap() {
+          const list = document.getElementById("roadmap-list");
+          list.innerHTML = "";
+          data.roadmap.forEach(function (item) {
+            const li = document.createElement("li");
+            li.innerHTML =
+              '<span class="roadmap-label">' + item.label + "</span>" + item.name;
+            list.append(li);
           });
-
-          recentMissed.forEach(function (item) {
-            const row = document.createElement("div");
-            row.className = "item evidence-item";
-            row.innerHTML =
-              '<div class="top"><div><strong>Missed concept</strong><p>' +
-              item.prompt +
-              '</p></div><span class="status reviewing">Reviewing</span></div><p>' +
-              item.explanation +
-              "</p>";
-            container.append(row);
-          });
-        }
-
-        function renderAssessments() {
-          const container = document.getElementById("assessment-list");
-          container.innerHTML = "";
-          const values = Object.values(examProgress);
-
-          if (values.length === 0) {
-            const empty = document.createElement("div");
-            empty.className = "item";
-            empty.textContent = "No completed exams yet. Your assessment history will appear here.";
-            container.append(empty);
-            return;
-          }
-
-          values.slice(0, 8).forEach(function (item) {
-            const row = document.createElement("div");
-            row.className = "item";
-            row.innerHTML =
-              '<div class="top"><div><strong>' +
-              item.lastAttempt +
-              '</strong><p>Best score: ' +
-              item.bestScore +
-              "% • Attempts: " +
-              item.attempts +
-              '</p></div><span class="status ' +
-              (item.passed ? "solid" : "reviewing") +
-              '">' +
-              (item.passed ? "Passed" : "Review") +
-              "</span></div>";
-            container.append(row);
-          });
-        }
-
-        function collectWins() {
-          const wins = [];
-
-          Object.entries(mastery)
-            .filter(function ([key, value]) {
-              return value.state === "SOLID";
-            })
-            .slice(0, 4)
-            .forEach(function ([key, value]) {
-              wins.push({
-                title: key.split("::")[1] || key,
-                detail: "This concept has enough repeated correct evidence to count as solid.",
-                state: value.state,
-              });
-            });
-
-          activity
-            .filter(function (entry) {
-              return entry.passed;
-            })
-            .slice(0, 3)
-            .forEach(function (entry) {
-              wins.push({
-                title: entry.examTitle || "Assessment passed",
-                detail: entry.percent + "% on " + formatDate(entry.date),
-                state: "PASSED",
-              });
-            });
-
-          return wins.slice(0, 6);
-        }
-
-        function getState(concepts, prefix) {
-          const states = concepts.map(function (concept) {
-            return mastery[(prefix || "sql") + "::" + concept.split("::").pop()]?.state || "NOT STARTED";
-          });
-          if (states.includes("REVIEWING")) return "REVIEWING";
-          if (states.every(function (state) { return state === "SOLID"; })) return "SOLID";
-          if (states.some(function (state) { return state === "NEW"; })) return "NEW";
-          return "NOT STARTED";
-        }
-
-        function read(key, fallback) {
-          try {
-            return JSON.parse(localStorage.getItem(key)) ?? fallback;
-          } catch {
-            return fallback;
-          }
         }
 
         function formatDate(dateString) {
-          if (!dateString) return "Recent";
-          return new Date(dateString).toLocaleString();
-        }
-
-        function formatTime(totalSeconds) {
-          const minutes = Math.floor(totalSeconds / 60);
-          const seconds = totalSeconds % 60;
-          return minutes + "m " + seconds + "s";
+          if (!dateString) {
+            return "";
+          }
+          return new Date(dateString).toLocaleDateString(undefined, {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          });
         }
       })();
     </script>

@@ -310,6 +310,100 @@ button.button {
   display: none !important;
 }
 
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: min(1040px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 20px 0 0;
+}
+
+.top-nav-brand {
+  color: var(--accent);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.top-nav-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.top-nav-links a {
+  padding: 8px 14px;
+  color: var(--text);
+  text-decoration: none;
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.top-nav-links a.is-current {
+  color: white;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+details.collapsible {
+  padding: 4px 4px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel-strong);
+}
+
+details.collapsible summary {
+  padding: 14px 16px;
+  color: var(--accent-dark);
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+}
+
+details.collapsible summary::-webkit-details-marker {
+  display: none;
+}
+
+details.collapsible summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.1em;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+details.collapsible[open] summary::before {
+  content: "−";
+}
+
+details.collapsible .collapsible-body {
+  padding: 0 16px 16px;
+}
+
+.search-field {
+  width: 100%;
+  padding: 12px 14px;
+  color: var(--text);
+  background: var(--panel-strong);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  font: inherit;
+}
+
+.search-field:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 @media (max-width: 720px) {
   .page {
     width: min(100% - 20px, 1040px);

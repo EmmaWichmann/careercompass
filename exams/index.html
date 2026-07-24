@@ -310,9 +310,6 @@
     <script>
       (function () {
         const mastery = read("coding-hub-concept-mastery", {});
-        const studyProgress = read("coding-hub-study-progress", {});
-        const examProgress = read("coding-hub-exam-progress-v2", {});
-        const missedConcepts = read("coding-hub-missed-concepts", []);
 
         const sqlPlan = [
           { title: "SELECT and FROM", concepts: ["retrieve columns", "source table", "column alias"], href: "exam.html?language=sql&exam=1" },
@@ -352,36 +349,21 @@
         renderLessonCheckbox();
 
         function renderRecommendation() {
-          const latestMissed = missedConcepts.find(function (item) {
-            return !item.reviewed;
-          });
           const nextConcept = sqlPlan.find(function (item) {
             return getConceptState(item.concepts, mastery) !== "SOLID";
           }) || sqlPlan[0];
 
-          const recommendation = latestMissed
-            ? {
-                title: "Targeted review",
-                reason: "A recent missed concept should be reviewed before moving to the next SQL check.",
-                meta: "Focus on the weak spot first, then return to the SQL progression.",
-                covers: [latestMissed.topic, latestMissed.prompt],
-                nextStep: "open missed concepts, then return to study mode",
-                actions: [
-                  { label: "Open Missed Concepts", href: "../practice/study-mode.html", primary: true },
-                  { label: "Open Study Mode", href: "../practice/study-mode.html", primary: false },
-                ],
-              }
-            : {
-                title: nextConcept.title,
-                reason: "This is the next SQL concept in the current progression.",
-                meta: "5 questions • 5-10 min • career-relevant SQL practice",
-                covers: nextConcept.concepts,
-                nextStep: "start the recommended quiz after the current lesson",
-                actions: [
-                  { label: "Start Recommended Quiz", href: nextConcept.href, primary: true },
-                  { label: "Open SQLBolt", href: "https://sqlbolt.com/", primary: false },
-                ],
-              };
+          const recommendation = {
+            title: nextConcept.title,
+            reason: "This is the next SQL concept in the current progression.",
+            meta: "5 questions • 5-10 min • career-relevant SQL practice",
+            covers: nextConcept.concepts,
+            nextStep: "start the recommended quiz after the current lesson",
+            actions: [
+              { label: "Start Recommended Quiz", href: nextConcept.href, primary: true },
+              { label: "Open SQLBolt", href: "https://sqlbolt.com/", primary: false },
+            ],
+          };
 
           document.getElementById("rec-title").textContent = recommendation.title;
           document.getElementById("rec-reason").textContent = recommendation.reason;

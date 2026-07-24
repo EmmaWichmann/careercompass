@@ -6,58 +6,6 @@
     <title>Skill Practice | Coding Learning Hub</title>
     <link rel="stylesheet" href="../shared/styles.css" />
     <style>
-      .today-note-label {
-        margin: 18px 0 6px;
-      }
-
-      textarea.notes-field {
-        width: 100%;
-        min-height: 72px;
-        padding: 12px 14px;
-        color: var(--text);
-        background: var(--panel-strong);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        resize: vertical;
-      }
-
-      textarea.notes-field:focus-visible,
-      select.field,
-      input.field {
-        outline: 2px solid var(--accent);
-        outline-offset: 1px;
-      }
-
-      select.field,
-      input.field {
-        padding: 9px 12px;
-        color: var(--text);
-        background: var(--panel-strong);
-        border: 1px solid var(--line);
-        border-radius: 10px;
-      }
-
-      .field-row {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 10px;
-        margin-top: 10px;
-      }
-
-      .field-row label {
-        min-width: 130px;
-        color: var(--muted);
-      }
-
-      .confirmation {
-        margin-top: 14px;
-        padding: 12px 14px;
-        color: var(--accent-dark);
-        background: var(--sage-soft);
-        border-radius: 12px;
-      }
-
       .tab-list {
         display: flex;
         gap: 8px;
@@ -84,49 +32,43 @@
         border-color: var(--accent);
       }
 
-      .tab-button.explore-later {
-        border-style: dashed;
-      }
-
       .tab-panel[hidden] {
         display: none !important;
       }
 
-      .proof-box {
-        padding: 16px;
+      .field-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
         margin-top: 16px;
-        background: var(--accent-soft);
-        border-radius: 14px;
       }
 
-      .proof-box p {
-        margin: 0;
-        color: var(--accent-dark);
-        line-height: 1.6;
-      }
-
-      .banner {
-        padding: 14px 16px;
-        margin-bottom: 16px;
-        color: var(--accent-dark);
-        background: var(--accent-soft);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        line-height: 1.6;
-      }
-
-      .skill-note {
-        margin-top: 10px;
+      .field-row label {
         color: var(--muted);
-        font-style: italic;
       }
 
-      .extra-links {
+      input.field {
+        width: 80px;
+        padding: 9px 12px;
+        color: var(--text);
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        font: inherit;
+      }
+
+      input.field:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 1px;
+      }
+
+      .confirmation {
         margin-top: 14px;
-      }
-
-      .extra-links p {
-        margin: 0 0 8px;
+        padding: 12px 14px;
+        color: var(--accent-dark);
+        background: var(--sage-soft);
+        border-radius: 12px;
       }
     </style>
   </head>
@@ -143,48 +85,8 @@
         </div>
       </section>
 
-      <section class="card" id="today-card">
-        <div class="top-row">
-          <div>
-            <span class="pill" id="today-day-pill">Today</span>
-            <h2 id="today-skill-name">Loading...</h2>
-            <p class="muted" id="today-lesson-text"></p>
-          </div>
-          <span class="pill">15 to 30 minutes</span>
-        </div>
-
-        <p class="muted" id="today-rest-text" hidden>
-          Sunday is for rest, catching up, or working on a personal project. No lesson is
-          assigned today, but you can still pick a skill below if you feel like it.
-        </p>
-
-        <div class="button-row" id="today-actions">
-          <a class="button primary" id="today-continue" href="#" target="_blank" rel="noopener noreferrer">
-            Continue Course
-          </a>
-          <button class="button secondary" id="today-complete" type="button">
-            Mark Lesson Complete
-          </button>
-        </div>
-
-        <div class="field-row">
-          <label for="today-skill-select">Choose another skill</label>
-          <select class="field" id="today-skill-select"></select>
-        </div>
-
-        <label class="today-note-label" for="today-note">What did I learn? (optional)</label>
-        <textarea
-          class="notes-field"
-          id="today-note"
-          placeholder="A sentence or two is plenty."
-        ></textarea>
-
-        <p class="confirmation" id="today-confirmation" role="status" aria-live="polite" hidden></p>
-      </section>
-
       <section class="card">
-        <h2>Skills</h2>
-        <div class="tab-list" role="tablist" aria-label="Skill tabs" id="tab-list"></div>
+        <div class="tab-list" role="tablist" aria-label="Language" id="tab-list"></div>
       </section>
 
       <div id="tab-panels"></div>

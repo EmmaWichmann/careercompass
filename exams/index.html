@@ -4,92 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skill Checks | Career Compass</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
     <style>
-      :root {
-        --bg: #f7f2eb;
-        --panel: #fffaf4;
-        --text: #37261c;
-        --muted: #6d584c;
-        --accent: #b75e3c;
-        --accent-soft: #ead7c8;
-        --line: #dbc8b8;
-        --shadow: 0 18px 45px rgba(76, 47, 28, 0.08);
-        --radius: 20px;
-        --solid: #6b3721;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family: Georgia, "Times New Roman", serif;
-        background: linear-gradient(180deg, #fbf7f1 0%, var(--bg) 100%);
-        color: var(--text);
-      }
-
-      main {
-        width: min(980px, calc(100% - 32px));
-        margin: 0 auto;
-        padding: 32px 0 56px;
-      }
-
-      .hero,
-      .card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-      }
-
-      .hero {
-        padding: 28px;
-        margin-bottom: 20px;
-      }
-
-      .card {
-        padding: 24px;
-        margin-bottom: 18px;
-      }
-
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      h1 {
-        margin-bottom: 12px;
-        font-size: clamp(2.2rem, 6vw, 4rem);
-        color: var(--accent);
-      }
-
-      .eyebrow,
-      .label {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 10px;
-        border-radius: 999px;
-        background: var(--accent-soft);
-        color: var(--accent);
-        font-size: 0.9rem;
-      }
-
-      .hero p,
-      .muted {
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
       .recommendation {
         margin-top: 18px;
         padding: 20px;
         border: 1px solid var(--line);
-        border-radius: 18px;
-        background: linear-gradient(180deg, #fffdf9, #faf2e8);
+        border-radius: 12px;
+        background: var(--panel-strong);
       }
 
       .recommendation h2 {
@@ -125,27 +47,6 @@
         margin-top: 16px;
       }
 
-      .button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 11px 14px;
-        border-radius: 999px;
-        text-decoration: none;
-        border: 1px solid var(--accent);
-      }
-
-      .button.primary {
-        background: var(--solid);
-        color: white;
-        border-color: var(--solid);
-      }
-
-      .button.secondary {
-        background: transparent;
-        color: var(--accent);
-      }
-
       .button.arrow::before {
         content: "→";
         margin-right: 8px;
@@ -164,8 +65,8 @@
         align-items: center;
         padding: 14px 16px;
         border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fffdf9;
+        border-radius: 12px;
+        background: var(--panel-strong);
       }
 
       .progress-item strong {
@@ -189,8 +90,8 @@
         gap: 10px;
         padding: 12px 14px;
         border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fffdf9;
+        border-radius: 12px;
+        background: var(--panel-strong);
       }
 
       .check-row input {
@@ -206,18 +107,19 @@
         padding: 6px 10px;
         border-radius: 999px;
         font-size: 0.84rem;
-        background: #f2e2d4;
-        color: var(--accent);
+        background: var(--accent-soft);
+        color: var(--accent-dark);
         white-space: nowrap;
       }
 
       .status.reviewing {
-        background: #f8e2d9;
+        background: var(--wrong-soft);
+        color: var(--wrong);
       }
 
       .status.solid {
-        background: #ddebdc;
-        color: #35664a;
+        background: var(--sage-soft);
+        color: var(--sage);
       }
 
       .archive-grid {
@@ -231,8 +133,8 @@
         display: block;
         padding: 14px 16px;
         border: 1px solid var(--line);
-        border-radius: 14px;
-        background: #fffdf9;
+        border-radius: 12px;
+        background: var(--panel-strong);
         color: var(--text);
         text-decoration: none;
       }
@@ -240,7 +142,7 @@
       .archive-grid a strong {
         display: block;
         margin-bottom: 4px;
-        color: var(--accent);
+        color: var(--accent-dark);
       }
 
       .archive-grid a span {
@@ -256,18 +158,18 @@
     </style>
   </head>
   <body>
-    <main>
-      <section class="hero">
-        <span class="eyebrow">SQL phase active • one recommended skill check</span>
+    <main class="page">
+      <section class="card">
+        <span class="pill">SQL phase active • one recommended skill check</span>
         <h1>Skill Checks</h1>
-        <p>
+        <p class="muted">
           This area now follows the current learning path instead of presenting a flat
           assessment library. The primary goal is to recommend the next SQL concept check,
           then show what comes next and keep older language work available in archive form.
         </p>
 
         <div class="recommendation" aria-live="polite">
-          <span class="label">Recommended Next Skill Check</span>
+          <span class="pill">Recommended Next Skill Check</span>
           <h2 id="rec-title">Loading recommendation...</h2>
           <p id="rec-reason" class="muted"></p>
           <div class="muted" id="rec-meta"></div>

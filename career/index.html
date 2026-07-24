@@ -4,35 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Career | Career Compass</title>
+    <link rel="stylesheet" href="../shared/styles.css" />
     <style>
-      :root {
-        --bg:#f7f2eb; --panel:#fffaf4; --text:#37261c; --muted:#6d584c;
-        --accent:#b75e3c; --accent-soft:#ead7c8; --line:#dbc8b8; --shadow:0 18px 45px rgba(76,47,28,.08); --radius:20px;
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
       }
-      *{box-sizing:border-box}
-      body{margin:0;font-family:Georgia,"Times New Roman",serif;background:linear-gradient(180deg,#fbf7f1 0%,var(--bg) 100%);color:var(--text)}
-      main{width:min(980px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
-      .hero,.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;margin-bottom:18px}
-      h1,h2,h3,p{margin-top:0}
-      h1{color:var(--accent);font-size:clamp(2.2rem,6vw,4rem);margin-bottom:10px}
-      .eyebrow{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.9rem}
-      .muted{color:var(--muted);line-height:1.7}
-      .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-      .item{padding:16px;border:1px solid var(--line);border-radius:14px;background:#fffdf9}
-      .item strong{display:block;margin-bottom:4px;color:var(--accent)}
-      .item span,.item li{color:var(--muted);line-height:1.6}
-      .list{display:grid;gap:12px;margin-top:12px;padding-left:0;list-style:none}
-      .pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.84rem}
-      .roadmap{display:grid;gap:12px;margin-top:14px}
-      .roadmap .item{border-left:4px solid var(--accent)}
-      .small{font-size:.95rem}
-      @media (max-width:760px){.grid{grid-template-columns:1fr}}
+
+      .item {
+        padding: 16px;
+        background: var(--panel-strong);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+
+      .item strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--accent-dark);
+      }
+
+      .item span,
+      .item li {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .roadmap {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .roadmap .item {
+        border-left: 4px solid var(--accent);
+      }
+
+      .small {
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 760px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
     </style>
   </head>
   <body>
-    <main>
-      <section class="hero">
-        <span class="eyebrow">Role cluster evidence and credential ideas</span>
+    <main class="page">
+      <section class="card">
+        <span class="pill">Role cluster evidence and credential ideas</span>
         <h1>Career</h1>
         <p class="muted">This page keeps the career direction visible without turning the product into a course catalog. It summarizes the roles I am keeping open and the credential path that supports them.</p>
       </section>
